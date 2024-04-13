@@ -10,10 +10,12 @@ extends Node
 ## Emitted when any variable changes.
 signal changed
 
+## Emitted when the player's health changes
+signal player_health_changed
 
 ## Example variable.
 var player_health: int = 3:
-	set(v): player_health = v; changed.emit()
+	set(v): player_health = v; player_health_changed.emit(); changed.emit()
 
 var player_pos: Vector2 = Vector2.ZERO:
 	set(v): player_pos = v; changed.emit()
