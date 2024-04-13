@@ -5,6 +5,9 @@ signal player_died
 var bullet_scene = preload("res://objects/bullet/bullet.tscn")
 var summoning_dust = preload("res://objects/summoning_dust/summoning_dust.tscn")
 
+@onready var brush_pos = self.global_position #Vector2(0, 0)
+const brush_circle_radius = 25
+
 const SPEED = 300.0
 
 
@@ -26,11 +29,17 @@ func _collision(other: PhysicsBody2D) -> void:
 	pass
 
 func summon_tick():
-	var new_summoning_dust = summoning_dust.instantiate()
-	var summoning_dust_pos = self.get_position()
-	#bullet_pos.y -= 50
-	new_summoning_dust.set_position(summoning_dust_pos)
-	self.get_parent().add_child(new_summoning_dust)
+	var player_brush_pos_diff = global_position.distance_to(brush_pos)
+	if player_brush_pos_diff < brush_circle_radius:
+		return
+	else:
+		var v = global_position - brush_pos
+		brush_pos += v.normalized() * (player_brush_pos_diff - brush_circle_radius)
+		var new_summoning_dust = summoning_dust.instantiate()
+		var summoning_dust_pos = brush_pos
+		#bullet_pos.y -= 50
+		new_summoning_dust.set_position(summoning_dust_pos)
+		self.get_parent().add_child(new_summoning_dust)
 
 func shoot_bullet():
 	var new_bullet = bullet_scene.instantiate()
