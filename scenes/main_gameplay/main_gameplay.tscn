@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://node_types/camera_shake.gd" id="1_lrklj"]
 [ext_resource type="Script" path="res://scenes/main_gameplay/main_gameplay.gd" id="1_wt4mr"]
-[ext_resource type="PackedScene" uid="uid://bmejrldvybsy8" path="res://objects/player/player.tscn" id="2_8jdjt"]
+[ext_resource type="PackedScene" uid="uid://cv58ruem01fvv" path="res://objects/player/player.tscn" id="2_8jdjt"]
 [ext_resource type="Resource" uid="uid://dbjpf7tcbt613" path="res://scenes/main_gameplay/stages/stage_1.tres" id="2_vspj8"]
 [ext_resource type="Shader" path="res://materials/water_shader.gdshader" id="5_hiwcw"]
 [ext_resource type="Script" path="res://ui/score.gd" id="6_sq3jg"]
@@ -88,9 +88,10 @@ position = Vector2(485, 561)
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 802.0
-offset_right = 960.0
-offset_bottom = 31.0
+offset_left = 750.0
+offset_top = 1.0
+offset_right = 908.0
+offset_bottom = 32.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 48
 text = "SCORE: 0"
@@ -101,10 +102,10 @@ script = ExtResource("6_sq3jg")
 script = ExtResource("7_u0gx2")
 
 [node name="SummonMeter" type="ProgressBar" parent="UI"]
-offset_left = 849.0
-offset_top = 36.0
-offset_right = 958.0
-offset_bottom = 56.0
+offset_left = 797.0
+offset_top = 37.0
+offset_right = 906.0
+offset_bottom = 57.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_kplpg")
 value = 100.0
 show_percentage = false
