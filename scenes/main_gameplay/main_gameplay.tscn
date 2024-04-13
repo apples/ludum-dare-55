@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c3rvm3rw6opg"]
+[gd_scene load_steps=14 format=3 uid="uid://c3rvm3rw6opg"]
 
 [ext_resource type="Script" path="res://node_types/camera_shake.gd" id="1_lrklj"]
 [ext_resource type="Script" path="res://scenes/main_gameplay/main_gameplay.gd" id="1_wt4mr"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dse2n756y2n7c" path="res://scenes/main_gameplay/stage_phases/example_phase.tscn" id="3_67kd8"]
 [ext_resource type="Shader" path="res://materials/water_shader.gdshader" id="5_hiwcw"]
 [ext_resource type="Script" path="res://ui/score.gd" id="6_sq3jg"]
+[ext_resource type="PackedScene" uid="uid://cwcfvig1wond3" path="res://objects/summoning_circle/summoning_circle.tscn" id="7_6sfe8"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fenso"]
 normal = Vector2(1, 0)
@@ -85,6 +86,9 @@ theme_override_font_sizes/font_size = 48
 text = "SCORE: 0"
 horizontal_alignment = 2
 script = ExtResource("6_sq3jg")
+
+[node name="SummoningCircle" parent="." instance=ExtResource("7_6sfe8")]
+position = Vector2(1, -7)
 
 [connection signal="phase_complete" from="ExamplePhase" to="." method="_on_example_phase_phase_complete"]
 [connection signal="player_died" from="Player" to="." method="_on_player_player_died"]
