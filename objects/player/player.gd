@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+var bullet_scene = preload("res://Objects/bullet/bullet.tscn")
 
 const SPEED = 300.0
 
@@ -7,7 +7,7 @@ const SPEED = 300.0
 func _physics_process(delta: float) -> void:
 
 	if Input.is_action_just_pressed("Shoot"):
-		print("Bang")
+		shoot_bullet()
 
 	var direction := Vector2(Input.get_axis("Left", "Right"), Input.get_axis("Up", "Down"))
 	velocity = direction * SPEED
@@ -17,3 +17,10 @@ func _physics_process(delta: float) -> void:
 # Called when colliding with something for any reason.
 func _collision(other: PhysicsBody2D) -> void:
 	pass
+
+func shoot_bullet():
+	var new_bullet = bullet_scene.instantiate()
+	var bullet_pos = self.get_position()
+	bullet_pos.y -= 50
+	new_bullet.set_position(bullet_pos)
+	self.get_parent().add_child(new_bullet)
