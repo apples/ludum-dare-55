@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://mcmofcdhrblr"
-path="res://.godot/imported/bullet_5.png-9c364bec899313b4d4916ecfeb9dfaf3.ctex"
+uid="uid://nj8kqtl7mccw"
+path="res://.godot/imported/candle-placeholder.png-6ec02120a385db5c31732765391cdff1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://particles/bullet_5.png"
-dest_files=["res://.godot/imported/bullet_5.png-9c364bec899313b4d4916ecfeb9dfaf3.ctex"]
+source_file="res://objects/candle/candle-placeholder.png"
+dest_files=["res://.godot/imported/candle-placeholder.png-6ec02120a385db5c31732765391cdff1.ctex"]
 
 [params]
 
