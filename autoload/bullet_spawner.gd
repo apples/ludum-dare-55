@@ -15,7 +15,7 @@ static func fire_one_straight(
 	transform = transform.translated_local(offset)
 	transform = transform.rotated_local(angle)
 	
-	var bullet: Bullet = bullet_type.instantiate()
+	var bullet = bullet_type.instantiate()
 	bullet.global_transform = transform
 	scene.add_child(bullet)
 
@@ -32,7 +32,7 @@ static func fire_two_straight(
 	transform = transform.translated_local(offset)
 	transform = transform.rotated_local(angle)
 	
-	var bullet: Bullet = bullet_type.instantiate()
+	var bullet = bullet_type.instantiate()
 	bullet.global_transform = transform.translated_local(Vector2i(-25, 0))
 	scene.add_child(bullet)
 	
@@ -53,7 +53,7 @@ static func fire_three_straight(
 	transform = transform.translated_local(offset)
 	transform = transform.rotated_local(angle)
 	
-	var bullet: Bullet = bullet_type.instantiate()
+	var bullet = bullet_type.instantiate()
 	bullet.global_transform = transform
 	scene.add_child(bullet)
 	
@@ -78,7 +78,7 @@ static func fire_three_arc(
 	transform = transform.translated_local(offset)
 	transform = transform.rotated_local(angle)
 	
-	var bullet: Bullet = bullet_type.instantiate()
+	var bullet = bullet_type.instantiate()
 	bullet.global_transform = transform
 	scene.add_child(bullet)
 	
