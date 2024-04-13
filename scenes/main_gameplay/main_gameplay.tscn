@@ -1,13 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://c3rvm3rw6opg"]
+[gd_scene load_steps=8 format=3 uid="uid://c3rvm3rw6opg"]
 
 [ext_resource type="Script" path="res://node_types/camera_shake.gd" id="1_lrklj"]
 [ext_resource type="Script" path="res://scenes/main_gameplay/main_gameplay.gd" id="1_wt4mr"]
-[ext_resource type="Script" path="res://scenes/main_gameplay/character.gd" id="3_ksi3j"]
-[ext_resource type="Texture2D" uid="uid://c7lc46m6g41vv" path="res://icon.svg" id="4_kqmhi"]
-[ext_resource type="Script" path="res://node_types/motion_interpolator_2d.gd" id="5_drh8x"]
-[ext_resource type="Script" path="res://objects/player/player.gd" id="6_beubn"]
-[ext_resource type="PackedScene" uid="uid://c16bxsiokr13i" path="res://objects/bullet/bullet.tscn" id="7_0va42"]
-[ext_resource type="Script" path="res://objects/enemy/enemy.gd" id="8_qrvbf"]
+[ext_resource type="PackedScene" uid="uid://dse2n756y2n7c" path="res://scenes/main_gameplay/stage_phases/example_phase.tscn" id="3_67kd8"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fenso"]
 normal = Vector2(1, 0)
@@ -19,15 +14,6 @@ normal = Vector2(-1, 0)
 normal = Vector2(0, 1)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_4kntg"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_5boca"]
-radius = 33.9559
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_kyasa"]
-radius = 50.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_tnbux"]
-radius = 64.0
 
 [node name="MainGameplay" type="Node2D"]
 script = ExtResource("1_wt4mr")
@@ -56,53 +42,4 @@ position = Vector2(480, 360)
 [node name="CameraShake" type="Node" parent="Camera2D"]
 script = ExtResource("1_lrklj")
 
-[node name="BouncingCharacterBody2D" type="CharacterBody2D" parent="."]
-process_mode = 4
-visible = false
-position = Vector2(478, 360)
-script = ExtResource("3_ksi3j")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BouncingCharacterBody2D"]
-shape = SubResource("CircleShape2D_5boca")
-
-[node name="MotionInterpolator2D" type="Node2D" parent="BouncingCharacterBody2D"]
-process_priority = 1
-process_physics_priority = 1
-script = ExtResource("5_drh8x")
-
-[node name="Sprite" type="Sprite2D" parent="BouncingCharacterBody2D/MotionInterpolator2D"]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_kqmhi")
-
-[node name="Player" type="CharacterBody2D" parent="."]
-script = ExtResource("6_beubn")
-
-[node name="MotionInterpolator2D" type="Node2D" parent="Player"]
-process_priority = 1
-process_physics_priority = 1
-position = Vector2(390, 312)
-script = ExtResource("5_drh8x")
-
-[node name="Sprite2D" type="Sprite2D" parent="Player/MotionInterpolator2D"]
-texture = ExtResource("4_kqmhi")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(390, 312)
-shape = SubResource("CircleShape2D_kyasa")
-
-[node name="Bullet" parent="." instance=ExtResource("7_0va42")]
-position = Vector2(162, 280)
-
-[node name="RigidBody2D" type="RigidBody2D" parent="." groups=["Enemy"]]
-position = Vector2(168, 498)
-gravity_scale = 0.0
-script = ExtResource("8_qrvbf")
-
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D" groups=["Enemy"]]
-texture = ExtResource("4_kqmhi")
-flip_v = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" groups=["Enemy"]]
-shape = SubResource("CircleShape2D_tnbux")
-
-[connection signal="bounce" from="BouncingCharacterBody2D" to="." method="_on_bouncing_character_body_2d_bounce"]
+[node name="ExamplePhase" parent="." instance=ExtResource("3_67kd8")]

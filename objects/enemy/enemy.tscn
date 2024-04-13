@@ -4,14 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://c7lc46m6g41vv" path="res://icon.svg" id="2_uofss"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tnbux"]
-radius = 64.0
+radius = 17.4929
 
-[node name="Enemy" type="RigidBody2D" groups=["Enemy"]]
-position = Vector2(168, 498)
-gravity_scale = 0.0
+[node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
 script = ExtResource("1_5ghjk")
 
 [node name="Sprite2D" type="Sprite2D" parent="." groups=["Enemy"]]
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_uofss")
 flip_v = true
 

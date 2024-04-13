@@ -15,10 +15,13 @@ signal changed
 var player_health: int = 0:
 	set(v): player_health = v; changed.emit()
 
+var player_pos: Vector2 = Vector2.ZERO:
+	set(v): player_pos = v; changed.emit()
 
 ## Reset all variables to their default state.
 func reset():
 	player_health = 0
+	player_pos = Vector2.ZERO
 
 
 #region Debug overlay
