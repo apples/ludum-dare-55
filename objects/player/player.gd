@@ -1,5 +1,12 @@
 extends CharacterBody2D
-var bullet_scene = preload("res://Objects/bullet/bullet.tscn")
+
+signal player_died
+
+var bullet_scene = preload("res://objects/bullet/bullet.tscn")
+var summoning_dust = preload("res://objects/summoning_dust/summoning_dust.tscn")
+
+@onready var brush_pos = self.global_position #Vector2(0, 0)
+const brush_circle_radius = 25
 
 const SPEED = 300.0
 
@@ -8,6 +15,9 @@ func _physics_process(delta: float) -> void:
 
 	if Input.is_action_just_pressed("Shoot"):
 		shoot_bullet()
+	
+	if Input.is_action_pressed("Summon"):
+		summon_tick()
 
 	var direction := Vector2(Input.get_axis("Left", "Right"), Input.get_axis("Up", "Down"))
 	velocity = direction * SPEED
@@ -17,6 +27,19 @@ func _physics_process(delta: float) -> void:
 # Called when colliding with something for any reason.
 func _collision(other: PhysicsBody2D) -> void:
 	pass
+
+func summon_tick():
+	var player_brush_pos_diff = global_position.distance_to(brush_pos)
+	if player_brush_pos_diff < brush_circle_radius:
+		return
+	else:
+		var v = global_position - brush_pos
+		brush_pos += v.normalized() * (player_brush_pos_diff - brush_circle_radius)
+		var new_summoning_dust = summoning_dust.instantiate()
+		var summoning_dust_pos = brush_pos
+		#bullet_pos.y -= 50
+		new_summoning_dust.set_position(summoning_dust_pos)
+		self.get_parent().add_child(new_summoning_dust)
 
 func shoot_bullet():
 	BulletSpawner.fire_one_straight(self, bullet_scene, Vector2(0, -100), PI)
