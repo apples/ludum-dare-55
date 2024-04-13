@@ -3,9 +3,13 @@ extends Node2D
 const SPEED = 12.0
 var diretion := Vector2(0, -1)
 var damage := 1
+@onready var sprite_2d: AnimatedSprite2D = $Sprite2D
 
 func _ready() -> void:
 	pass
+
+func _process(delta: float) -> void:
+	sprite_2d.rotation += 5.0 * delta
 
 func _physics_process(delta: float) -> void:
 	position += diretion * SPEED
@@ -19,4 +23,3 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 		queue_free()
 	else:
 		print("nope")
-	
