@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dhsnpc1yjqirn"]
+[gd_scene load_steps=11 format=3 uid="uid://dhsnpc1yjqirn"]
 
+[ext_resource type="Script" path="res://objects/summoning_circle/candle/candle.gd" id="1_0u4pf"]
 [ext_resource type="Texture2D" uid="uid://nj8kqtl7mccw" path="res://objects/candle/candle-placeholder.png" id="1_egni8"]
+[ext_resource type="Texture2D" uid="uid://ba8hr3d6jnxwh" path="res://objects/candle/candle-light.png" id="3_0oj0k"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y4s26"]
 atlas = ExtResource("1_egni8")
@@ -24,9 +26,44 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="Candle" type="Node2D"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_pn5ac"]
+atlas = ExtResource("3_0oj0k")
+region = Rect2(0, 0, 64, 64)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[sub_resource type="AtlasTexture" id="AtlasTexture_yy18s"]
+atlas = ExtResource("3_0oj0k")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nffds"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pn5ac")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yy18s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ojrhu"]
+size = Vector2(32, 47)
+
+[node name="Candle" type="Area2D"]
+script = ExtResource("1_0u4pf")
+
+[node name="CandleSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_10ed1")
 autoplay = "default"
-frame_progress = 0.368217
+frame_progress = 0.506174
+
+[node name="CandleLightSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_nffds")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_ojrhu")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
