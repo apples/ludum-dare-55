@@ -34,6 +34,7 @@ func _physics_process(delta: float) -> void:
 func _collision(other: PhysicsBody2D) -> void:
 	pass
 
+
 func summon_tick():
 	var player_brush_pos_diff = global_position.distance_to(brush_pos)
 	if player_brush_pos_diff < brush_circle_radius:
@@ -54,6 +55,6 @@ func shoot_bullet():
 		$bullet_spawn_location.rotation)
 
 func _on_player_health_changed() -> void:
-	if Globals.player_health == 0:
+	if Globals.player_health <= 0:
 		# Play a death animation
 		player_died.emit()
