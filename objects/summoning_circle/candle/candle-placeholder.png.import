@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7fjsptrw7c4u"
-path="res://.godot/imported/bullet_2.png-d37e80272cc82e8564fb93119b1e0181.ctex"
+uid="uid://0137t6kaqnc0"
+path="res://.godot/imported/candle-placeholder.png-844d44c9e8d16ab29d9db802ba1e778e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://particles/bullet_2.png"
-dest_files=["res://.godot/imported/bullet_2.png-d37e80272cc82e8564fb93119b1e0181.ctex"]
+source_file="res://objects/summoning_circle/candle/candle-placeholder.png"
+dest_files=["res://.godot/imported/candle-placeholder.png-844d44c9e8d16ab29d9db802ba1e778e.ctex"]
 
 [params]
 
