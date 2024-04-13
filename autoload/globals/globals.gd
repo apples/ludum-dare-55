@@ -20,11 +20,14 @@ var player_health: int = 0:
 var player_pos: Vector2 = Vector2.ZERO:
 	set(v): player_pos = v; changed.emit()
 
+var score: int = 0:
+	set(v): score = v; changed.emit()
+
 ## Reset all variables to their default state.
 func reset():
 	player_health = 0
 	player_pos = Vector2.ZERO
-
+	score = 0
 
 #region Debug overlay
 var _overlay
