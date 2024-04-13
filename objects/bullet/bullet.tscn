@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c16bxsiokr13i"]
 
 [ext_resource type="Script" path="res://objects/bullet/bullet.gd" id="1_hu4wm"]
-[ext_resource type="Texture2D" uid="uid://c7lc46m6g41vv" path="res://icon.svg" id="2_va3go"]
+[ext_resource type="SpriteFrames" uid="uid://4fmddslkhjal" path="res://particles/bullet_frames.tres" id="2_cfidg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jey2d"]
 size = Vector2(26, 26)
@@ -9,9 +9,9 @@ size = Vector2(26, 26)
 [node name="Bullet" type="Node2D"]
 script = ExtResource("1_hu4wm")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_va3go")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_cfidg")
+autoplay = "default"
 
 [node name="Hitbox" type="Area2D" parent="."]
 
