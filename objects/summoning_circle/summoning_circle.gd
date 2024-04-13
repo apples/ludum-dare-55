@@ -17,8 +17,8 @@ func _ready():
 func _process(delta):
 	pass
 
-func out_of_juice():
-	print("yoinks!")
+func reset_summoning_circle():
+	Globals.summon_ink = 100
 	sigil_sequence_active = false
 	$Candle1.deactivate_candle()
 	$Candle2.deactivate_candle()
