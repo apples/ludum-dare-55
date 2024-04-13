@@ -2,6 +2,10 @@ extends Node2D
 
 @onready var camera_shake: CameraShake = $Camera2D/CameraShake
 
+func _ready() -> void:
+	# time for tight coupling boyz
+	$Player.summoning_circle_ref = $SummoningCircle
+	$SummoningCircle.player_ref = $Player
 
 func _on_bouncing_character_body_2d_bounce(collision: KinematicCollision2D) -> void:
 	#camera_shake.apply_impulse(Vector2.from_angle(randf_range(0, TAU)) * 2000)
