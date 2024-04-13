@@ -1,13 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://c3rvm3rw6opg"]
+[gd_scene load_steps=15 format=3 uid="uid://c3rvm3rw6opg"]
 
 [ext_resource type="Script" path="res://node_types/camera_shake.gd" id="1_lrklj"]
 [ext_resource type="Script" path="res://scenes/main_gameplay/main_gameplay.gd" id="1_wt4mr"]
-[ext_resource type="PackedScene" uid="uid://cv58ruem01fvv" path="res://objects/player/player.tscn" id="2_8jdjt"]
+[ext_resource type="PackedScene" uid="uid://bmejrldvybsy8" path="res://objects/player/player.tscn" id="2_8jdjt"]
 [ext_resource type="PackedScene" uid="uid://dse2n756y2n7c" path="res://scenes/main_gameplay/stage_phases/example_phase.tscn" id="3_67kd8"]
 [ext_resource type="Shader" path="res://materials/water_shader.gdshader" id="5_hiwcw"]
 [ext_resource type="Script" path="res://ui/score.gd" id="6_sq3jg"]
-[ext_resource type="Script" path="res://ui/hearts.gd" id="7_u0gx2"]
 [ext_resource type="PackedScene" uid="uid://cwcfvig1wond3" path="res://objects/summoning_circle/summoning_circle.tscn" id="7_6sfe8"]
+[ext_resource type="Script" path="res://ui/hearts.gd" id="7_u0gx2"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fenso"]
 normal = Vector2(1, 0)
