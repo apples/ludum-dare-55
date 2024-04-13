@@ -56,7 +56,8 @@ func summon_tick():
 			#bullet_pos.y -= 50
 			new_summoning_dust.set_position(summoning_dust_pos)
 			self.get_parent().add_child(new_summoning_dust)
-			Globals.summon_ink -= 1
+			if summoning_circle_ref.sigil_sequence_active:
+				Globals.summon_ink -= 1
 		else:
 			summoning_circle_ref.out_of_juice()
 			Globals.summon_ink = 100
