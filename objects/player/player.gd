@@ -56,7 +56,7 @@ func summon_tick():
 
 func shoot_bullet():
 	if refire_delay_timer.is_stopped():
-		BulletSpawner.fire_circle(
+		BulletSpawner.fire_one_straight(
 			self, bullet_scene,
 			$bullet_spawn_location.position,
 			$bullet_spawn_location.rotation)
