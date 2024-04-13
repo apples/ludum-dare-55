@@ -11,7 +11,7 @@ static func fire_one_straight(
 	var scene = caller.get_tree().get_root()
 	
 	var transform = caller.global_transform
-	transform = transform.scaled(Vector2(1, 1))
+	transform = transform.scaled(Vector2.ONE)
 	transform = transform.translated_local(offset)
 	transform = transform.rotated_local(angle)
 	
@@ -28,7 +28,7 @@ static func fire_two_straight(
 	var scene = caller.get_tree().get_root()
 	
 	var transform = caller.global_transform
-	transform = transform.scaled(Vector2(1, 1))
+	transform = transform.scaled(Vector2.ONE)
 	transform = transform.translated_local(offset)
 	transform = transform.rotated_local(angle)
 	
@@ -49,7 +49,7 @@ static func fire_three_straight(
 	var scene = caller.get_tree().get_root()
 	
 	var transform = caller.global_transform
-	transform = transform.scaled(Vector2(1, 1))
+	transform = transform.scaled(Vector2.ONE)
 	transform = transform.translated_local(offset)
 	transform = transform.rotated_local(angle)
 	
@@ -74,7 +74,7 @@ static func fire_three_arc(
 	var scene = caller.get_tree().get_root()
 	
 	var transform = caller.global_transform
-	transform = transform.scaled(Vector2(1, 1))
+	transform = transform.scaled(Vector2.ONE)
 	transform = transform.translated_local(offset)
 	transform = transform.rotated_local(angle)
 	
@@ -89,3 +89,25 @@ static func fire_three_arc(
 	bullet = bullet_type.instantiate()
 	bullet.global_transform = transform.rotated_local(deg_to_rad(15))
 	scene.add_child(bullet)
+
+static func fire_circle(
+	caller: Node2D,
+	bullet_type: PackedScene,
+	offset: Vector2,
+	angle: float) -> void:
+	
+	var scene = caller.get_tree().get_root()
+	
+	var bullet_count = 8
+	
+	for i in range(bullet_count):
+		var transform = caller.global_transform
+		
+		transform = transform.scaled(Vector2.ONE)
+		transform = transform.rotated_local(deg_to_rad(360.0 / bullet_count * i))
+		transform = transform.translated_local(offset)
+		transform = transform.rotated_local(angle)
+		
+		var bullet = bullet_type.instantiate()
+		bullet.global_transform = transform
+		scene.add_child(bullet)
