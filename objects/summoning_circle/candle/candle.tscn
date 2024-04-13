@@ -1,23 +1,23 @@
 [gd_scene load_steps=5 format=3 uid="uid://dhsnpc1yjqirn"]
 
-[ext_resource type="Texture2D" uid="uid://0137t6kaqnc0" path="res://objects/summoning_circle/candle/candle-placeholder.png" id="1_io60u"]
+[ext_resource type="Texture2D" uid="uid://nj8kqtl7mccw" path="res://objects/candle/candle-placeholder.png" id="1_egni8"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0j60v"]
-atlas = ExtResource("1_io60u")
-region = Rect2(0, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4s26"]
+atlas = ExtResource("1_egni8")
+region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_c7w8y"]
-atlas = ExtResource("1_io60u")
-region = Rect2(16, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ids67"]
+atlas = ExtResource("1_egni8")
+region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_10ed1"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0j60v")
+"texture": SubResource("AtlasTexture_y4s26")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_c7w8y")
+"texture": SubResource("AtlasTexture_ids67")
 }],
 "loop": true,
 "name": &"default",
@@ -29,3 +29,4 @@ animations = [{
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_10ed1")
 autoplay = "default"
+frame_progress = 0.368217
