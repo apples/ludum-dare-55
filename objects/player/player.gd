@@ -23,7 +23,9 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-
+	if Globals.player_health <= 0:
+		return
+	
 	if Input.is_action_pressed("Shoot"):
 		shoot_bullet()
 	
@@ -32,6 +34,7 @@ func _physics_process(delta: float) -> void:
 		summon_tick()
 	else:
 		current_speed = NORMAL_SPEED
+		summoning_circle_ref.reset_summoning_circle()
 
 	var direction := Vector2(Input.get_axis("Left", "Right"), Input.get_axis("Up", "Down"))
 	velocity = direction * current_speed
@@ -59,8 +62,7 @@ func summon_tick():
 			if summoning_circle_ref.sigil_sequence_active:
 				Globals.summon_ink -= 1
 		else:
-			summoning_circle_ref.out_of_juice()
-			Globals.summon_ink = 100
+			summoning_circle_ref.reset_summoning_circle()
 
 func shoot_bullet():
 	if refire_delay_timer.is_stopped():
@@ -71,7 +73,12 @@ func shoot_bullet():
 		refire_delay_timer.start()
 
 func _on_player_health_changed() -> void:
-	if Globals.player_health <= 0:
-		# TODO: Play a death animation
-		player_died.emit()
+	if Globals.player_health <= 0 && $DeathTimer.is_stopped():
+		#TODO death SFX
+		$DeathTimer.start()
+		$DeathParticles.emitting = true
 
+
+func _on_death_timer_timeout() -> void:
+	$DeathParticles.emitting = false
+	player_died.emit()
