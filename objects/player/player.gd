@@ -42,4 +42,7 @@ func summon_tick():
 		self.get_parent().add_child(new_summoning_dust)
 
 func shoot_bullet():
-	BulletSpawner.fire_one_straight(self, bullet_scene, Vector2(0, -100), PI)
+	BulletSpawner.fire_one_straight(
+		self, bullet_scene,
+		$bullet_spawn_location.position,
+		$bullet_spawn_location.rotation)

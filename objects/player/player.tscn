@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bbecl65o8oslo" path="res://particles/circle.png" id="2_av8ut"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l1bt7"]
-size = Vector2(20, 16)
+size = Vector2(16, 16)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_cwmge")
@@ -14,3 +14,8 @@ texture = ExtResource("2_av8ut")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_l1bt7")
+
+[node name="bullet_spawn_location" type="Marker2D" parent="."]
+position = Vector2(0, -25)
+rotation = 3.14159
+gizmo_extents = 5.0
