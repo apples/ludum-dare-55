@@ -11,7 +11,9 @@ var summoning_dust = preload("res://objects/summoning_dust/summoning_dust.tscn")
 @onready var refire_delay_timer = $RefireDelay
 const brush_circle_radius = 25
 
-const SPEED = 300.0
+const NORMAL_SPEED = 300.0
+const FOCUS_SPEED = 150.0
+var current_speed = NORMAL_SPEED
 
 func _ready() -> void:
 	Globals.player_health = starting_health
@@ -24,10 +26,13 @@ func _physics_process(delta: float) -> void:
 		shoot_bullet()
 	
 	if Input.is_action_pressed("Summon"):
+		current_speed = FOCUS_SPEED
 		summon_tick()
+	else:
+		current_speed = NORMAL_SPEED
 
 	var direction := Vector2(Input.get_axis("Left", "Right"), Input.get_axis("Up", "Down"))
-	velocity = direction * SPEED
+	velocity = direction * current_speed
 
 	move_and_slide()
 
