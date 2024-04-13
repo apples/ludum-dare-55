@@ -2,10 +2,35 @@ extends Node2D
 
 @onready var camera_shake: CameraShake = $Camera2D/CameraShake
 
+@export var stage: Stage
+
+var stage_phase: int = -1
+
+var current_stage_phase: Node
+
 func _ready() -> void:
 	# time for tight coupling boyz
 	$Player.summoning_circle_ref = $SummoningCircle
 	$SummoningCircle.player_ref = $Player
+	
+	if stage:
+		next_stage_phase()
+
+
+func next_stage_phase() -> void:
+	if current_stage_phase:
+		current_stage_phase.queue_free()
+		current_stage_phase = null
+	stage_phase += 1
+	if stage_phase < stage.phases.size():
+		current_stage_phase = stage.phases[stage_phase].instantiate()
+		current_stage_phase.phase_complete.connect(_on_phase_complete)
+		add_child(current_stage_phase)
+	else:
+		print_rich("[rainbow][tornado]STAGE DONE!!!![/tornado][/rainbow]")
+
+func _on_phase_complete() -> void:
+	next_stage_phase()
 
 func _on_bouncing_character_body_2d_bounce(collision: KinematicCollision2D) -> void:
 	#camera_shake.apply_impulse(Vector2.from_angle(randf_range(0, TAU)) * 2000)
