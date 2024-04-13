@@ -10,6 +10,9 @@ const brush_circle_radius = 25
 
 const SPEED = 300.0
 
+func _ready() -> void:
+	Globals.player_health_changed.connect(_on_player_health_changed)
+
 
 func _physics_process(delta: float) -> void:
 
@@ -46,3 +49,8 @@ func shoot_bullet():
 		self, bullet_scene,
 		$bullet_spawn_location.position,
 		$bullet_spawn_location.rotation)
+
+func _on_player_health_changed() -> void:
+	if Globals.player_health == 0:
+		# Play a death animation
+		player_died.emit()
