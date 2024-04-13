@@ -7,3 +7,4 @@ build/
 # Inverse ignores
 !**/.gdignore
 
+.DS_Store
