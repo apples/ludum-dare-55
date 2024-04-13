@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cly6pij36yeqx"]
+
+[ext_resource type="Texture2D" uid="uid://bdu506gw1ce1y" path="res://objects/summoning_dust/summoning-dust.png" id="1_6q0bw"]
+[ext_resource type="Script" path="res://objects/VFX/enemy_damaged/enemy_damaged.gd" id="2_8t1hs"]
+
+[node name="enemy_damaged" type="Node2D"]
+script = ExtResource("2_8t1hs")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+texture = ExtResource("1_6q0bw")
+emission_shape = 1
+emission_sphere_radius = 22.34
+gravity = Vector2(0, 10)
+
+[node name="EnemyDamagedTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="EnemyDamagedTimer" to="." method="_on_timeout"]
