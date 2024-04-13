@@ -1,7 +1,7 @@
 extends Node2D
 
-const SPEED = 3.0
-var diretion := Vector2(0, 1)
+const SPEED = 12.0
+var diretion := Vector2(0, -1)
 var damage := 1
 
 func _ready() -> void:

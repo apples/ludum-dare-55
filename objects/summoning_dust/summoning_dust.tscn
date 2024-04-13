@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvlqfqtn7vnl7"]
+
+[ext_resource type="Texture2D" uid="uid://bdu506gw1ce1y" path="res://objects/summoning_dust/summoning-dust.png" id="1_obmb6"]
+
+[node name="SummoningDust" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_obmb6")
