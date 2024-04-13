@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+signal player_died
 
 const SPEED = 300.0
 

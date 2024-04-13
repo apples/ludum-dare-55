@@ -49,3 +49,4 @@ script = ExtResource("1_lrklj")
 position = Vector2(485, 561)
 
 [connection signal="phase_complete" from="ExamplePhase" to="." method="_on_example_phase_phase_complete"]
+[connection signal="player_died" from="Player" to="." method="_on_player_player_died"]
