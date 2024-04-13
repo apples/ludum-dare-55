@@ -1,10 +1,8 @@
 extends Node2D
 
-@export var stage: String = "stage_one"
+@export var stage: Stage
 
 @onready var camera_shake: CameraShake = $Camera2D/CameraShake
-
-@export var stage: Stage
 
 var stage_phase: int = -1
 
