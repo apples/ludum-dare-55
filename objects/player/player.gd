@@ -21,7 +21,9 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-
+	if Globals.player_health <= 0:
+		return
+	
 	if Input.is_action_pressed("Shoot"):
 		shoot_bullet()
 	
@@ -63,7 +65,12 @@ func shoot_bullet():
 		refire_delay_timer.start()
 
 func _on_player_health_changed() -> void:
-	if Globals.player_health <= 0:
-		# TODO: Play a death animation
-		player_died.emit()
+	if Globals.player_health <= 0 && $DeathTimer.is_stopped():
+		#TODO death SFX
+		$DeathTimer.start()
+		$DeathParticles.emitting = true
 
+
+func _on_death_timer_timeout() -> void:
+	$DeathParticles.emitting = false
+	player_died.emit()
