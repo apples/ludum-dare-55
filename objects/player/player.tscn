@@ -19,3 +19,7 @@ shape = SubResource("RectangleShape2D_l1bt7")
 position = Vector2(0, -25)
 rotation = 3.14159
 gizmo_extents = 5.0
+
+[node name="RefireDelay" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
