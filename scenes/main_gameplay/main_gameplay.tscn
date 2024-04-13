@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://c3rvm3rw6opg"]
+[gd_scene load_steps=13 format=3 uid="uid://c3rvm3rw6opg"]
 
 [ext_resource type="Script" path="res://node_types/camera_shake.gd" id="1_lrklj"]
 [ext_resource type="Script" path="res://scenes/main_gameplay/main_gameplay.gd" id="1_wt4mr"]
-[ext_resource type="PackedScene" uid="uid://cv58ruem01fvv" path="res://objects/player/player.tscn" id="2_8jdjt"]
+[ext_resource type="PackedScene" path="res://objects/player/player.tscn" id="2_8jdjt"]
 [ext_resource type="PackedScene" uid="uid://dse2n756y2n7c" path="res://scenes/main_gameplay/stage_phases/example_phase.tscn" id="3_67kd8"]
 [ext_resource type="Shader" path="res://materials/water_shader.gdshader" id="5_hiwcw"]
+[ext_resource type="Script" path="res://ui/score.gd" id="6_sq3jg"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fenso"]
 normal = Vector2(1, 0)
@@ -71,6 +72,19 @@ script = ExtResource("1_lrklj")
 
 [node name="Player" parent="." instance=ExtResource("2_8jdjt")]
 position = Vector2(485, 561)
+
+[node name="Score" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 802.0
+offset_right = 960.0
+offset_bottom = 24.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 48
+text = "SCORE: 0"
+horizontal_alignment = 2
+script = ExtResource("6_sq3jg")
 
 [connection signal="phase_complete" from="ExamplePhase" to="." method="_on_example_phase_phase_complete"]
 [connection signal="player_died" from="Player" to="." method="_on_player_player_died"]
