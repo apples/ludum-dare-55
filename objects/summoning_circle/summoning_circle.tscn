@@ -6,11 +6,11 @@
 [node name="SummoningCircle" type="Node2D"]
 script = ExtResource("1_3dlk4")
 
-[node name="Candle2" parent="." instance=ExtResource("2_2wybv")]
-position = Vector2(590, 529)
-
 [node name="Candle1" parent="." instance=ExtResource("2_2wybv")]
 position = Vector2(496, 448)
+
+[node name="Candle2" parent="." instance=ExtResource("2_2wybv")]
+position = Vector2(590, 529)
 
 [node name="Candle3" parent="." instance=ExtResource("2_2wybv")]
 position = Vector2(556, 637)
