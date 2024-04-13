@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c16bxsiokr13i"]
 
 [ext_resource type="Script" path="res://objects/bullet/bullet.gd" id="1_hu4wm"]
-[ext_resource type="SpriteFrames" uid="uid://4fmddslkhjal" path="res://particles/bullet_frames.tres" id="2_cfidg"]
+[ext_resource type="SpriteFrames" uid="uid://d27mn8368fubp" path="res://particles/bullet_frames.tres" id="2_cfidg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jey2d"]
 size = Vector2(26, 26)
