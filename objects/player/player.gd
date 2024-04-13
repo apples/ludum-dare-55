@@ -1,5 +1,6 @@
 extends CharacterBody2D
-var bullet_scene = preload("res://Objects/bullet/bullet.tscn")
+var bullet_scene = preload("res://objects/bullet/bullet.tscn")
+var summoning_dust = preload("res://objects/summoning_dust/summoning_dust.tscn")
 
 const SPEED = 300.0
 
