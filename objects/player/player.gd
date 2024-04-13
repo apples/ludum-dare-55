@@ -2,31 +2,44 @@ extends CharacterBody2D
 
 signal player_died
 
+@export var starting_health: int = 1
+
 var bullet_scene = preload("res://objects/bullet/bullet.tscn")
 var summoning_dust = preload("res://objects/summoning_dust/summoning_dust.tscn")
 
 @onready var brush_pos = self.global_position #Vector2(0, 0)
+@onready var refire_delay_timer = $RefireDelay
 const brush_circle_radius = 25
 
-const SPEED = 300.0
+const NORMAL_SPEED = 300.0
+const FOCUS_SPEED = 150.0
+var current_speed = NORMAL_SPEED
+
+func _ready() -> void:
+	Globals.player_health = starting_health
+	Globals.player_health_changed.connect(_on_player_health_changed)
 
 
 func _physics_process(delta: float) -> void:
 
-	if Input.is_action_just_pressed("Shoot"):
+	if Input.is_action_pressed("Shoot"):
 		shoot_bullet()
 	
 	if Input.is_action_pressed("Summon"):
+		current_speed = FOCUS_SPEED
 		summon_tick()
+	else:
+		current_speed = NORMAL_SPEED
 
 	var direction := Vector2(Input.get_axis("Left", "Right"), Input.get_axis("Up", "Down"))
-	velocity = direction * SPEED
+	velocity = direction * current_speed
 
 	move_and_slide()
 
 # Called when colliding with something for any reason.
 func _collision(other: PhysicsBody2D) -> void:
 	pass
+
 
 func summon_tick():
 	var player_brush_pos_diff = global_position.distance_to(brush_pos)
@@ -42,7 +55,15 @@ func summon_tick():
 		self.get_parent().add_child(new_summoning_dust)
 
 func shoot_bullet():
-	BulletSpawner.fire_three_arc(
-		self, bullet_scene,
-		$bullet_spawn_location.position,
-		$bullet_spawn_location.rotation)
+	if refire_delay_timer.is_stopped():
+		BulletSpawner.fire_circle(
+			self, bullet_scene,
+			$bullet_spawn_location.position,
+			$bullet_spawn_location.rotation)
+		refire_delay_timer.start()
+
+func _on_player_health_changed() -> void:
+	if Globals.player_health <= 0:
+		# TODO: Play a death animation
+		player_died.emit()
+
