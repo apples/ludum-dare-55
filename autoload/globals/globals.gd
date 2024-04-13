@@ -14,7 +14,7 @@ signal changed
 signal player_health_changed
 
 ## Example variable.
-var player_health: int = 0:
+var player_health: int = 3:
 	set(v): player_health = v; player_health_changed.emit(); changed.emit()
 
 var player_pos: Vector2 = Vector2.ZERO:

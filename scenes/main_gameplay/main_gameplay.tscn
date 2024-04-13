@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dse2n756y2n7c" path="res://scenes/main_gameplay/stage_phases/example_phase.tscn" id="3_67kd8"]
 [ext_resource type="Shader" path="res://materials/water_shader.gdshader" id="5_hiwcw"]
 [ext_resource type="Script" path="res://ui/score.gd" id="6_sq3jg"]
+[ext_resource type="Script" path="res://ui/hearts.gd" id="7_u0gx2"]
 [ext_resource type="PackedScene" uid="uid://cwcfvig1wond3" path="res://objects/summoning_circle/summoning_circle.tscn" id="7_6sfe8"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fenso"]
@@ -74,18 +75,23 @@ script = ExtResource("1_lrklj")
 [node name="Player" parent="." instance=ExtResource("2_8jdjt")]
 position = Vector2(485, 561)
 
-[node name="Score" type="Label" parent="."]
+[node name="UI" type="Node2D" parent="."]
+
+[node name="Score" type="Label" parent="UI"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = 802.0
 offset_right = 960.0
-offset_bottom = 24.0
+offset_bottom = 31.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 48
 text = "SCORE: 0"
 horizontal_alignment = 2
 script = ExtResource("6_sq3jg")
+
+[node name="Hearts" type="Node2D" parent="UI"]
+script = ExtResource("7_u0gx2")
 
 [node name="SummoningCircle" parent="." instance=ExtResource("7_6sfe8")]
 position = Vector2(1, -7)
