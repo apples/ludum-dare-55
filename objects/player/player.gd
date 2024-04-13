@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 signal player_died
 
+@export var starting_health: int = 1
+
 var bullet_scene = preload("res://objects/bullet/bullet.tscn")
 var summoning_dust = preload("res://objects/summoning_dust/summoning_dust.tscn")
 
@@ -11,6 +13,7 @@ const brush_circle_radius = 25
 const SPEED = 300.0
 
 func _ready() -> void:
+	Globals.player_health = starting_health
 	Globals.player_health_changed.connect(_on_player_health_changed)
 
 
