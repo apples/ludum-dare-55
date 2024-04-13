@@ -31,7 +31,7 @@ float fbm (vec3 seed)
 
 void fragment()
 {
-	vec2 movementUV = UV + (TIME * moveSpeed);
+	vec2 movementUV = UV + vec2(TIME * moveSpeed * .15, TIME * moveSpeed);
     vec2 p = (2.*movementUV-R)/R.y;
     float shape = fbm(vec3(p*scale, 0.));
     float gradient = fract(shape*layers);
