@@ -10,7 +10,7 @@ script = ExtResource("1_pag2v")
 texture = ExtResource("1_obmb6")
 
 [node name="SummoningDustTimer" type="Timer" parent="."]
-wait_time = 6.0
+wait_time = 2.5
 autostart = true
 
 [connection signal="timeout" from="SummoningDustTimer" to="." method="_on_summoning_dust_timer_timeout"]
