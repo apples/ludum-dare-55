@@ -15,6 +15,8 @@ const NORMAL_SPEED = 300.0
 const FOCUS_SPEED = 150.0
 var current_speed = NORMAL_SPEED
 
+var summoning_circle_ref: Node2D
+
 func _ready() -> void:
 	Globals.player_health = starting_health
 	Globals.player_health_changed.connect(_on_player_health_changed)
@@ -46,13 +48,18 @@ func summon_tick():
 	if player_brush_pos_diff < brush_circle_radius:
 		return
 	else:
-		var v = global_position - brush_pos
-		brush_pos += v.normalized() * (player_brush_pos_diff - brush_circle_radius)
-		var new_summoning_dust = summoning_dust.instantiate()
-		var summoning_dust_pos = brush_pos
-		#bullet_pos.y -= 50
-		new_summoning_dust.set_position(summoning_dust_pos)
-		self.get_parent().add_child(new_summoning_dust)
+		if Globals.summon_ink > 0:
+			var v = global_position - brush_pos
+			brush_pos += v.normalized() * (player_brush_pos_diff - brush_circle_radius)
+			var new_summoning_dust = summoning_dust.instantiate()
+			var summoning_dust_pos = brush_pos
+			#bullet_pos.y -= 50
+			new_summoning_dust.set_position(summoning_dust_pos)
+			self.get_parent().add_child(new_summoning_dust)
+			Globals.summon_ink -= 1
+		else:
+			summoning_circle_ref.out_of_juice()
+			Globals.summon_ink = 100
 
 func shoot_bullet():
 	if refire_delay_timer.is_stopped():
