@@ -56,5 +56,5 @@ func shoot_bullet():
 
 func _on_player_health_changed() -> void:
 	if Globals.player_health <= 0:
-		# Play a death animation
+		# TODO: Play a death animation
 		player_died.emit()
