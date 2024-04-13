@@ -43,3 +43,5 @@ position = Vector2(480, 360)
 script = ExtResource("1_lrklj")
 
 [node name="ExamplePhase" parent="." instance=ExtResource("3_67kd8")]
+
+[connection signal="phase_complete" from="ExamplePhase" to="." method="_on_example_phase_phase_complete"]
