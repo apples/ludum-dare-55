@@ -9,6 +9,10 @@ var stage_phase: int = -1
 var current_stage_phase: Node
 
 func _ready() -> void:
+	# time for tight coupling boyz
+	$Player.summoning_circle_ref = $SummoningCircle
+	$SummoningCircle.player_ref = $Player
+	
 	if stage:
 		next_stage_phase()
 

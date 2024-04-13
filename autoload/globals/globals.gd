@@ -14,7 +14,7 @@ signal changed
 signal player_health_changed
 
 ## Example variable.
-var player_health: int = 0:
+var player_health: int = 3:
 	set(v): player_health = v; player_health_changed.emit(); changed.emit()
 
 var player_pos: Vector2 = Vector2.ZERO:
@@ -22,6 +22,9 @@ var player_pos: Vector2 = Vector2.ZERO:
 
 var score: int = 0:
 	set(v): score = v; changed.emit()
+
+var summon_ink: int = 100:
+	set(v): summon_ink = v; changed.emit()
 
 ## Reset all variables to their default state.
 func reset():
