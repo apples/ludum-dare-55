@@ -19,8 +19,4 @@ func _collision(other: PhysicsBody2D) -> void:
 	pass
 
 func shoot_bullet():
-	var new_bullet = bullet_scene.instantiate()
-	var bullet_pos = self.get_position()
-	bullet_pos.y -= 50
-	new_bullet.set_position(bullet_pos)
-	self.get_parent().add_child(new_bullet)
+	BulletSpawner.fire_one_straight(self, bullet_scene, Vector2(0, -100), PI)
