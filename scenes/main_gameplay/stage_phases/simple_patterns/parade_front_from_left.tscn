@@ -8,25 +8,23 @@ script/source = "extends StagePhase
 @export var play_time: float = 10.0
 
 func _ready():
-	for i in enemy_count:
-		var e = enemy.instantiate()
-		e.add_child(c)
-		c.position = Vector2(-10, -10)
-		enemies.append(e)
-		behavior_move_to_points(c, [
-			Vector2(100 * (i + 1), 300),
-			Vector2(610, -10),
-		], 1.0, 1.0, true)
+	pass
+#	for i in enemy_count:
+#		var e = enemy.instantiate()
+#		e.add_child(c)
+#		c.position = Vector2(-10, -10)
+#		enemies.append(e)
+#		behavior_move_to_points(c, [
+#			Vector2(100 * (i + 1), 300),
+#			Vector2(610, -10),
+#		], 1.0, 1.0, true)
 
 func _sequence():
-	
+	pass
 "
 
 [node name="ParadeFrontFromLeft" type="Node2D"]
 script = SubResource("GDScript_uvbc5")
-enemy = null
-enemy_count = null
-play_time = null
 
 [node name="GamePlayZoneRef" type="ReferenceRect" parent="."]
 auto_translate_mode = 1
