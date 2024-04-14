@@ -44,3 +44,7 @@ func _on_example_phase_phase_complete() -> void:
 
 func _on_player_player_died() -> void:
 	SceneGirl.change_scene("res://scenes/game_over/game_over.tscn")
+
+
+func _on_resume_game_button_pressed() -> void:
+	_un_pause()
