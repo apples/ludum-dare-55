@@ -4,7 +4,7 @@
 script/source = "extends StagePhase
 
 @export var enemy: PackedScene = preload(\"res://objects/enemy/enemy.tscn\")
-@export var start_point: Vector2 = Vector2(0,0)
+@export var start_point: Vector2 = Vector2(-10,-10)
 @export var end_point: Vector2 = Vector2(460, 540)
 @export var play_time: float = 10
 
