@@ -46,6 +46,12 @@ func reset_summoning_circle():
 	$Candle4.deactivate_candle()
 	$Candle5.deactivate_candle()
 
+func player_started_summoning():
+	$Candle1.is_player_on_candle()
+	$Candle2.is_player_on_candle()
+	$Candle3.is_player_on_candle()
+	$Candle4.is_player_on_candle()
+	$Candle5.is_player_on_candle()
 
 func _on_sigil_created_timer_timeout():
 	check_sigil_sequence()
