@@ -15,7 +15,17 @@ signal player_health_changed
 
 ## Example variable.
 var player_health: int = 3:
-	set(v): player_health = v; player_health_changed.emit(); changed.emit()
+	set(v):
+		if player_invuln > 0:
+			push_error("Player health cannot be changed while invuln")
+			breakpoint
+			return
+		player_health = v;
+		player_health_changed.emit();
+		changed.emit()
+
+var player_invuln: int = 0:
+	set(v): player_invuln = v; changed.emit()
 
 var player_pos: Vector2 = Vector2.ZERO:
 	set(v): player_pos = v; changed.emit()
@@ -35,6 +45,7 @@ var boss_health: int = boss_max_health:
 
 ## Reset all variables to their default state.
 func reset():
+	player_invuln = 0
 	player_health = 0
 	player_pos = Vector2.ZERO
 	score = 0

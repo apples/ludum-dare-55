@@ -29,4 +29,5 @@ func _on_possible_change():
 		var temp_heart
 		for i in hearts.size() - Globals.player_health:
 			temp_heart = hearts.pop_back()
-			temp_heart.queue_free()
+			if temp_heart:
+				temp_heart.queue_free()

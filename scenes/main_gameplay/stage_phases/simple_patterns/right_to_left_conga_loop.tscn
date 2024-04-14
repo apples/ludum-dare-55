@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://3m7u11ag3fsk"]
+[gd_scene load_steps=3 format=3 uid="uid://d0n1aw41b7m25"]
 
 [sub_resource type="GDScript" id="GDScript_uvbc5"]
 script/source = "extends StagePhase

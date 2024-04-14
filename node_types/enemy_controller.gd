@@ -6,6 +6,10 @@ signal action_completed
 var _physics_process_func: Callable
 var _target_data: Dictionary
 
+var enemy_resource: EnemyResource
+var player: Node2D
+var shoot_timer: Timer
+
 var position: Vector2:
 	get: return get_parent().global_position
 	set(v): get_parent().global_position = v
@@ -17,6 +21,16 @@ static func from(node: Node) -> EnemyController:
 
 func _enter_tree() -> void:
 	get_parent().set_meta("enemy_controller", self)
+	enemy_resource = get_parent().enemy_resource
+	
+	if enemy_resource.bullet_resource != null:
+		shoot_timer = Timer.new()
+		shoot_timer.wait_time = enemy_resource.initial_shoot_delay
+		shoot_timer.one_shot = true
+		shoot_timer.autostart = true
+		shoot_timer.timeout.connect(_shoot)
+		
+		add_child(shoot_timer)
 
 func _exit_tree() -> void:
 	if get_parent():
@@ -47,3 +61,18 @@ func _move_to_point_with_speed_physics_process(delta: float) -> void:
 		action_completed.emit()
 		_physics_process_func = Callable()
 
+func _shoot():
+	if shoot_timer.one_shot == true:
+		shoot_timer.wait_time = enemy_resource.shoot_cooldown
+		shoot_timer.one_shot = false
+		shoot_timer.start()
+		
+	if not is_instance_valid(player):
+		player = get_tree().get_nodes_in_group("Player")[0]
+	
+	if not is_instance_valid(player):
+		return
+	
+	var parent: Node2D = get_parent()
+	var global_angle_to_target = parent.global_position.angle_to_point(player.global_position)
+	enemy_resource.bullet_resource.shoot(parent, Vector2.ZERO, global_angle_to_target)

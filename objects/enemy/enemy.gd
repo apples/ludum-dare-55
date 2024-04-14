@@ -1,14 +1,18 @@
 extends CharacterBody2D
 
-var health = 1
-var score_val = 10
-var element := Globals.Elements.UNSET
+@export var enemy_resource: EnemyResource = preload("res://objects/enemy/resources/shoot_and_scoot.tres")
+
+@onready var health = enemy_resource.health
+@onready var score_val = enemy_resource.score_value
+@onready var element := enemy_resource.element
+
 var enemy_damaged_secene = preload("res://objects/VFX/enemy_damaged/enemy_damaged.tscn") 
-var enemy_damaged= enemy_damaged_secene.instantiate()
+var enemy_damaged = enemy_damaged_secene.instantiate()
 
 @onready var outline = $Outline
 
 func _ready() -> void:
+	#$Outline/Sprite2D.texture = enemy_resource.texture
 	pass
 
 func _process(delta: float) -> void:
