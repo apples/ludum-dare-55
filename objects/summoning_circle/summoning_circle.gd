@@ -32,9 +32,9 @@ func trigger_41352_star_sigil():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if current_sigil_sequence.size() == 5:
-		check_sigil_sequence()
-		reset_summoning_circle()
-		print("yooooo")
+		if $SigilCreatedTimer.is_stopped():
+			$SigilCreatedTimer.start()
+
 
 func reset_summoning_circle():
 	Globals.summon_ink = 100
@@ -45,3 +45,9 @@ func reset_summoning_circle():
 	$Candle3.deactivate_candle()
 	$Candle4.deactivate_candle()
 	$Candle5.deactivate_candle()
+
+
+func _on_sigil_created_timer_timeout():
+	check_sigil_sequence()
+	reset_summoning_circle()
+	print("yooooo")

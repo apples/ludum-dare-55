@@ -37,7 +37,8 @@ func _physics_process(delta: float) -> void:
 		summon_tick()
 	else:
 		current_speed = NORMAL_SPEED
-		summoning_circle_ref.reset_summoning_circle()
+		if summoning_circle_ref.current_sigil_sequence.size() < 5:
+			summoning_circle_ref.reset_summoning_circle()
 
 	var direction := Vector2(Input.get_axis("Left", "Right"), Input.get_axis("Up", "Down"))
 	velocity = direction * current_speed
@@ -65,7 +66,8 @@ func summon_tick():
 			if summoning_circle_ref.sigil_sequence_active:
 				Globals.summon_ink -= 1
 		else:
-			summoning_circle_ref.reset_summoning_circle()
+			if summoning_circle_ref.current_sigil_sequence.size() < 5:
+				summoning_circle_ref.reset_summoning_circle()
 
 func shoot_bullet():
 	if refire_delay_timer.is_stopped():
