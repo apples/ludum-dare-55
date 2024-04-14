@@ -9,19 +9,24 @@ const ENEMY = preload(\"res://objects/enemy/enemy.tscn\")
 var enemies: Array[Node] = []
 
 func _ready():
-	
 	var points: Array[Vector2] = []
 	for i in curve.point_count:
 		points.push_back(curve.get_point_position(i))
-	print(points)
-	for i in 1:
+	
+	for i in 5:
 		var e = ENEMY.instantiate()
 		add_child(e)
 		var c = EnemyController.new()
 		e.add_child(c)
 		c.position = points[0]
 		enemies.append(e)
-		behavior_move_to_points(c, points.slice(1), 0.5, 0.0, true)
+		_start_on_delay(c, points.slice(1), i * 0.5)
+
+
+func _start_on_delay(controller, points, delay_time):
+	await controller.wait_for(delay_time)
+	behavior_move_to_points(controller, points.slice(1), 0.5, 0.0, true)
+
 
 func _process(delta: float) -> void:
 	for e in enemies:
