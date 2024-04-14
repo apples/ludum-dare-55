@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c3rvm3rw6opg"]
+[gd_scene load_steps=23 format=3 uid="uid://c3rvm3rw6opg"]
 
 [ext_resource type="Script" path="res://node_types/camera_shake.gd" id="1_lrklj"]
 [ext_resource type="Script" path="res://scenes/main_gameplay/main_gameplay.gd" id="1_wt4mr"]
@@ -36,7 +36,25 @@ shader_parameter/shades = 3.0
 shader_parameter/steps = 6
 shader_parameter/tint = Vector3(0.459, 0.765, 1)
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_r0av5"]
+[sub_resource type="Gradient" id="Gradient_7htap"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4r3k2"]
+gradient = SubResource("Gradient_7htap")
+width = 1
+
+[sub_resource type="Gradient" id="Gradient_aqcwo"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.367273, 0.701818)
+colors = PackedColorArray(0.199248, 0.103954, 1.20327e-08, 1, 0.27069, 0.0513851, 0, 1, 0.310221, 0.00207883, 0.157093, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_3jiib"]
+frequency = 0.0826
+fractal_lacunarity = 6.475
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8n8pj"]
+width = 256
+color_ramp = SubResource("Gradient_aqcwo")
+noise = SubResource("FastNoiseLite_3jiib")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kplpg"]
 bg_color = Color(0.878822, 0.843573, 0.0310382, 1)
@@ -69,10 +87,9 @@ shape = SubResource("WorldBoundaryShape2D_4kntg")
 
 [node name="Background" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_thrq0")
-custom_minimum_size = Vector2(960, 720)
-offset_right = 960.0
-offset_bottom = 1112.0
-texture = SubResource("CanvasTexture_r0av5")
+offset_right = 920.0
+offset_bottom = 1080.0
+texture = SubResource("GradientTexture1D_4r3k2")
 flip_v = true
 
 [node name="Clouds" type="CPUParticles2D" parent="Background"]
@@ -174,39 +191,62 @@ layout_mode = 2
 theme_type_variation = &"MainMenuButton"
 text = "Main Menu"
 
-[node name="UI" type="Node2D" parent="."]
+[node name="UI" type="CanvasLayer" parent="."]
 
-[node name="Score" type="Label" parent="UI"]
+[node name="UIPanelRoot" type="TextureRect" parent="UI"]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -520.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = SubResource("NoiseTexture2D_8n8pj")
+
+[node name="Score" type="Label" parent="UI/UIPanelRoot"]
+layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 750.0
-offset_top = 1.0
-offset_right = 908.0
-offset_bottom = 32.0
+offset_left = -158.0
+offset_bottom = 31.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 48
 text = "SCORE: 0"
 horizontal_alignment = 2
 script = ExtResource("6_sq3jg")
 
-[node name="Hearts" type="Node2D" parent="UI"]
+[node name="Hearts" type="Control" parent="UI/UIPanelRoot"]
+layout_mode = 1
+anchors_preset = 0
 script = ExtResource("7_u0gx2")
 
-[node name="SummonMeter" type="ProgressBar" parent="UI"]
-offset_left = 797.0
-offset_top = 37.0
-offset_right = 906.0
-offset_bottom = 57.0
+[node name="SummonMeter" type="ProgressBar" parent="UI/UIPanelRoot"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -125.0
+offset_top = 53.0
+offset_right = -16.0
+offset_bottom = 73.0
+grow_horizontal = 0
 theme_override_styles/fill = SubResource("StyleBoxFlat_kplpg")
 value = 100.0
 show_percentage = false
 script = ExtResource("8_2alke")
 
-[node name="HealthBar" type="ColorRect" parent="UI"]
-offset_top = 70.0
-offset_right = 920.0
-offset_bottom = 78.0
+[node name="HealthBar" type="ColorRect" parent="UI/UIPanelRoot"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -451.0
+offset_top = 104.0
+offset_right = -60.0
+offset_bottom = 148.0
+grow_horizontal = 0
 color = Color(0, 0.733333, 0, 1)
 script = ExtResource("10_ggp8c")
 

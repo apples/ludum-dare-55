@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 @onready var heart_img = preload("res://icon.svg")
 var hearts := []
