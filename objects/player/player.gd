@@ -5,6 +5,7 @@ signal player_died
 @export var starting_health: int = 1
 
 var bullet_scene = preload("res://objects/bullet/bullet.tscn")
+var homing_bullet_scene = preload("res://objects/homing_bullet/homing_bullet.tscn")
 var summoning_dust = preload("res://objects/summoning_dust/summoning_dust.tscn")
 
 @onready var brush_pos = self.global_position #Vector2(0, 0)
@@ -57,7 +58,7 @@ func summon_tick():
 func shoot_bullet():
 	if refire_delay_timer.is_stopped():
 		BulletSpawner.fire_one_straight(
-			self, bullet_scene,
+			self, homing_bullet_scene,
 			$bullet_spawn_location.position,
 			$bullet_spawn_location.rotation)
 		refire_delay_timer.start()
