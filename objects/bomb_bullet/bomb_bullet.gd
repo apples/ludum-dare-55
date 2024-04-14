@@ -1,8 +1,7 @@
 class_name JerichoBullet
 extends Bullet
 
-
-var bullet_scene = preload("res://objects/bullet/bullet.tscn")
+var bullet = preload("res://objects/bullet/bullet.tscn")
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	$ExplodeTimer.stop()
@@ -16,7 +15,7 @@ func _on_explode_timer_timeout() -> void:
 func explode() -> void:
 	BulletSpawner.fire_circle(
 		self,
-		bullet_scene,
+		bullet,
 		Vector2.ZERO,
 		0
 	)
