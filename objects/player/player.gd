@@ -8,6 +8,7 @@ signal player_died
 
 var bullet_scene = preload("res://objects/bullet/bullet.tscn")
 var homing_bullet_scene = preload("res://objects/homing_bullet/homing_bullet.tscn")
+var bomb_bullet_scene = preload("res://objects/bomb_bullet/bomb_bullet.tscn")
 var summoning_dust = preload("res://objects/summoning_dust/summoning_dust.tscn")
 
 @onready var brush_pos = self.global_position #Vector2(0, 0)
@@ -88,7 +89,8 @@ func summon_tick():
 func shoot_bullet():
 	if refire_delay_timer.is_stopped():
 		current_bullet_pattern.call(
-			self, current_bullet_type,
+			self,
+			bomb_bullet_scene,
 			$bullet_spawn_location.position,
 			$bullet_spawn_location.rotation)
 		refire_delay_timer.start()
