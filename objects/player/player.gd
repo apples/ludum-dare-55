@@ -23,6 +23,8 @@ var current_speed = NORMAL_SPEED
 var summoning_circle_ref: Node2D
 var summoning = false
 
+var current_element = Globals.Elements.UNSET
+
 @export var current_bullet_resource: BulletResource = preload("res://objects/bullet/resources/fire_bomb.tres")
 
 func _ready() -> void:
