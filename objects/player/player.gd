@@ -11,6 +11,7 @@ var homing_bullet_scene = preload("res://objects/homing_bullet/homing_bullet.tsc
 var bomb_bullet_scene = preload("res://objects/bomb_bullet/bomb_bullet.tscn")
 var jericho_bullet_scene = preload("res://objects/jericho_bullet/jericho_bullet.tscn")
 var summoning_dust = preload("res://objects/summoning_dust/summoning_dust.tscn")
+var pause_scene = preload("res://scenes/pause_menu/pause_menu.tscn") 
 
 @onready var brush_pos = self.global_position #Vector2(0, 0)
 @onready var refire_delay_timer = $RefireDelay
@@ -107,9 +108,5 @@ func _on_death_timer_timeout() -> void:
 	player_died.emit()
 func _pause()->void:
 	get_tree().paused = true
-	$PauseLayer.visible = true;
-	%ResumeGameButton.grab_focus()
-func _un_pause() -> void:
-	get_tree().paused = false
-	$PauseLayer.visible = false;
+	get_tree().root.add_child(pause_scene.instantiate())
 	
