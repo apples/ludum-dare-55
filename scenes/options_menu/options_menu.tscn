@@ -161,10 +161,8 @@ script = ExtResource("10_0c4ch")
 
 [node name="OptionsLayer" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
-process_mode = 2
 
 [node name="OptionsMenu" type="CenterContainer" parent="OptionsLayer"]
-process_mode = 2
 auto_translate_mode = 1
 offset_left = 409.0
 offset_top = 585.0
@@ -191,52 +189,97 @@ auto_translate_mode = 1
 layout_mode = 2
 theme_override_constants/separation = 10
 
+[node name="CenterContainer5" type="CenterContainer" parent="OptionsLayer/OptionsMenu/VBoxContainer/MenuButtonContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="OptionsLayer/OptionsMenu/VBoxContainer/MenuButtonContainer/CenterContainer5"]
+show_behind_parent = true
+layout_mode = 2
+mouse_filter = 1
+text = "Master Volume"
+
 [node name="CenterContainer" type="CenterContainer" parent="OptionsLayer/OptionsMenu/VBoxContainer/MenuButtonContainer"]
 auto_translate_mode = 1
 layout_mode = 2
 
 [node name="master_volume" type="HSlider" parent="OptionsLayer/OptionsMenu/VBoxContainer/MenuButtonContainer/CenterContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+max_value = 1.0
+step = 0.01
 tick_count = 20
-
-[node name="Label" type="Label" parent="OptionsLayer/OptionsMenu/VBoxContainer/MenuButtonContainer/CenterContainer"]
-layout_mode = 2
-text = "Master Volume
-
-
-"
 
 [node name="CenterContainer2" type="CenterContainer" parent="OptionsLayer/OptionsMenu/VBoxContainer/MenuButtonContainer"]
 auto_translate_mode = 1
 layout_mode = 2
 
-[node name="HowToPlayButton" type="Button" parent="OptionsLayer/OptionsMenu/VBoxContainer/MenuButtonContainer/CenterContainer2"]
-unique_name_in_owner = true
+[node name="Label" type="Label" parent="OptionsLayer/OptionsMenu/VBoxContainer/MenuButtonContainer/CenterContainer2"]
 auto_translate_mode = 1
+show_behind_parent = true
 layout_mode = 2
-theme_type_variation = &"MainMenuButton"
-text = "How To Play"
+mouse_filter = 1
+text = "Music Volume"
 
 [node name="CenterContainer3" type="CenterContainer" parent="OptionsLayer/OptionsMenu/VBoxContainer/MenuButtonContainer"]
 auto_translate_mode = 1
 layout_mode = 2
 
-[node name="OptionsButton" type="Button" parent="OptionsLayer/OptionsMenu/VBoxContainer/MenuButtonContainer/CenterContainer3"]
+[node name="music_volume" type="HSlider" parent="OptionsLayer/OptionsMenu/VBoxContainer/MenuButtonContainer/CenterContainer3"]
+unique_name_in_owner = true
+auto_translate_mode = 1
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+tick_count = 20
+
+[node name="CenterContainer6" type="CenterContainer" parent="OptionsLayer/OptionsMenu/VBoxContainer/MenuButtonContainer"]
 auto_translate_mode = 1
 layout_mode = 2
-theme_type_variation = &"MainMenuButton"
-text = "Options"
+
+[node name="Label" type="Label" parent="OptionsLayer/OptionsMenu/VBoxContainer/MenuButtonContainer/CenterContainer6"]
+auto_translate_mode = 1
+show_behind_parent = true
+layout_mode = 2
+mouse_filter = 1
+text = "Sound Effect Volume"
+
+[node name="CenterContainer7" type="CenterContainer" parent="OptionsLayer/OptionsMenu/VBoxContainer/MenuButtonContainer"]
+auto_translate_mode = 1
+layout_mode = 2
+
+[node name="sfx_volume" type="HSlider" parent="OptionsLayer/OptionsMenu/VBoxContainer/MenuButtonContainer/CenterContainer7"]
+unique_name_in_owner = true
+auto_translate_mode = 1
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+tick_count = 20
 
 [node name="CenterContainer4" type="CenterContainer" parent="OptionsLayer/OptionsMenu/VBoxContainer/MenuButtonContainer"]
 auto_translate_mode = 1
 layout_mode = 2
 
-[node name="MainMenuButton" type="Button" parent="OptionsLayer/OptionsMenu/VBoxContainer/MenuButtonContainer/CenterContainer4"]
+[node name="MuteButton" type="Button" parent="OptionsLayer/OptionsMenu/VBoxContainer/MenuButtonContainer/CenterContainer4"]
+auto_translate_mode = 1
+layout_mode = 2
+theme_type_variation = &"MainMenuButton"
+text = "Mute Everything"
+
+[node name="CenterContainer8" type="CenterContainer" parent="OptionsLayer/OptionsMenu/VBoxContainer/MenuButtonContainer"]
+auto_translate_mode = 1
+layout_mode = 2
+
+[node name="MainMenuButton" type="Button" parent="OptionsLayer/OptionsMenu/VBoxContainer/MenuButtonContainer/CenterContainer8"]
 auto_translate_mode = 1
 layout_mode = 2
 theme_type_variation = &"MainMenuButton"
 text = "Main Menu"
 
 [connection signal="value_changed" from="OptionsLayer/OptionsMenu/VBoxContainer/MenuButtonContainer/CenterContainer/master_volume" to="." method="_on_master_volume_value_changed"]
-[connection signal="pressed" from="OptionsLayer/OptionsMenu/VBoxContainer/MenuButtonContainer/CenterContainer4/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="value_changed" from="OptionsLayer/OptionsMenu/VBoxContainer/MenuButtonContainer/CenterContainer3/music_volume" to="." method="_on_music_volume_value_changed"]
+[connection signal="value_changed" from="OptionsLayer/OptionsMenu/VBoxContainer/MenuButtonContainer/CenterContainer7/sfx_volume" to="." method="_on_sfx_volume_value_changed"]
+[connection signal="pressed" from="OptionsLayer/OptionsMenu/VBoxContainer/MenuButtonContainer/CenterContainer4/MuteButton" to="." method="_on_mute_button_pressed"]
+[connection signal="pressed" from="OptionsLayer/OptionsMenu/VBoxContainer/MenuButtonContainer/CenterContainer8/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
