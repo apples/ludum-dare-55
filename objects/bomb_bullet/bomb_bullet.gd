@@ -1,6 +1,6 @@
+class_name BombBullet
 extends Bullet
 
-class_name BombBullet
 
 var bullet_scene = preload("res://objects/bullet/bullet.tscn")
 
