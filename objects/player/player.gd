@@ -26,6 +26,9 @@ func _physics_process(delta: float) -> void:
 	if Globals.player_health <= 0:
 		return
 	
+	if Input.is_action_pressed("Menu"):
+		_pause()
+		
 	if Input.is_action_pressed("Shoot"):
 		shoot_bullet()
 	
@@ -82,3 +85,10 @@ func _on_player_health_changed() -> void:
 func _on_death_timer_timeout() -> void:
 	$DeathParticles.emitting = false
 	player_died.emit()
+func _pause()->void:
+	get_tree().paused = true
+	$PauseLayer.visible = true;
+func _un_pause() -> void:
+	get_tree().paused = false
+	$PauseLayer.visible = false;
+	
