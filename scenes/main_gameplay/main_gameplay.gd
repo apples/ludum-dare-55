@@ -3,12 +3,10 @@ extends Node2D
 @export var stage: Stage
 
 @onready var camera_shake: CameraShake = $Camera2D/CameraShake
-@onready var resume_game_button: Button = %ResumeGameButton
-@onready var how_to_play_button: Button = %HowToPlayButton
-@onready var options_button: Button = %OptionsButton
 var stage_phase: int = -1
 
 var current_stage_phase: Node
+
 
 func _ready() -> void:
 	# time for tight coupling boyz
@@ -47,14 +45,5 @@ func _on_player_player_died() -> void:
 	SceneGirl.change_scene("res://scenes/game_over/game_over.tscn")
 
 
-func _on_resume_game_button_pressed() -> void:
-	$Player._un_pause()
 
 
-func _on_main_menu_button_pressed() -> void:
-	
-	SceneGirl.change_scene("res://scenes/main_menu/main_menu.tscn")
-
-
-func _on_resume_game_button_mouse_entered() -> void:
-	resume_game_button.grab_focus()
