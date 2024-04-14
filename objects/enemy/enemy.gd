@@ -18,6 +18,10 @@ func _process(delta: float) -> void:
 		outline.material.set("shader_parameter/fillColor", Vector4(0, 0, 1, 1))
 	if element == Globals.Elements.VEGANS:
 		outline.material.set("shader_parameter/fillColor", Vector4(0, 1, 0, 1))
+	if element == Globals.Elements.AIR:
+		outline.material.set("shader_parameter/fillColor", Vector4(1, 1, 0, 1))
+	if element == Globals.Elements.DARK:
+		outline.material.set("shader_parameter/fillColor", Vector4(0.5, 0, 1, 1))
 	if element == Globals.Elements.UNSET:
 		outline.material.set("shader_parameter/fillColor", Vector4(0, 0, 0, 0))
 
