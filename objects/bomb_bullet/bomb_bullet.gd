@@ -1,7 +1,6 @@
-class_name BombBullet
 extends Bullet
 
-var bullet = preload("res://objects/bullet/bullet.tscn")
+@export var secondary_bullet: BulletResource
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	$ExplodeTimer.stop()
@@ -13,9 +12,12 @@ func _on_explode_timer_timeout() -> void:
 	queue_free()
 
 func explode() -> void:
-	BulletSpawner.fire_circle(
+	BulletSpawner.fire_pattern(
+		BulletSpawner.Pattern.CIRCLE,
+		secondary_bullet.type,
+		secondary_bullet.element,
+		secondary_bullet.secondary,
 		self,
-		bullet,
 		Vector2.ZERO,
 		0
 	)
