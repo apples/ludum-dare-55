@@ -20,3 +20,9 @@ position = Vector2(430, 637)
 
 [node name="Candle5" parent="." instance=ExtResource("2_2wybv")]
 position = Vector2(404, 522)
+
+[node name="SigilCreatedTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="SigilCreatedTimer" to="." method="_on_sigil_created_timer_timeout"]

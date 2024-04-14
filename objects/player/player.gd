@@ -37,7 +37,8 @@ func _physics_process(delta: float) -> void:
 		summon_tick()
 	else:
 		current_speed = NORMAL_SPEED
-		summoning_circle_ref.reset_summoning_circle()
+		if summoning_circle_ref.current_sigil_sequence.size() < 5:
+			summoning_circle_ref.reset_summoning_circle()
 
 	var direction := Vector2(Input.get_axis("Left", "Right"), Input.get_axis("Up", "Down"))
 	velocity = direction * current_speed
@@ -55,17 +56,18 @@ func summon_tick():
 		return
 	else:
 		if Globals.summon_ink > 0:
-			var v = global_position - brush_pos
-			brush_pos += v.normalized() * (player_brush_pos_diff - brush_circle_radius)
-			var new_summoning_dust = summoning_dust.instantiate()
-			var summoning_dust_pos = brush_pos
-			#bullet_pos.y -= 50
-			new_summoning_dust.set_position(summoning_dust_pos)
-			self.get_parent().add_child(new_summoning_dust)
-			if summoning_circle_ref.sigil_sequence_active:
-				Globals.summon_ink -= 1
+			if velocity != Vector2(0,0):
+				var v = global_position - brush_pos
+				brush_pos += v.normalized() * (player_brush_pos_diff - brush_circle_radius)
+				var new_summoning_dust = summoning_dust.instantiate()
+				var summoning_dust_pos = brush_pos
+				new_summoning_dust.set_position(summoning_dust_pos)
+				self.get_parent().add_child(new_summoning_dust)
+				if summoning_circle_ref.sigil_sequence_active:
+					Globals.summon_ink -= 1
 		else:
-			summoning_circle_ref.reset_summoning_circle()
+			if summoning_circle_ref.current_sigil_sequence.size() < 5:
+				summoning_circle_ref.reset_summoning_circle()
 
 func shoot_bullet():
 	if refire_delay_timer.is_stopped():
