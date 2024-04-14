@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="Stage" load_steps=4 format=3 uid="uid://dbjpf7tcbt613"]
 
-[ext_resource type="PackedScene" uid="uid://dse2n756y2n7c" path="res://scenes/main_gameplay/stage_phases/example_phase.tscn" id="1_gbpwo"]
 [ext_resource type="Script" path="res://resource_types/stage_sequence.gd" id="1_opm1k"]
 [ext_resource type="PackedScene" uid="uid://ct23bqtlmgf06" path="res://scenes/main_gameplay/stages/stage_one/stage_one_phase_one.tscn" id="1_s3h7g"]
+[ext_resource type="PackedScene" uid="uid://creyxsyit7dtd" path="res://scenes/main_gameplay/stages/stage_one/left_to_right_conga_loop.tscn" id="2_my5qs"]
 
 [resource]
 script = ExtResource("1_opm1k")
 stage_name = "Oak Hill II"
-phases = Array[PackedScene]([ExtResource("1_s3h7g"), ExtResource("1_gbpwo"), ExtResource("1_gbpwo")])
+phases = Array[PackedScene]([ExtResource("1_s3h7g"), ExtResource("2_my5qs")])
