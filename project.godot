@@ -28,6 +28,7 @@ SceneGirl="*res://autoload/scene_girl/scene_girl.gd"
 MusicMan="*res://autoload/music_man.gd"
 TestCamera="*res://addons/test_camera/test_camera_manager.gd"
 DataStore="*res://autoload/data_store.gd"
+Save="*res://autoload/globals/save.gd"
 
 [display]
 
