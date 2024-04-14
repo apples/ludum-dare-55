@@ -17,7 +17,7 @@ func _ready() -> void:
 	$SummoningCircle.camera_shake_ref = camera_shake
 	
 	if stage:
-		next_stage_phase()
+		next_stage_phase.call_deferred()
 
 
 func next_stage_phase() -> void:
