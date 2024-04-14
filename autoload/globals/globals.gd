@@ -52,6 +52,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
 					_overlay.visible = not _overlay.visible
 #endregion
 
+#top is weak to bottom
 enum Elements {
 	UNSET,
 	FIRE,
