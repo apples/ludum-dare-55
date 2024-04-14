@@ -19,13 +19,6 @@ func _ready():
 			Vector2(100 * (i + 1), 300),
 			Vector2(610, -10),
 		], 1.0, 1.0, true)
-
-func _process(delta: float) -> void:
-	for e in enemies:
-		if is_instance_valid(e):
-			return
-	phase_complete.emit()
-	queue_free()
 "
 
 [node name="ParadeFrontFromLeft" type="Node2D"]

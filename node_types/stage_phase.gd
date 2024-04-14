@@ -3,14 +3,19 @@ extends Node2D
 
 signal phase_complete
 
+var enemies: Array[Node] = []
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	for e in enemies:
+		if is_instance_valid(e):
+			return
+	phase_complete.emit()
+	queue_free()
 
 
 func behavior_move_to_points(
