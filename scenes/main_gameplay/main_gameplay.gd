@@ -35,7 +35,7 @@ func next_stage_phase() -> void:
 		%HealthBar.visible = false
 		print_rich("[rainbow][tornado]STAGE DONE!!!![/tornado][/rainbow]")
 		print(stage.stage_name)
-		if stage.stage_name == "Oak Hill II":
+		if stage.stage_name == "Oak Hill II" && !Save.current.levels_beaten.has("0"):
 			Save.current.levels_beaten.append("0")
 			Save.save()
 
