@@ -11,6 +11,7 @@ var homing_bullet_scene = preload("res://objects/homing_bullet/homing_bullet.tsc
 var bomb_bullet_scene = preload("res://objects/bomb_bullet/bomb_bullet.tscn")
 var jericho_bullet_scene = preload("res://objects/jericho_bullet/jericho_bullet.tscn")
 var summoning_dust = preload("res://objects/summoning_dust/summoning_dust.tscn")
+var pause_scene = preload("res://scenes/pause_menu/pause_menu.tscn") 
 
 @onready var brush_pos = self.global_position #Vector2(0, 0)
 @onready var refire_delay_timer = $RefireDelay
@@ -27,6 +28,8 @@ var current_element = Globals.Elements.UNSET
 
 @export var current_bullet_resource: BulletResource = preload("res://objects/bullet/resources/fire_bomb.tres")
 
+var invuln_frame_time = 80
+
 func _ready() -> void:
 	Globals.player_health = starting_health
 	Globals.player_health_changed.connect(_on_player_health_changed)
@@ -35,6 +38,11 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if Globals.player_health <= 0:
 		return
+	
+	if Globals.player_invuln > 0:
+		Globals.player_invuln -= 1
+		if Globals.player_invuln <= 0:
+			$CollisionShape2D.set_deferred("disabled", false)
 	
 	if Input.is_action_pressed("Menu"):
 		_pause()
@@ -100,6 +108,9 @@ func _on_player_health_changed() -> void:
 		#TODO death SFX
 		$DeathTimer.start()
 		$DeathParticles.emitting = true
+	else:
+		Globals.player_invuln = invuln_frame_time
+		$CollisionShape2D.set_deferred("disabled", true)
 
 
 func _on_death_timer_timeout() -> void:
@@ -107,9 +118,5 @@ func _on_death_timer_timeout() -> void:
 	player_died.emit()
 func _pause()->void:
 	get_tree().paused = true
-	$PauseLayer.visible = true;
-	%ResumeGameButton.grab_focus()
-func _un_pause() -> void:
-	get_tree().paused = false
-	$PauseLayer.visible = false;
+	get_tree().root.add_child(pause_scene.instantiate())
 	
