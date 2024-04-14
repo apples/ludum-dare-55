@@ -25,6 +25,6 @@ func _on_body_entered(body):
 		if Globals.summon_ink > 0:
 			summoning_circle_ref.sigil_sequence_active = true
 			summoning_circle_ref.push_active_candle(index)
-			Globals.summon_ink = 100
+			Globals.summon_ink += 15
 			activate_candle()
 			# signal to summoning circle

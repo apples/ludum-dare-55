@@ -37,7 +37,7 @@ func _process(delta):
 
 
 func reset_summoning_circle():
-	Globals.summon_ink = 100
+	#Globals.summon_ink = 100
 	sigil_sequence_active = false
 	current_sigil_sequence = []
 	$Candle1.deactivate_candle()
