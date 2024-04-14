@@ -23,11 +23,13 @@ var text_tween: Tween
 func _ready() -> void:
 	if not dialog:
 		queue_free()
-	get_tree().current_scene.process_mode = Node.PROCESS_MODE_DISABLED
+	if get_tree().current_scene != self:
+		get_tree().current_scene.process_mode = Node.PROCESS_MODE_DISABLED
 	next_phrase()
 
 func _exit_tree() -> void:
-	get_tree().current_scene.process_mode = Node.PROCESS_MODE_INHERIT
+	if get_tree().current_scene:
+		get_tree().current_scene.process_mode = Node.PROCESS_MODE_INHERIT
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Shoot"):
