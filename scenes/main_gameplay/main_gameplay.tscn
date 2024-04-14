@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://node_types/camera_shake.gd" id="1_lrklj"]
 [ext_resource type="Script" path="res://scenes/main_gameplay/main_gameplay.gd" id="1_wt4mr"]
-[ext_resource type="PackedScene" uid="uid://cv58ruem01fvv" path="res://objects/player/player.tscn" id="2_8jdjt"]
+[ext_resource type="PackedScene" uid="uid://bmejrldvybsy8" path="res://objects/player/player.tscn" id="2_8jdjt"]
 [ext_resource type="Resource" uid="uid://dbjpf7tcbt613" path="res://scenes/main_gameplay/stages/stage_1.tres" id="2_vspj8"]
 [ext_resource type="Texture2D" uid="uid://dtajjiutgllfj" path="res://textures/cloud.png" id="4_3jwll"]
 [ext_resource type="Shader" path="res://materials/water_shader.gdshader" id="5_hiwcw"]
@@ -207,7 +207,7 @@ script = ExtResource("8_2alke")
 offset_top = 70.0
 offset_right = 920.0
 offset_bottom = 78.0
-color = Color(0, 0.733246, 5.77569e-07, 1)
+color = Color(0, 0.733333, 0, 1)
 script = ExtResource("10_ggp8c")
 
 [node name="SummoningCircle" parent="." instance=ExtResource("7_6sfe8")]
