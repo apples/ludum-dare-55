@@ -55,7 +55,7 @@ func fire_sigil():
 	load_sigil_vfx(s_sigil_texture)
 
 func air_sigil():
-	player_ref.current_element = Globals.Elements.AIR
+	player_ref.current_element = Globals.Elements.VEGANS
 	player_ref.current_bullet_resource = preload("res://objects/bullet/resources/fire_basic.tres")
 	load_sigil_vfx(star_sigil_texture)
 
