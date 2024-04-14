@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://node_types/camera_shake.gd" id="1_lrklj"]
 [ext_resource type="Script" path="res://scenes/main_gameplay/main_gameplay.gd" id="1_wt4mr"]
-[ext_resource type="PackedScene" uid="uid://bmejrldvybsy8" path="res://objects/player/player.tscn" id="2_8jdjt"]
+[ext_resource type="PackedScene" uid="uid://cv58ruem01fvv" path="res://objects/player/player.tscn" id="2_8jdjt"]
 [ext_resource type="Resource" uid="uid://dbjpf7tcbt613" path="res://scenes/main_gameplay/stages/stage_1.tres" id="2_vspj8"]
 [ext_resource type="Texture2D" uid="uid://dtajjiutgllfj" path="res://textures/cloud.png" id="4_3jwll"]
 [ext_resource type="Shader" path="res://materials/water_shader.gdshader" id="5_hiwcw"]
@@ -125,7 +125,7 @@ layout_mode = 2
 auto_translate_mode = 1
 layout_mode = 2
 theme_override_font_sizes/font_size = 72
-text = "The Game"
+text = "Game Paused"
 
 [node name="MenuButtonContainer" type="VBoxContainer" parent="Player/PauseLayer/PauseMenu/VBoxContainer"]
 auto_translate_mode = 1
@@ -163,6 +163,16 @@ auto_translate_mode = 1
 layout_mode = 2
 theme_type_variation = &"MainMenuButton"
 text = "Options"
+
+[node name="CenterContainer4" type="CenterContainer" parent="Player/PauseLayer/PauseMenu/VBoxContainer/MenuButtonContainer"]
+auto_translate_mode = 1
+layout_mode = 2
+
+[node name="MainMenuButton" type="Button" parent="Player/PauseLayer/PauseMenu/VBoxContainer/MenuButtonContainer/CenterContainer4"]
+auto_translate_mode = 1
+layout_mode = 2
+theme_type_variation = &"MainMenuButton"
+text = "Main Menu"
 
 [node name="UI" type="Node2D" parent="."]
 
@@ -204,4 +214,6 @@ script = ExtResource("10_ggp8c")
 position = Vector2(1, -7)
 
 [connection signal="player_died" from="Player" to="." method="_on_player_player_died"]
+[connection signal="mouse_entered" from="Player/PauseLayer/PauseMenu/VBoxContainer/MenuButtonContainer/CenterContainer/ResumeGameButton" to="." method="_on_resume_game_button_mouse_entered"]
 [connection signal="pressed" from="Player/PauseLayer/PauseMenu/VBoxContainer/MenuButtonContainer/CenterContainer/ResumeGameButton" to="." method="_on_resume_game_button_pressed"]
+[connection signal="pressed" from="Player/PauseLayer/PauseMenu/VBoxContainer/MenuButtonContainer/CenterContainer4/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
