@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 signal player_died
 
-@export var starting_health: int = 1
+@export var starting_health: int = 5
 
 var bullet_scene = preload("res://objects/bullet/bullet.tscn")
 var homing_bullet_scene = preload("res://objects/homing_bullet/homing_bullet.tscn")
