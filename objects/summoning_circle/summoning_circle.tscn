@@ -6,11 +6,11 @@
 [node name="SummoningCircle" type="Node2D"]
 script = ExtResource("1_3dlk4")
 
-[node name="Candle2" parent="." instance=ExtResource("2_2wybv")]
-position = Vector2(590, 529)
-
 [node name="Candle1" parent="." instance=ExtResource("2_2wybv")]
 position = Vector2(496, 448)
+
+[node name="Candle2" parent="." instance=ExtResource("2_2wybv")]
+position = Vector2(590, 529)
 
 [node name="Candle3" parent="." instance=ExtResource("2_2wybv")]
 position = Vector2(556, 637)
@@ -20,3 +20,9 @@ position = Vector2(430, 637)
 
 [node name="Candle5" parent="." instance=ExtResource("2_2wybv")]
 position = Vector2(404, 522)
+
+[node name="SigilCreatedTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="SigilCreatedTimer" to="." method="_on_sigil_created_timer_timeout"]
