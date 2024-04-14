@@ -1,11 +1,12 @@
 extends Node2D
 var tween: Tween
-var sigil_texture = "res://particles/star.png"
+var sigil_texture #= preload("res://particles/star.png")
+#var type = "air" # "water | "fire"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#$Sprite2D.texture = "res://textures/41352_star_sigil.png"
-	Sprite2D.texture = sigil_texture
+	$Sprite2D.texture = sigil_texture
 	set_tween()
 	tween.play()
 

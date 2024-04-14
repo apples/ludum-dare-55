@@ -7,6 +7,9 @@ var current_sigil_sequence = []
 var sigil_scene = preload("res://objects/sigil/sigil.tscn")
 var failed_sigil_scene = preload("res://objects/failed_sigil/failed_sigil.tscn")
 
+var star_sigil_texture = preload("res://particles/star.png")
+var circle_sigil_texture = preload("res://particles/circle_sigil.png")
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -28,45 +31,37 @@ func check_sigil_sequence():
 	print(current_sigil_sequence)
 	if current_sigil_sequence == [4,1,3,5,2]:
 		water_sigil()
-	elif current_sigil_sequence == [1,2,3,4,5]:
+	elif current_sigil_sequence == [3,4,5,1,2]:
 		fire_sigil()
-	elif current_sigil_sequence == [5,4,3,2,1]:
-		vegan_sigil()
-	elif current_sigil_sequence == [1,2,5,3,4]:
+	elif current_sigil_sequence == [1,5,2,3,4]:
 		air_sigil()
-	elif current_sigil_sequence == [4,3,5,2,1]:
-		dark_sigil()
+	#elif current_sigil_sequence == [5,4,3,2,1]:
+		#vegan_sigil()
+	#elif current_sigil_sequence == [4,3,5,2,1]:
+		#dark_sigil()
 	else:
 		load_failed_sigil_vfx()
 		camera_shake_ref.rumble(10, 1)
 
 func water_sigil():
 	player_ref.current_element = Globals.Elements.WATER
-	player_ref.current_bullet_pattern = BulletSpawner.fire_circle
-	load_sigil_vfx()
+	player_ref.current_bullet_resource = preload("res://objects/bullet/resources/water_basic.tres")
+	load_sigil_vfx(star_sigil_texture)
 
 func fire_sigil():
 	player_ref.current_element = Globals.Elements.FIRE
-	player_ref.current_bullet_pattern = BulletSpawner.fire_three_arc_immediate
-	load_sigil_vfx()
-
-func vegan_sigil():
-	player_ref.current_element = Globals.Elements.VEGANS
-	player_ref.current_bullet_pattern = BulletSpawner.fire_one_straight
-	load_sigil_vfx()
+	player_ref.current_bullet_resource = preload("res://objects/bullet/resources/fire_bomb.tres")
+	load_sigil_vfx(circle_sigil_texture)
 
 func air_sigil():
 	player_ref.current_element = Globals.Elements.AIR
-	player_ref.current_bullet_pattern = BulletSpawner.fire_one_straight
-	load_sigil_vfx()
+	player_ref.current_bullet_resource = preload("res://objects/bullet/resources/fire_basic.tres")
+	load_sigil_vfx(star_sigil_texture)
 
-func dark_sigil():
-	player_ref.current_element = Globals.Elements.DARK
-	player_ref.current_bullet_pattern = BulletSpawner.fire_one_straight
-	load_sigil_vfx()
 
-func load_sigil_vfx():
+func load_sigil_vfx(sigil_texture):
 	var new_sigil_vfx = sigil_scene.instantiate()
+	new_sigil_vfx.sigil_texture = sigil_texture
 	var sigil_sfx_pos = Vector2(500, 525)
 	new_sigil_vfx.set_position(sigil_sfx_pos)
 	self.get_parent().add_child(new_sigil_vfx)
