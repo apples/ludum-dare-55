@@ -24,7 +24,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if allegiance == Team.PLAYER and body.is_in_group("Enemy"):
-		body.hit(damage)
+		body.hit(damage, element)
 		queue_free()
 	elif allegiance == Team.ENEMY and body.is_in_group("Player"):
 		Globals.player_health -= damage
