@@ -1,8 +1,6 @@
 extends Bullet
 
-class_name JerichoBullet
-
-var homing_bullet_scene = preload("res://objects/homing_bullet/homing_bullet.tscn")
+@export var secondary_bullet: BulletResource
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	$ExplodeTimer.stop()
@@ -14,9 +12,12 @@ func _on_explode_timer_timeout() -> void:
 	queue_free()
 
 func explode() -> void:
-	BulletSpawner.fire_three_arc_immediate(
+	BulletSpawner.fire_pattern(
+		BulletSpawner.Pattern.THREE_ARC_IMMEDIATE,
+		secondary_bullet.type,
+		secondary_bullet.element,
+		secondary_bullet.secondary,
 		self,
-		homing_bullet_scene,
-		Vector2.UP * 10,
+		Vector2.ZERO,
 		0
 	)

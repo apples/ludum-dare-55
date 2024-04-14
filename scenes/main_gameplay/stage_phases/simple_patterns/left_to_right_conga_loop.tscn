@@ -13,12 +13,13 @@ func _ready():
 		var pf = PathFollow2D.new()
 		pf.rotates = false
 		$Path2D.add_child(pf)
-		var e = enemy.instantiate()
-		pf.add_child(e)
-		var c = EnemyController.new()
-		e.add_child(c)
-		enemies.append(e)
-		_start_on_delay(c, pf, 0.25 * i)
+		if enemy != null:
+			var e = enemy.instantiate()
+			pf.add_child(e)
+			var c = EnemyController.new()
+			e.add_child(c)
+			enemies.append(e)
+			_start_on_delay(c, pf, 0.25 * i)
 
 
 func _start_on_delay(controller, path_follower, delay_time):
@@ -35,8 +36,6 @@ point_count = 19
 
 [node name="left_to_right_conga_loop" type="Node2D"]
 script = SubResource("GDScript_uvbc5")
-enemy = null
-play_time = null
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_oxwgs")

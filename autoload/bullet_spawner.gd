@@ -2,11 +2,49 @@ extends Node
 
 class_name BulletSpawner
 
-static func fire_one_straight(
-	caller: Node2D,
+enum Pattern {
+	UNSET,
+	ONE_STRAIGHT,
+	TWO_STRAIGHT,
+	THREE_ARC,
+	THREE_ARC_IMMEDIATE,
+	FIVE_ARC,
+	CIRCLE,
+	SPIRAL
+}
+
+static func fire_pattern(
+	pattern: Pattern,
 	bullet_type: PackedScene,
+	element: Globals.Elements,
+	secondary_bullet: BulletResource,
+	caller: Node2D,
 	offset: Vector2,
 	angle: float) -> void:
+	
+	var allegiance: Bullet.Team = _team(caller)
+	var bullet_created: Callable = func(bullet: Bullet):
+		bullet.allegiance = allegiance
+		bullet.element = element
+		
+		if "secondary_bullet" in bullet:
+			bullet.secondary_bullet = secondary_bullet
+	
+	match pattern:
+		Pattern.ONE_STRAIGHT: fire_one_straight(bullet_type, caller, offset, angle, bullet_created)
+		Pattern.TWO_STRAIGHT:fire_two_straight(bullet_type, caller, offset, angle, bullet_created)
+		Pattern.THREE_ARC: fire_three_arc(bullet_type, caller, offset, angle, bullet_created)
+		Pattern.THREE_ARC_IMMEDIATE: fire_three_arc_immediate(bullet_type, caller, offset, angle, bullet_created)
+		Pattern.FIVE_ARC: fire_five_arc(bullet_type, caller, offset, angle, bullet_created)
+		Pattern.CIRCLE: fire_circle(bullet_type, caller, offset, angle, bullet_created)
+		Pattern.SPIRAL: fire_spiral(bullet_type, caller, offset, angle, bullet_created)
+
+static func fire_one_straight(
+	bullet_type: PackedScene,
+	caller: Node2D,
+	offset: Vector2,
+	angle: float,
+	bullet_created: Callable) -> void:
 	
 	var scene = caller.get_tree().get_root()
 	
@@ -17,15 +55,15 @@ static func fire_one_straight(
 	
 	var bullet = bullet_type.instantiate()
 	bullet.global_transform = transform
-	bullet.allegiance = _team(caller)
-	bullet.element = _element(caller)
+	bullet_created.call(bullet)
 	scene.add_child(bullet)
 
 static func fire_two_straight(
-	caller: Node2D,
 	bullet_type: PackedScene,
+	caller: Node2D,
 	offset: Vector2,
-	angle: float) -> void:
+	angle: float,
+	bullet_created: Callable) -> void:
 	
 	var scene = caller.get_tree().get_root()
 	
@@ -36,21 +74,20 @@ static func fire_two_straight(
 	
 	var bullet = bullet_type.instantiate()
 	bullet.global_transform = transform.translated_local(Vector2i(-25, 0))
-	bullet.allegiance = _team(caller)
-	bullet.element = _element(caller)
+	bullet_created.call(bullet)
 	scene.add_child(bullet)
 	
 	bullet = bullet_type.instantiate()
 	bullet.global_transform = transform.translated_local(Vector2i(25, 0))
-	bullet.allegiance = _team(caller)
-	bullet.element = _element(caller)
+	bullet_created.call(bullet)
 	scene.add_child(bullet)
 
 static func fire_three_arc(
-	caller: Node2D,
 	bullet_type: PackedScene,
+	caller: Node2D,
 	offset: Vector2,
-	angle: float) -> void:
+	angle: float,
+	bullet_created: Callable) -> void:
 	
 	var scene = caller.get_tree().get_root()
 	
@@ -67,17 +104,17 @@ static func fire_three_arc(
 		
 		var bullet = bullet_type.instantiate()
 		bullet.global_transform = transform
-		bullet.allegiance = _team(caller)
-		bullet.element = _element(caller)
+		bullet_created.call(bullet)
 		scene.add_child(bullet)
 		
 		await caller.get_tree().create_timer(0.033333).timeout
 
 static func fire_three_arc_immediate(
-	caller: Node2D,
 	bullet_type: PackedScene,
+	caller: Node2D,
 	offset: Vector2,
-	angle: float) -> void:
+	angle: float,
+	bullet_created: Callable) -> void:
 	
 	var scene = caller.get_tree().get_root()
 	
@@ -91,15 +128,15 @@ static func fire_three_arc_immediate(
 		
 		var bullet = bullet_type.instantiate()
 		bullet.global_transform = transform
-		bullet.allegiance = _team(caller)
-		bullet.element = _element(caller)
+		bullet_created.call(bullet)
 		scene.add_child(bullet)
 
 static func fire_five_arc(
-	caller: Node2D,
 	bullet_type: PackedScene,
+	caller: Node2D,
 	offset: Vector2,
-	angle: float) -> void:
+	angle: float,
+	bullet_created: Callable) -> void:
 	
 	var scene = caller.get_tree().get_root()
 	
@@ -116,17 +153,17 @@ static func fire_five_arc(
 		
 		var bullet = bullet_type.instantiate()
 		bullet.global_transform = transform
-		bullet.allegiance = _team(caller)
-		bullet.element = _element(caller)
+		bullet_created.call(bullet)
 		scene.add_child(bullet)
 		
 		await caller.get_tree().create_timer(0.02).timeout
 
 static func fire_circle(
-	caller: Node2D,
 	bullet_type: PackedScene,
+	caller: Node2D,
 	offset: Vector2,
-	angle: float) -> void:
+	angle: float,
+	bullet_created: Callable) -> void:
 	
 	var scene = caller.get_tree().get_root()
 	
@@ -142,15 +179,15 @@ static func fire_circle(
 		
 		var bullet = bullet_type.instantiate()
 		bullet.global_transform = transform
-		bullet.allegiance = _team(caller)
-		bullet.element = _element(caller)
+		bullet_created.call(bullet)
 		scene.add_child(bullet)
 
 static func fire_spiral(
-	caller: Node2D,
 	bullet_type: PackedScene,
+	caller: Node2D,
 	offset: Vector2,
-	angle: float) -> void:
+	angle: float,
+	bullet_created: Callable) -> void:
 	
 	var scene = caller.get_tree().get_root()
 	
@@ -169,8 +206,7 @@ static func fire_spiral(
 		
 		var bullet = bullet_type.instantiate()
 		bullet.global_transform = transform
-		bullet.allegiance = _team(caller)
-		bullet.element = _element(caller)
+		bullet_created.call(bullet)
 		scene.add_child(bullet)
 		
 		await caller.get_tree().create_timer(0.01).timeout
@@ -183,10 +219,3 @@ static func _team(caller: Node2D) -> Bullet.Team:
 		return Bullet.Team.PLAYER
 	else:
 		return Bullet.Team.ENEMY
-
-static func _element(caller: Node2D) -> Globals.Elements:
-	if caller is Player:
-		return caller.current_element
-	elif caller is Bullet:
-		return caller.element
-	return Globals.Elements.UNSET

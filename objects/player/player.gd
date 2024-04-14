@@ -23,9 +23,9 @@ var current_speed = NORMAL_SPEED
 var summoning_circle_ref: Node2D
 var summoning = false
 
-var current_bullet_pattern = BulletSpawner.fire_three_arc
-var current_bullet_type = jericho_bullet_scene
 var current_element = Globals.Elements.UNSET
+
+@export var current_bullet_resource: BulletResource = preload("res://objects/bullet/resources/fire_bomb.tres")
 
 func _ready() -> void:
 	Globals.player_health = starting_health
@@ -89,11 +89,10 @@ func summon_tick():
 
 func shoot_bullet():
 	if refire_delay_timer.is_stopped():
-		current_bullet_pattern.call(
-			self,
-			current_bullet_type,
+		current_bullet_resource.shoot(self,
 			$bullet_spawn_location.position,
-			$bullet_spawn_location.rotation)
+			$bullet_spawn_location.rotation
+		)
 		refire_delay_timer.start()
 
 func _on_player_health_changed() -> void:
