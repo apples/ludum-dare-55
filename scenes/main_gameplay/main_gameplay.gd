@@ -14,6 +14,7 @@ func _ready() -> void:
 	# time for tight coupling boyz
 	$Player.summoning_circle_ref = $SummoningCircle
 	$SummoningCircle.player_ref = $Player
+	$SummoningCircle.camera_shake_ref = camera_shake
 	
 	if stage:
 		next_stage_phase()

@@ -1,9 +1,11 @@
 extends Node2D
 
 var player_ref: CharacterBody2D
+var camera_shake_ref: CameraShake
 var sigil_sequence_active = false
 var current_sigil_sequence = []
 var sigil_scene = preload("res://objects/sigil/sigil.tscn")
+var failed_sigil_scene = preload("res://objects/failed_sigil/failed_sigil.tscn")
 
 
 # Called when the node enters the scene tree for the first time.
@@ -26,6 +28,9 @@ func check_sigil_sequence():
 	print(current_sigil_sequence)
 	if current_sigil_sequence == [4,1,3,5,2]:
 		trigger_41352_star_sigil()
+	else:
+		load_failed_sigil_vfx()
+		camera_shake_ref.rumble(10, 1)
 
 func trigger_41352_star_sigil():
 	player_ref.current_bullet_pattern = BulletSpawner.fire_circle
@@ -37,6 +42,12 @@ func load_sigil_vfx():
 	var sigil_sfx_pos = Vector2(500, 525)
 	new_sigil_vfx.set_position(sigil_sfx_pos)
 	self.get_parent().add_child(new_sigil_vfx)
+
+func load_failed_sigil_vfx():
+	var new_failed_sigil_vfx = failed_sigil_scene.instantiate()
+	var failed_sigil_sfx_pos = Vector2(500, 535)
+	new_failed_sigil_vfx.set_position(failed_sigil_sfx_pos)
+	self.get_parent().add_child(new_failed_sigil_vfx)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
