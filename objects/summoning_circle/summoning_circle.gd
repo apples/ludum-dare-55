@@ -9,6 +9,7 @@ var failed_sigil_scene = preload("res://objects/failed_sigil/failed_sigil.tscn")
 
 var star_sigil_texture = preload("res://particles/star.png")
 var circle_sigil_texture = preload("res://particles/circle_sigil.png")
+var s_sigil_texture = preload("res://particles/s_sigil.png")
 
 
 # Called when the node enters the scene tree for the first time.
@@ -30,11 +31,11 @@ func push_active_candle(index: int):
 func check_sigil_sequence():
 	print(current_sigil_sequence)
 	if current_sigil_sequence == [4,1,3,5,2]:
-		water_sigil()
-	elif current_sigil_sequence == [3,4,5,1,2]:
-		fire_sigil()
-	elif current_sigil_sequence == [1,5,2,3,4]:
 		air_sigil()
+	elif current_sigil_sequence == [3,4,5,1,2]:
+		water_sigil()
+	elif current_sigil_sequence == [1,5,2,3,4]:
+		fire_sigil()
 	#elif current_sigil_sequence == [5,4,3,2,1]:
 		#vegan_sigil()
 	#elif current_sigil_sequence == [4,3,5,2,1]:
@@ -46,12 +47,12 @@ func check_sigil_sequence():
 func water_sigil():
 	player_ref.current_element = Globals.Elements.WATER
 	player_ref.current_bullet_resource = preload("res://objects/bullet/resources/water_basic.tres")
-	load_sigil_vfx(star_sigil_texture)
+	load_sigil_vfx(circle_sigil_texture)
 
 func fire_sigil():
 	player_ref.current_element = Globals.Elements.FIRE
 	player_ref.current_bullet_resource = preload("res://objects/bullet/resources/fire_bomb.tres")
-	load_sigil_vfx(circle_sigil_texture)
+	load_sigil_vfx(s_sigil_texture)
 
 func air_sigil():
 	player_ref.current_element = Globals.Elements.AIR
