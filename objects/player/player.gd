@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+class_name Player
+
 signal player_died
 
 @export var starting_health: int = 5
@@ -20,6 +22,8 @@ var summoning_circle_ref: Node2D
 var summoning = false
 
 var current_bullet_pattern = BulletSpawner.fire_one_straight
+var current_bullet_type = bullet_scene
+var current_element = Globals.Elements.UNSET
 
 func _ready() -> void:
 	Globals.player_health = starting_health
@@ -84,7 +88,7 @@ func summon_tick():
 func shoot_bullet():
 	if refire_delay_timer.is_stopped():
 		current_bullet_pattern.call(
-			self, homing_bullet_scene,
+			self, current_bullet_type,
 			$bullet_spawn_location.position,
 			$bullet_spawn_location.rotation)
 		refire_delay_timer.start()

@@ -152,3 +152,8 @@ static func _team(caller: Node2D) -> Bullet.Team:
 		return Bullet.Team.PLAYER
 	else:
 		return Bullet.Team.ENEMY
+
+static func _element(caller: Node2D) -> Globals.Elements:
+	if caller.is_class("Player"):
+		return caller.current_element
+	return Globals.Elements.UNSET

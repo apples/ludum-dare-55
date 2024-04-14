@@ -10,6 +10,7 @@ const SPEED = 12.0
 var damage := 1
 
 @export var allegiance: Team = Team.PLAYER
+@export var element: Globals.Elements = Globals.Elements.UNSET
 @onready var sprite_2d: AnimatedSprite2D = $Sprite2D
 
 func _ready() -> void:
