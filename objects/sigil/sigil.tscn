@@ -33,5 +33,5 @@ libraries = {
 autoplay = "star_zoom"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(8, 8)
+scale = Vector2(10, 10)
 texture = ExtResource("2_b7nm0")
