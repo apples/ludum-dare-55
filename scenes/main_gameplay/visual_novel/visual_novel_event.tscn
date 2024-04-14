@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7mjst8blfgna"]
+[gd_scene load_steps=6 format=3 uid="uid://b7mjst8blfgna"]
 
 [ext_resource type="Script" path="res://scenes/main_gameplay/visual_novel/visual_novel_event.gd" id="1_w3fln"]
 [ext_resource type="Resource" uid="uid://dft8by3kpogh4" path="res://scenes/main_gameplay/visual_novel/dialogs/test_event.tres" id="2_i33al"]
+[ext_resource type="FontFile" uid="uid://b83vweh5jpmg0" path="res://fonts/SukuriburuBySoultyRagevin-Regular.otf" id="3_aqla1"]
 
 [sub_resource type="Gradient" id="Gradient_cm3kp"]
 colors = PackedColorArray(0.589096, 0.589096, 0.589095, 1, 1, 1, 1, 1)
@@ -11,6 +12,7 @@ gradient = SubResource("Gradient_cm3kp")
 fill_to = Vector2(0, 1)
 
 [node name="VisualNovelEvent" type="CanvasLayer"]
+process_mode = 1
 script = ExtResource("1_w3fln")
 dialog = ExtResource("2_i33al")
 
@@ -23,7 +25,6 @@ offset_bottom = 1080.0
 
 [node name="PortraitLeft" type="TextureRect" parent="ViewRoot"]
 unique_name_in_owner = true
-layout_mode = 0
 offset_left = 18.0
 offset_top = 401.0
 offset_right = 367.0
@@ -33,7 +34,6 @@ pivot_offset = Vector2(0, 300)
 [node name="PortraitRight" type="TextureRect" parent="ViewRoot"]
 unique_name_in_owner = true
 auto_translate_mode = 1
-layout_mode = 0
 offset_left = 518.0
 offset_top = 383.0
 offset_right = 921.0
@@ -43,7 +43,7 @@ flip_h = true
 
 [node name="TextPanel" type="TextureRect" parent="ViewRoot"]
 unique_name_in_owner = true
-self_modulate = Color(0.851046, 1, 0.731498, 1)
+self_modulate = Color(0.852554, 1, 0.739539, 0.776471)
 custom_minimum_size = Vector2(0, 300)
 layout_mode = 1
 anchors_preset = 12
@@ -57,8 +57,22 @@ texture = SubResource("GradientTexture2D_r4snn")
 [node name="TextLabel" type="RichTextLabel" parent="ViewRoot/TextPanel"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 28.0
+offset_left = 24.0
 offset_top = 38.0
-offset_right = 884.0
+offset_right = 902.0
 offset_bottom = 268.0
+theme_override_fonts/normal_font = ExtResource("3_aqla1")
+theme_override_fonts/mono_font = ExtResource("3_aqla1")
+theme_override_fonts/italics_font = ExtResource("3_aqla1")
+theme_override_fonts/bold_italics_font = ExtResource("3_aqla1")
+theme_override_fonts/bold_font = ExtResource("3_aqla1")
+theme_override_font_sizes/bold_italics_font_size = 110
+theme_override_font_sizes/italics_font_size = 110
+theme_override_font_sizes/mono_font_size = 110
+theme_override_font_sizes/normal_font_size = 110
+theme_override_font_sizes/bold_font_size = 110
 bbcode_enabled = true
+text = "Hi i am text big long dong text for testing purposes hahaah i am antagonist noooo (horse tomato zealot grounded)."
+scroll_active = false
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
