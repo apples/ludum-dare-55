@@ -17,7 +17,8 @@ func _ready():
 		var c = EnemyController.new()
 		e.add_child(c)
 		enemies.append(e)
-		create_tween().tween_property(pf, \"progress_ratio\", 1.0, 10)
+		var tw = create_tween().tween_property(pf, \"progress_ratio\", 1.0, 10)
+		tw.finished.connect(func(): c.kill())
 
 
 func _process(delta: float) -> void:
