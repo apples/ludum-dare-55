@@ -4,22 +4,20 @@
 script/source = "extends StagePhase
 
 @export var enemy: PackedScene = preload(\"res://objects/enemy/enemy.tscn\")
+@export var enemy_count: int = 5
 @export var play_time: float = 10
-@onready var curve = $Path2D.curve
 
 
 func _ready():
-	for i in 5:
+	for i in enemy_count:
 		var pf = PathFollow2D.new()
 		pf.rotates = false
 		$Path2D.add_child(pf)
 		if enemy != null:
 			var e = enemy.instantiate()
 			pf.add_child(e)
-			var c = EnemyController.new()
-			e.add_child(c)
 			enemies.append(e)
-			_start_on_delay(c, pf, 0.25 * i)
+			_start_on_delay(EnemyController.from(e), pf, 0.25 * i)
 
 
 func _start_on_delay(controller, path_follower, delay_time):
@@ -30,12 +28,16 @@ func _start_on_delay(controller, path_follower, delay_time):
 
 [sub_resource type="Curve2D" id="Curve2D_oxwgs"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -50, -46, 0, 0, 0, 0, 62, 320, 0, 0, 0, 0, 174, 501, 0, 0, 0, 0, 283, 620, 0, 0, 0, 0, 447, 653, 0, 0, 0, 0, 523, 603, 0, 0, 0, 0, 590, 541, 0, 0, 0, 0, 587, 468, 0, 0, 0, 0, 554, 415, 0, 0, 0, 0, 459, 394, 0, 0, 0, 0, 362, 413, 0, 0, 0, 0, 333, 470, 0, 0, 0, 0, 343, 546, 0, 0, 0, 0, 400, 601, 0, 0, 0, 0, 480, 653, 0, 0, 0, 0, 637, 613, 0, 0, 0, 0, 773, 506, 0, 0, 0, 0, 861, 325, 0, 0, 0, 0, 973, -39)
+"points": PackedVector2Array(0, 0, 0, 0, -50, -46, 0, 0, 0, 0, 62, 320, 0, 0, 0, 0, 174, 501, 0, 0, 0, 0, 221, 565, 0, 0, 0, 0, 283, 620, 0, 0, 0, 0, 397, 646, 0, 0, 0, 0, 506, 654, 0, 0, 0, 0, 598, 600, 0, 0, 0, 0, 643, 546, 0, 0, 0, 0, 681, 468, 0, 0, 0, 0, 700, 391, 0, 0, 0, 0, 708, 305, 0, 0, 0, 0, 683, 222, 0, 0, 0, 0, 635, 162, 0, 0, 0, 0, 543, 110, 0, 0, 0, 0, 468, 94, 0, 0, 0, 0, 405, 106, 0, 0, 0, 0, 306, 159, 0, 0, 0, 0, 264, 218, 0, 0, 0, 0, 238, 302, 0, 0, 0, 0, 246, 384, 0, 0, 0, 0, 265, 478, 0, 0, 0, 0, 287, 543, 0, 0, 0, 0, 316, 594, 0, 0, 0, 0, 414, 654, 0, 0, 0, 0, 537, 643, 0, 0, 0, 0, 637, 613, 0, 0, 0, 0, 710, 572, 0, 0, 0, 0, 773, 506, 0, 0, 0, 0, 861, 325, 0, 0, 0, 0, 973, -39)
 }
-point_count = 19
+point_count = 31
 
 [node name="left_to_right_conga_loop" type="Node2D"]
 script = SubResource("GDScript_uvbc5")
+
+[node name="GamePlayZoneRef" type="ReferenceRect" parent="."]
+offset_right = 920.0
+offset_bottom = 1080.0
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_oxwgs")

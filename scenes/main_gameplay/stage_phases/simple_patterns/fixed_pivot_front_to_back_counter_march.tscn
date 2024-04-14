@@ -14,11 +14,9 @@ func _ready():
 		path.add_child(pf)
 		var e = enemy.instantiate()
 		pf.add_child(e)
-		var c = EnemyController.new()
-		e.add_child(c)
 		enemies.append(e)
 		var tw = create_tween().tween_property(pf, \"progress_ratio\", 1.0, play_time)
-		tw.finished.connect(func(): c.kill())
+		tw.finished.connect(func(): EnemyController.from(e).kill())
 "
 
 [sub_resource type="Curve2D" id="Curve2D_rugxg"]
@@ -29,6 +27,11 @@ point_count = 7
 
 [node name="FixedPivotFrontToBackCounterMarch" type="Node2D"]
 script = SubResource("GDScript_uvbc5")
+
+[node name="GamePlayZoneRef" type="ReferenceRect" parent="."]
+auto_translate_mode = 1
+offset_right = 920.0
+offset_bottom = 1080.0
 
 [node name="Path1" type="Path2D" parent="."]
 curve = SubResource("Curve2D_rugxg")

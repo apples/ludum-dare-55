@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://3m7u11ag3fsk"]
+
+[sub_resource type="GDScript" id="GDScript_uvbc5"]
+script/source = "extends StagePhase
+
+@export var enemy: PackedScene = preload(\"res://objects/enemy/enemy.tscn\")
+@export var enemy_count: int = 5
+@export var play_time: float = 10
+
+
+func _ready():
+	for i in enemy_count:
+		var pf = PathFollow2D.new()
+		pf.rotates = false
+		pf.progress_ratio = 1.0
+		$Path2D.add_child(pf)
+		var e = enemy.instantiate()
+		pf.add_child(e)
+		enemies.append(e)
+		_start_on_delay(EnemyController.from(e), pf, 0.25 * i)
+
+
+func _start_on_delay(controller, path_follower, delay_time):
+	await controller.wait_for(delay_time)
+	var tw = create_tween().tween_property(path_follower, \"progress_ratio\", 0.0, play_time)
+	tw.finished.connect(func(): controller.kill())
+"
+
+[sub_resource type="Curve2D" id="Curve2D_oxwgs"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -50, -46, 0, 0, 0, 0, 62, 320, 0, 0, 0, 0, 174, 501, 0, 0, 0, 0, 283, 620, 0, 0, 0, 0, 506, 654, 0, 0, 0, 0, 598, 600, 0, 0, 0, 0, 681, 468, 0, 0, 0, 0, 708, 305, 0, 0, 0, 0, 635, 162, 0, 0, 0, 0, 468, 94, 0, 0, 0, 0, 306, 159, 0, 0, 0, 0, 238, 302, 0, 0, 0, 0, 265, 478, 0, 0, 0, 0, 316, 594, 0, 0, 0, 0, 414, 654, 0, 0, 0, 0, 637, 613, 0, 0, 0, 0, 773, 506, 0, 0, 0, 0, 861, 325, 0, 0, 0, 0, 973, -39)
+}
+point_count = 19
+
+[node name="left_to_right_conga_loop" type="Node2D"]
+script = SubResource("GDScript_uvbc5")
+
+[node name="GamePlayZoneRef" type="ReferenceRect" parent="."]
+offset_right = 920.0
+offset_bottom = 1080.0
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_oxwgs")
