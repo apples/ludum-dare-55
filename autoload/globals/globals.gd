@@ -23,7 +23,7 @@ var player_pos: Vector2 = Vector2.ZERO:
 var score: int = 0:
 	set(v): score = v; changed.emit()
 
-var summon_ink: int = 100:
+var summon_ink: float = 100:
 	set(v): summon_ink = v; changed.emit()
 
 var boss_max_health: int = 100:

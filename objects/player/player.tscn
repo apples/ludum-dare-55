@@ -24,7 +24,7 @@ shape = SubResource("RectangleShape2D_l1bt7")
 
 [node name="bullet_spawn_location" type="Marker2D" parent="."]
 position = Vector2(0, -25)
-rotation = 3.14159
+rotation = -1.5708
 gizmo_extents = 5.0
 
 [node name="RefireDelay" type="Timer" parent="."]
