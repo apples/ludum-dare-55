@@ -4,13 +4,12 @@
 script/source = "extends StagePhase
 
 @export var enemy: PackedScene = preload(\"res://objects/enemy/enemy.tscn\")
+@export var enemy_count: int = 5
 @export var play_time: float = 10.0
 
 func _ready():
-	for i in 5:
+	for i in enemy_count:
 		var e = enemy.instantiate()
-		add_child(e)
-		var c = EnemyController.new()
 		e.add_child(c)
 		c.position = Vector2(-10, -10)
 		enemies.append(e)
@@ -18,7 +17,18 @@ func _ready():
 			Vector2(100 * (i + 1), 300),
 			Vector2(610, -10),
 		], 1.0, 1.0, true)
+
+func _sequence():
+	
 "
 
 [node name="ParadeFrontFromLeft" type="Node2D"]
 script = SubResource("GDScript_uvbc5")
+enemy = null
+enemy_count = null
+play_time = null
+
+[node name="GamePlayZoneRef" type="ReferenceRect" parent="."]
+auto_translate_mode = 1
+offset_right = 920.0
+offset_bottom = 1080.0
