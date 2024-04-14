@@ -88,6 +88,7 @@ func _on_death_timer_timeout() -> void:
 func _pause()->void:
 	get_tree().paused = true
 	$PauseLayer.visible = true;
+	%ResumeGameButton.grab_focus()
 func _un_pause() -> void:
 	get_tree().paused = false
 	$PauseLayer.visible = false;
