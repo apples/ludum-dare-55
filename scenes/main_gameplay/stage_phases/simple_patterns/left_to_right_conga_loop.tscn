@@ -13,10 +13,11 @@ func _ready():
 		var pf = PathFollow2D.new()
 		pf.rotates = false
 		$Path2D.add_child(pf)
-		var e = enemy.instantiate()
-		pf.add_child(e)
-		enemies.append(e)
-		_start_on_delay(EnemyController.from(e), pf, 0.25 * i)
+		if enemy != null:
+			var e = enemy.instantiate()
+			pf.add_child(e)
+			enemies.append(e)
+			_start_on_delay(EnemyController.from(e), pf, 0.25 * i)
 
 
 func _start_on_delay(controller, path_follower, delay_time):

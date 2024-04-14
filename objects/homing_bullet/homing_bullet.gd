@@ -1,7 +1,5 @@
 extends Bullet
 
-class_name HomingBullet
-
 const WAIT_TO_HOME: float = 0.1
 const STOP_HOMING_TIME: float = 1.0
 var homing: bool = false
