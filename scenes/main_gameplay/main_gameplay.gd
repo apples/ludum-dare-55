@@ -47,4 +47,5 @@ func _on_player_player_died() -> void:
 
 
 func _on_resume_game_button_pressed() -> void:
-	_un_pause()
+	pass
+	#_un_pause()
