@@ -9,7 +9,7 @@ func _ready():
 
 func set_tween():
 	tween = create_tween()
-	tween.tween_property($Sprite2D, "modulate:a", 0, 1)
+	tween.tween_property($Sprite2D, "modulate:a", 0, 0.75)
 	tween.tween_callback(on_sigil_expires)
 	tween.pause()
 	
