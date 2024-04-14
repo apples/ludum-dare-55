@@ -6,11 +6,20 @@ var element := Globals.Elements.UNSET
 var enemy_damaged_secene = preload("res://objects/VFX/enemy_damaged/enemy_damaged.tscn") 
 var enemy_damaged= enemy_damaged_secene.instantiate()
 
+@onready var outline = $Outline
+
 func _ready() -> void:
 	pass
 
 func _process(delta: float) -> void:
-	pass
+	if element == Globals.Elements.FIRE:
+		outline.material.set("shader_parameter/fillColor", Vector4(1, 0, 0, 1))
+	if element == Globals.Elements.WATER:
+		outline.material.set("shader_parameter/fillColor", Vector4(0, 0, 1, 1))
+	if element == Globals.Elements.VEGANS:
+		outline.material.set("shader_parameter/fillColor", Vector4(0, 1, 0, 1))
+	if element == Globals.Elements.UNSET:
+		outline.material.set("shader_parameter/fillColor", Vector4(0, 0, 0, 0))
 
 func _physics_process(delta: float) -> void:
 	pass
