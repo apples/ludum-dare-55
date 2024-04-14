@@ -9,23 +9,21 @@ const ENEMY = preload(\"res://objects/enemy/enemy.tscn\")
 var enemies: Array[Node] = []
 
 func _ready():
-	var points: Array[Vector2] = []
-	for i in curve.point_count:
-		points.push_back(curve.get_point_position(i))
-	
 	for i in 5:
+		var pf = PathFollow2D.new()
+		pf.rotates = false
+		$Path2D.add_child(pf)
 		var e = ENEMY.instantiate()
-		add_child(e)
+		pf.add_child(e)
 		var c = EnemyController.new()
 		e.add_child(c)
-		c.position = points[0]
 		enemies.append(e)
-		_start_on_delay(c, points.slice(1), i * 0.5)
+		_start_on_delay(c, pf, 0.25 * i)
 
 
-func _start_on_delay(controller, points, delay_time):
+func _start_on_delay(controller, path_follower, delay_time):
 	await controller.wait_for(delay_time)
-	behavior_move_to_points(controller, points.slice(1), 0.5, 0.0, true)
+	create_tween().tween_property(path_follower, \"progress_ratio\", 1.0, 10)
 
 
 func _process(delta: float) -> void:

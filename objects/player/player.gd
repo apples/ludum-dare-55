@@ -9,6 +9,7 @@ signal player_died
 var bullet_scene = preload("res://objects/bullet/bullet.tscn")
 var homing_bullet_scene = preload("res://objects/homing_bullet/homing_bullet.tscn")
 var bomb_bullet_scene = preload("res://objects/bomb_bullet/bomb_bullet.tscn")
+var jericho_bullet_scene = preload("res://objects/jericho_bullet/jericho_bullet.tscn")
 var summoning_dust = preload("res://objects/summoning_dust/summoning_dust.tscn")
 
 @onready var brush_pos = self.global_position #Vector2(0, 0)
@@ -22,7 +23,7 @@ var current_speed = NORMAL_SPEED
 var summoning_circle_ref: Node2D
 var summoning = false
 
-var current_bullet_pattern = BulletSpawner.fire_one_straight
+var current_bullet_pattern = BulletSpawner.fire_three_arc
 var current_bullet_type = bullet_scene
 var current_element = Globals.Elements.UNSET
 
@@ -90,7 +91,7 @@ func shoot_bullet():
 	if refire_delay_timer.is_stopped():
 		current_bullet_pattern.call(
 			self,
-			bomb_bullet_scene,
+			jericho_bullet_scene,
 			$bullet_spawn_location.position,
 			$bullet_spawn_location.rotation)
 		refire_delay_timer.start()
