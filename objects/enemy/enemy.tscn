@@ -6,7 +6,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cq6ui"]
 shader = ExtResource("2_4wp46")
-shader_parameter/fillColor = Vector4(1, 0, 0, 1)
+shader_parameter/fillColor = Vector4(0.5, 0, 1, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tnbux"]
 radius = 17.4929
