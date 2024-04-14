@@ -36,7 +36,9 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_pressed("Summon"):
 		current_speed = FOCUS_SPEED
-		summoning = true
+		if !summoning:
+			summoning_circle_ref.player_started_summoning()
+			summoning = true
 		summon_tick()
 	else:
 		current_speed = NORMAL_SPEED
@@ -72,7 +74,7 @@ func summon_tick():
 				new_summoning_dust.set_position(summoning_dust_pos)
 				self.get_parent().add_child(new_summoning_dust)
 				#if summoning_circle_ref.sigil_sequence_active:
-				Globals.summon_ink -= 0.5
+				Globals.summon_ink -= 0.60
 		else:
 			if summoning_circle_ref.current_sigil_sequence.size() < 5:
 				summoning_circle_ref.reset_summoning_circle()
