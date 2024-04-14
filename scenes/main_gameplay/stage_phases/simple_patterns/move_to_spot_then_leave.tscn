@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjliofq1ko0r8"]
+
+[sub_resource type="GDScript" id="GDScript_uvbc5"]
+script/source = "extends StagePhase
+
+@export var enemy: PackedScene = preload(\"res://objects/enemy/enemy.tscn\")
+@export var start_point: Vector2 = Vector2(-10,-10)
+@export var mark_point: Vector2 = Vector2(460, 540)
+@export var exit_point: Vector2 = Vector2(930, -10)
+@export var move_time: float = 5
+@export var pause_time: float = 5
+
+
+func _ready():
+	var e = enemy.instantiate()
+	add_child(e)
+	enemies.append(e)
+	var c = EnemyController.from(e)
+	c.position = start_point
+	_sequence(c)
+
+func _sequence(controller: EnemyController):
+	await controller.move_to_point_over_time(mark_point, move_time)
+	await controller.wait_for(pause_time)
+	await controller.move_to_point_over_time(exit_point, move_time)
+	controller.kill()
+"
+
+[node name="left_to_right_conga_loop" type="Node2D"]
+script = SubResource("GDScript_uvbc5")
+
+[node name="GamePlayZoneRef" type="ReferenceRect" parent="."]
+offset_right = 920.0
+offset_bottom = 1080.0

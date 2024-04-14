@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="Stage" load_steps=4 format=3 uid="uid://dbjpf7tcbt613"]
+[gd_resource type="Resource" script_class="Stage" load_steps=5 format=3 uid="uid://dbjpf7tcbt613"]
 
+[ext_resource type="PackedScene" uid="uid://c7th1q6akcm3t" path="res://scenes/main_gameplay/stage_phases/visual_novel_events/stage1_intro.tscn" id="1_1ysod"]
 [ext_resource type="Script" path="res://resource_types/stage_sequence.gd" id="1_opm1k"]
-[ext_resource type="PackedScene" uid="uid://creyxsyit7dtd" path="res://scenes/main_gameplay/stage_phases/simple_patterns/left_to_right_conga_loop.tscn" id="2_tboy3"]
+[ext_resource type="PackedScene" uid="uid://bjliofq1ko0r8" path="res://scenes/main_gameplay/stage_phases/simple_patterns/move_to_spot_then_leave.tscn" id="2_lpvkg"]
 [ext_resource type="PackedScene" uid="uid://bug15wgbinp1r" path="res://scenes/main_gameplay/stage_phases/simple_patterns/fixed_pivot_front_to_back_counter_march.tscn" id="3_fiw3i"]
 
 [resource]
 script = ExtResource("1_opm1k")
 stage_name = "Oak Hill II"
-phases = Array[PackedScene]([ExtResource("2_tboy3"), ExtResource("3_fiw3i")])
+phases = Array[PackedScene]([ExtResource("1_1ysod"), ExtResource("2_lpvkg"), ExtResource("3_fiw3i")])
