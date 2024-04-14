@@ -1,0 +1,28 @@
+[gd_scene load_steps=8 format=3 uid="uid://c7th1q6akcm3t"]
+
+[ext_resource type="PackedScene" uid="uid://b7mjst8blfgna" path="res://scenes/main_gameplay/visual_novel/visual_novel_event.tscn" id="1_4vsxa"]
+[ext_resource type="Script" path="res://resource_types/visual_novel_phrase.gd" id="2_74r65"]
+[ext_resource type="Script" path="res://resource_types/visual_novel_dialog.gd" id="3_qbkpm"]
+
+[sub_resource type="Resource" id="Resource_ejwx0"]
+script = ExtResource("2_74r65")
+character = 0
+rich_text = "[shake]Howdy![/shake]"
+
+[sub_resource type="Resource" id="Resource_5dd05"]
+script = ExtResource("2_74r65")
+character = 1
+rich_text = "Oh hi!"
+
+[sub_resource type="Resource" id="Resource_1hvwh"]
+script = ExtResource("2_74r65")
+character = 0
+rich_text = "lol"
+
+[sub_resource type="Resource" id="Resource_0w3kb"]
+script = ExtResource("3_qbkpm")
+phrases = Array[ExtResource("2_74r65")]([SubResource("Resource_ejwx0"), SubResource("Resource_5dd05"), SubResource("Resource_1hvwh")])
+start_right_side = false
+
+[node name="VisualNovelEvent" instance=ExtResource("1_4vsxa")]
+dialog = SubResource("Resource_0w3kb")
