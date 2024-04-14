@@ -66,9 +66,15 @@ func _unhandled_key_input(event: InputEvent) -> void:
 #top is weak to bottom
 enum Elements {
 	UNSET,
-	AIR,
+	FIRE,
 	WATER,
 	VEGANS,
-	DARK,
-	FIRE,
 }
+
+#need this order if we go back to 5 elements:
+#UNSET,
+#AIR,
+#WATER,
+#VEGANS,
+#DARK,
+#FIRE,
