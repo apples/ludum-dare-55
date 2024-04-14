@@ -4,7 +4,6 @@ class_name HomingBullet
 
 const WAIT_TO_HOME: float = 0.1
 const STOP_HOMING_TIME: float = 1.0
-const HOMING_STRENGTH: float = PI
 var homing: bool = false
 var homing_target: Node2D = null
 
@@ -15,8 +14,8 @@ func _ready() -> void:
 	if closest_node != null:
 		homing_target = closest_node
 		homing = true
-		#await get_tree().create_timer(STOP_HOMING_TIME).timeout
-		#homing = false
+		await get_tree().create_timer(STOP_HOMING_TIME).timeout
+		homing = false
 
 func _process(delta: float) -> void:
 	if homing and is_instance_valid(homing_target):
