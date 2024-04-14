@@ -7,7 +7,7 @@ extends CharacterBody2D
 @onready var element := enemy_resource.element
 
 var enemy_damaged_secene = preload("res://objects/VFX/enemy_damaged/enemy_damaged.tscn") 
-var enemy_damaged = enemy_damaged_secene.instantiate()
+#var enemy_damaged = enemy_damaged_secene.instantiate()
 
 @onready var outline = $Outline
 
@@ -51,5 +51,6 @@ func hit(damage: int, element_type: Globals.Elements) -> void:
 	if health <= 0:
 		queue_free()
 	Globals.score += score_val
+	var enemy_damaged = enemy_damaged_secene.instantiate()
 	enemy_damaged.position = self.position
 	get_parent().get_parent().add_child(enemy_damaged)
