@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://c3rvm3rw6opg"]
+[gd_scene load_steps=18 format=3 uid="uid://c3rvm3rw6opg"]
 
 [ext_resource type="Script" path="res://node_types/camera_shake.gd" id="1_lrklj"]
 [ext_resource type="Script" path="res://scenes/main_gameplay/main_gameplay.gd" id="1_wt4mr"]
 [ext_resource type="PackedScene" uid="uid://bmejrldvybsy8" path="res://objects/player/player.tscn" id="2_8jdjt"]
 [ext_resource type="Resource" uid="uid://dbjpf7tcbt613" path="res://scenes/main_gameplay/stages/stage_1.tres" id="2_vspj8"]
+[ext_resource type="Texture2D" uid="uid://dtajjiutgllfj" path="res://textures/cloud.png" id="4_3jwll"]
 [ext_resource type="Shader" path="res://materials/water_shader.gdshader" id="5_hiwcw"]
 [ext_resource type="Script" path="res://ui/score.gd" id="6_sq3jg"]
 [ext_resource type="PackedScene" uid="uid://cwcfvig1wond3" path="res://objects/summoning_circle/summoning_circle.tscn" id="7_6sfe8"]
@@ -72,6 +73,21 @@ offset_right = 960.0
 offset_bottom = 1112.0
 texture = SubResource("CanvasTexture_r0av5")
 flip_v = true
+
+[node name="Clouds" type="CPUParticles2D" parent="Background"]
+position = Vector2(460, -200)
+amount = 5
+lifetime = 8.0
+texture = ExtResource("4_3jwll")
+emission_shape = 3
+emission_rect_extents = Vector2(460, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 300.0
+angle_max = 360.0
+scale_amount_max = 2.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
