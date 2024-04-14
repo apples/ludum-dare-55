@@ -1,0 +1,53 @@
+[gd_scene load_steps=3 format=3 uid="uid://bug15wgbinp1r"]
+
+[sub_resource type="GDScript" id="GDScript_uvbc5"]
+script/source = "extends StagePhase
+
+const ENEMY = preload(\"res://objects/enemy/enemy.tscn\")
+
+var enemies: Array[Node] = []
+
+func _ready():
+	for path in [$Path1, $Path2, $Path3, $Path4]:
+		var pf = PathFollow2D.new()
+		pf.rotates = false
+		path.add_child(pf)
+		var e = ENEMY.instantiate()
+		pf.add_child(e)
+		var c = EnemyController.new()
+		e.add_child(c)
+		enemies.append(e)
+		create_tween().tween_property(pf, \"progress_ratio\", 1.0, 10)
+
+
+func _process(delta: float) -> void:
+	for e in enemies:
+		if is_instance_valid(e):
+			return
+	phase_complete.emit()
+	queue_free()
+"
+
+[sub_resource type="Curve2D" id="Curve2D_rugxg"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 98, -70, 0, 0, 0, 0, 98, 456, 0, 0, 0, 0, 113, 488, 0, 0, 0, 0, 143, 504, 0, 0, 0, 0, 171, 488, 0, 0, 0, 0, 186, 457, 0, 0, 0, 0, 186, -69)
+}
+point_count = 7
+
+[node name="FixedPivotFrontToBackCounterMarch" type="Node2D"]
+script = SubResource("GDScript_uvbc5")
+
+[node name="Path1" type="Path2D" parent="."]
+curve = SubResource("Curve2D_rugxg")
+
+[node name="Path2" type="Path2D" parent="."]
+position = Vector2(184, 0)
+curve = SubResource("Curve2D_rugxg")
+
+[node name="Path3" type="Path2D" parent="."]
+position = Vector2(460, 0)
+curve = SubResource("Curve2D_rugxg")
+
+[node name="Path4" type="Path2D" parent="."]
+position = Vector2(644, 0)
+curve = SubResource("Curve2D_rugxg")
