@@ -5,6 +5,7 @@ signal player_died
 @export var starting_health: int = 5
 
 var bullet_scene = preload("res://objects/bullet/bullet.tscn")
+var homing_bullet_scene = preload("res://objects/homing_bullet/homing_bullet.tscn")
 var summoning_dust = preload("res://objects/summoning_dust/summoning_dust.tscn")
 
 @onready var brush_pos = self.global_position #Vector2(0, 0)
@@ -16,6 +17,7 @@ const FOCUS_SPEED = 150.0
 var current_speed = NORMAL_SPEED
 
 var summoning_circle_ref: Node2D
+var summoning = false
 
 func _ready() -> void:
 	Globals.player_health = starting_health
@@ -34,9 +36,11 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_pressed("Summon"):
 		current_speed = FOCUS_SPEED
+		summoning = true
 		summon_tick()
 	else:
 		current_speed = NORMAL_SPEED
+		summoning = false
 		if summoning_circle_ref.current_sigil_sequence.size() < 5:
 			summoning_circle_ref.reset_summoning_circle()
 
@@ -44,6 +48,10 @@ func _physics_process(delta: float) -> void:
 	velocity = direction * current_speed
 
 	move_and_slide()
+	
+	# regenerate ink
+	if Globals.summon_ink < 100 and summoning == false:
+		Globals.summon_ink += 0.50
 
 # Called when colliding with something for any reason.
 func _collision(other: PhysicsBody2D) -> void:
@@ -63,8 +71,8 @@ func summon_tick():
 				var summoning_dust_pos = brush_pos
 				new_summoning_dust.set_position(summoning_dust_pos)
 				self.get_parent().add_child(new_summoning_dust)
-				if summoning_circle_ref.sigil_sequence_active:
-					Globals.summon_ink -= 1
+				#if summoning_circle_ref.sigil_sequence_active:
+				Globals.summon_ink -= 0.5
 		else:
 			if summoning_circle_ref.current_sigil_sequence.size() < 5:
 				summoning_circle_ref.reset_summoning_circle()
@@ -72,7 +80,7 @@ func summon_tick():
 func shoot_bullet():
 	if refire_delay_timer.is_stopped():
 		BulletSpawner.fire_one_straight(
-			self, bullet_scene,
+			self, homing_bullet_scene,
 			$bullet_spawn_location.position,
 			$bullet_spawn_location.rotation)
 		refire_delay_timer.start()

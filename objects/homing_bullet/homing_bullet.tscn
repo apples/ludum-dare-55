@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8oampa8b32b7"]
+
+[ext_resource type="Script" path="res://objects/homing_bullet/homing_bullet.gd" id="1_aa7hq"]
+[ext_resource type="SpriteFrames" uid="uid://d27mn8368fubp" path="res://particles/bullet_frames.tres" id="2_d0ucc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jey2d"]
+size = Vector2(26, 26)
+
+[node name="Bullet" type="Node2D"]
+script = ExtResource("1_aa7hq")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_d0ucc")
+autoplay = "default"
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_jey2d")
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
