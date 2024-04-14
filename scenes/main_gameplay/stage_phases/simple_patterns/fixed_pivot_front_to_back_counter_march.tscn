@@ -3,30 +3,22 @@
 [sub_resource type="GDScript" id="GDScript_uvbc5"]
 script/source = "extends StagePhase
 
-const ENEMY = preload(\"res://objects/enemy/enemy.tscn\")
+@export var enemy: PackedScene = preload(\"res://objects/enemy/enemy.tscn\")
+@export var play_time: float = 10.0
 
-var enemies: Array[Node] = []
 
 func _ready():
-	for path in [$Path1, $Path2, $Path3, $Path4]:
+	for path in [$Path1, $Path2, $Path3, $Path4, $Path5, $Path6, $Path7, $Path8]:
 		var pf = PathFollow2D.new()
 		pf.rotates = false
 		path.add_child(pf)
-		var e = ENEMY.instantiate()
+		var e = enemy.instantiate()
 		pf.add_child(e)
 		var c = EnemyController.new()
 		e.add_child(c)
 		enemies.append(e)
-		var tw = create_tween().tween_property(pf, \"progress_ratio\", 1.0, 10)
+		var tw = create_tween().tween_property(pf, \"progress_ratio\", 1.0, play_time)
 		tw.finished.connect(func(): c.kill())
-
-
-func _process(delta: float) -> void:
-	for e in enemies:
-		if is_instance_valid(e):
-			return
-	phase_complete.emit()
-	queue_free()
 "
 
 [sub_resource type="Curve2D" id="Curve2D_rugxg"]
@@ -42,13 +34,29 @@ script = SubResource("GDScript_uvbc5")
 curve = SubResource("Curve2D_rugxg")
 
 [node name="Path2" type="Path2D" parent="."]
-position = Vector2(184, 0)
+position = Vector2(92, 0)
 curve = SubResource("Curve2D_rugxg")
 
 [node name="Path3" type="Path2D" parent="."]
-position = Vector2(460, 0)
+position = Vector2(184, 0)
 curve = SubResource("Curve2D_rugxg")
 
 [node name="Path4" type="Path2D" parent="."]
+position = Vector2(276, 0)
+curve = SubResource("Curve2D_rugxg")
+
+[node name="Path5" type="Path2D" parent="."]
+position = Vector2(368, 0)
+curve = SubResource("Curve2D_rugxg")
+
+[node name="Path6" type="Path2D" parent="."]
+position = Vector2(460, 0)
+curve = SubResource("Curve2D_rugxg")
+
+[node name="Path7" type="Path2D" parent="."]
+position = Vector2(552, 0)
+curve = SubResource("Curve2D_rugxg")
+
+[node name="Path8" type="Path2D" parent="."]
 position = Vector2(644, 0)
 curve = SubResource("Curve2D_rugxg")
