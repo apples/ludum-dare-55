@@ -28,6 +28,8 @@ var current_element = Globals.Elements.UNSET
 
 @export var current_bullet_resource: BulletResource = preload("res://objects/bullet/resources/fire_bomb.tres")
 
+var invuln_frame_time = 80
+
 func _ready() -> void:
 	Globals.player_health = starting_health
 	Globals.player_health_changed.connect(_on_player_health_changed)
@@ -36,6 +38,11 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if Globals.player_health <= 0:
 		return
+	
+	if Globals.player_invuln > 0:
+		Globals.player_invuln -= 1
+		if Globals.player_invuln <= 0:
+			$CollisionShape2D.set_deferred("disabled", false)
 	
 	if Input.is_action_pressed("Menu"):
 		_pause()
@@ -101,6 +108,9 @@ func _on_player_health_changed() -> void:
 		#TODO death SFX
 		$DeathTimer.start()
 		$DeathParticles.emitting = true
+	else:
+		Globals.player_invuln = invuln_frame_time
+		$CollisionShape2D.set_deferred("disabled", true)
 
 
 func _on_death_timer_timeout() -> void:

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Stage" load_steps=3 format=3 uid="uid://crjcdljkom5nt"]
+
+[ext_resource type="PackedScene" uid="uid://dajq5cj0mn6nx" path="res://scenes/main_gameplay/stage_phases/boss_phases/hinawa.tscn" id="1_gw5io"]
+[ext_resource type="Script" path="res://resource_types/stage_sequence.gd" id="4_qh8mi"]
+
+[resource]
+script = ExtResource("4_qh8mi")
+stage_name = "Oak Hill II"
+phases = Array[PackedScene]([ExtResource("1_gw5io")])
