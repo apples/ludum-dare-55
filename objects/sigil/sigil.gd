@@ -1,9 +1,11 @@
 extends Node2D
 var tween: Tween
+var sigil_texture = "res://particles/star.png"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#$Sprite2D.texture = "res://textures/41352_star_sigil.png"
+	Sprite2D.texture = sigil_texture
 	set_tween()
 	tween.play()
 
