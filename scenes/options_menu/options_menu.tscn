@@ -1,0 +1,242 @@
+[gd_scene load_steps=18 format=3 uid="uid://dm8vni40rm7ug"]
+
+[ext_resource type="Script" path="res://scenes/options_menu/options_menu.gd" id="1_udhl2"]
+[ext_resource type="PackedScene" uid="uid://ddc45fjr30s3c" path="res://scenes/main_gameplay/background/background.tscn" id="3_sutrt"]
+[ext_resource type="Texture2D" uid="uid://dtajjiutgllfj" path="res://textures/cloud.png" id="4_wlliu"]
+[ext_resource type="Script" path="res://node_types/camera_shake.gd" id="5_xtgx1"]
+[ext_resource type="Script" path="res://ui/score.gd" id="7_s710p"]
+[ext_resource type="Script" path="res://ui/hearts.gd" id="8_hmn62"]
+[ext_resource type="Script" path="res://scenes/main_gameplay/summon_meter.gd" id="9_hnvfn"]
+[ext_resource type="Script" path="res://ui/health_bar.gd" id="10_0c4ch"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fenso"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_vywn0"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6mfka"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_4kntg"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_bxhiq"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="Gradient" id="Gradient_aqcwo"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.367273, 0.701818)
+colors = PackedColorArray(0.199248, 0.103954, 1.20327e-08, 1, 0.27069, 0.0513851, 0, 1, 0.310221, 0.00207883, 0.157093, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_3jiib"]
+frequency = 0.0826
+fractal_lacunarity = 6.475
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8n8pj"]
+width = 256
+color_ramp = SubResource("Gradient_aqcwo")
+noise = SubResource("FastNoiseLite_3jiib")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kplpg"]
+bg_color = Color(0.878822, 0.843573, 0.0310382, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="OptionsMenu" type="Node2D"]
+script = ExtResource("1_udhl2")
+
+[node name="Walls" type="StaticBody2D" parent="." groups=["Wall"]]
+
+[node name="LeftWall" type="CollisionShape2D" parent="Walls" groups=["Wall"]]
+position = Vector2(0, 322)
+shape = SubResource("WorldBoundaryShape2D_fenso")
+
+[node name="RightWall" type="CollisionShape2D" parent="Walls" groups=["Wall"]]
+position = Vector2(920, 322)
+shape = SubResource("WorldBoundaryShape2D_vywn0")
+
+[node name="TopWall" type="CollisionShape2D" parent="Walls" groups=["Wall"]]
+position = Vector2(485, -2)
+shape = SubResource("WorldBoundaryShape2D_6mfka")
+
+[node name="BottomWall" type="CollisionShape2D" parent="Walls" groups=["Wall"]]
+position = Vector2(486, 1080)
+shape = SubResource("WorldBoundaryShape2D_4kntg")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(920, 1080)
+
+[node name="Node3D" parent="SubViewport" instance=ExtResource("3_sutrt")]
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 920.0
+offset_bottom = 1080.0
+texture = SubResource("ViewportTexture_bxhiq")
+
+[node name="Clouds" type="CPUParticles2D" parent="Background"]
+position = Vector2(460, -200)
+amount = 5
+lifetime = 8.0
+texture = ExtResource("4_wlliu")
+emission_shape = 3
+emission_rect_extents = Vector2(460, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 300.0
+angle_max = 360.0
+scale_amount_max = 2.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="CameraShake" type="Node" parent="Camera2D"]
+script = ExtResource("5_xtgx1")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="UIPanelRoot" type="TextureRect" parent="UI"]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -520.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = SubResource("NoiseTexture2D_8n8pj")
+
+[node name="Score" type="Label" parent="UI/UIPanelRoot"]
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -158.0
+offset_bottom = 31.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 48
+text = "SCORE: 0"
+horizontal_alignment = 2
+script = ExtResource("7_s710p")
+
+[node name="Hearts" type="Control" parent="UI/UIPanelRoot"]
+visible = false
+layout_mode = 1
+anchors_preset = 0
+script = ExtResource("8_hmn62")
+
+[node name="SummonMeter" type="ProgressBar" parent="UI/UIPanelRoot"]
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -125.0
+offset_top = 53.0
+offset_right = -16.0
+offset_bottom = 73.0
+grow_horizontal = 0
+theme_override_styles/fill = SubResource("StyleBoxFlat_kplpg")
+value = 100.0
+show_percentage = false
+script = ExtResource("9_hnvfn")
+
+[node name="HealthBar" type="ColorRect" parent="UI/UIPanelRoot"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -451.0
+offset_top = 104.0
+offset_right = -60.0
+offset_bottom = 148.0
+grow_horizontal = 0
+color = Color(0, 0.733333, 0, 1)
+script = ExtResource("10_0c4ch")
+
+[node name="OptionsLayer" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+process_mode = 2
+
+[node name="OptionsMenu" type="CenterContainer" parent="OptionsLayer"]
+process_mode = 2
+auto_translate_mode = 1
+offset_left = 409.0
+offset_top = 585.0
+offset_right = 589.0
+offset_bottom = 863.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsLayer/OptionsMenu"]
+auto_translate_mode = 1
+layout_mode = 2
+theme_override_constants/separation = 80
+
+[node name="Title" type="MarginContainer" parent="OptionsLayer/OptionsMenu/VBoxContainer"]
+auto_translate_mode = 1
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="OptionsLayer/OptionsMenu/VBoxContainer/Title"]
+auto_translate_mode = 1
+layout_mode = 2
+theme_override_font_sizes/font_size = 72
+text = "Options Menu"
+
+[node name="MenuButtonContainer" type="VBoxContainer" parent="OptionsLayer/OptionsMenu/VBoxContainer"]
+auto_translate_mode = 1
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="CenterContainer" type="CenterContainer" parent="OptionsLayer/OptionsMenu/VBoxContainer/MenuButtonContainer"]
+auto_translate_mode = 1
+layout_mode = 2
+
+[node name="master_volume" type="HSlider" parent="OptionsLayer/OptionsMenu/VBoxContainer/MenuButtonContainer/CenterContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+tick_count = 20
+
+[node name="Label" type="Label" parent="OptionsLayer/OptionsMenu/VBoxContainer/MenuButtonContainer/CenterContainer"]
+layout_mode = 2
+text = "Master Volume
+
+
+"
+
+[node name="CenterContainer2" type="CenterContainer" parent="OptionsLayer/OptionsMenu/VBoxContainer/MenuButtonContainer"]
+auto_translate_mode = 1
+layout_mode = 2
+
+[node name="HowToPlayButton" type="Button" parent="OptionsLayer/OptionsMenu/VBoxContainer/MenuButtonContainer/CenterContainer2"]
+unique_name_in_owner = true
+auto_translate_mode = 1
+layout_mode = 2
+theme_type_variation = &"MainMenuButton"
+text = "How To Play"
+
+[node name="CenterContainer3" type="CenterContainer" parent="OptionsLayer/OptionsMenu/VBoxContainer/MenuButtonContainer"]
+auto_translate_mode = 1
+layout_mode = 2
+
+[node name="OptionsButton" type="Button" parent="OptionsLayer/OptionsMenu/VBoxContainer/MenuButtonContainer/CenterContainer3"]
+auto_translate_mode = 1
+layout_mode = 2
+theme_type_variation = &"MainMenuButton"
+text = "Options"
+
+[node name="CenterContainer4" type="CenterContainer" parent="OptionsLayer/OptionsMenu/VBoxContainer/MenuButtonContainer"]
+auto_translate_mode = 1
+layout_mode = 2
+
+[node name="MainMenuButton" type="Button" parent="OptionsLayer/OptionsMenu/VBoxContainer/MenuButtonContainer/CenterContainer4"]
+auto_translate_mode = 1
+layout_mode = 2
+theme_type_variation = &"MainMenuButton"
+text = "Main Menu"
+
+[connection signal="value_changed" from="OptionsLayer/OptionsMenu/VBoxContainer/MenuButtonContainer/CenterContainer/master_volume" to="." method="_on_master_volume_value_changed"]
+[connection signal="pressed" from="OptionsLayer/OptionsMenu/VBoxContainer/MenuButtonContainer/CenterContainer4/MainMenuButton" to="." method="_on_main_menu_button_pressed"]

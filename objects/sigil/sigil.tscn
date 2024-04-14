@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cnn1lqaotcdax"]
 
 [ext_resource type="Script" path="res://objects/sigil/sigil.gd" id="1_fkfli"]
-[ext_resource type="Texture2D" uid="uid://b5mto2fxe75ka" path="res://textures/star-sigil.png" id="2_b7nm0"]
+[ext_resource type="Texture2D" uid="uid://xxkmelf2ku04" path="res://particles/star.png" id="2_ijeoa"]
 
 [sub_resource type="Animation" id="Animation_8hxma"]
 resource_name = "star_zoom"
@@ -12,10 +12,10 @@ tracks/0/path = NodePath("Sprite2D:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 0.75),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(10, 10)]
+"values": [Vector2(1, 1), Vector2(20, 20)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6dge5"]
@@ -33,5 +33,4 @@ libraries = {
 autoplay = "star_zoom"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(10, 10)
-texture = ExtResource("2_b7nm0")
+texture = ExtResource("2_ijeoa")

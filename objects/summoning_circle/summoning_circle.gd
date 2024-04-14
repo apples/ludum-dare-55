@@ -27,27 +27,41 @@ func push_active_candle(index: int):
 func check_sigil_sequence():
 	print(current_sigil_sequence)
 	if current_sigil_sequence == [4,1,3,5,2]:
-		trigger_41352_star_sigil()
+		water_sigil()
 	elif current_sigil_sequence == [1,2,3,4,5]:
-		trigger_12345_star_sigil()
+		fire_sigil()
 	elif current_sigil_sequence == [5,4,3,2,1]:
-		trigger_54321_star_sigil()
+		vegan_sigil()
+	elif current_sigil_sequence == [1,2,5,3,4]:
+		air_sigil()
+	elif current_sigil_sequence == [4,3,5,2,1]:
+		dark_sigil()
 	else:
 		load_failed_sigil_vfx()
 		camera_shake_ref.rumble(10, 1)
 
-func trigger_41352_star_sigil():
+func water_sigil():
 	player_ref.current_element = Globals.Elements.WATER
 	player_ref.current_bullet_pattern = BulletSpawner.fire_circle
 	load_sigil_vfx()
 
-func trigger_12345_star_sigil():
+func fire_sigil():
 	player_ref.current_element = Globals.Elements.FIRE
 	player_ref.current_bullet_pattern = BulletSpawner.fire_three_arc_immediate
 	load_sigil_vfx()
 
-func trigger_54321_star_sigil():
+func vegan_sigil():
 	player_ref.current_element = Globals.Elements.VEGANS
+	player_ref.current_bullet_pattern = BulletSpawner.fire_one_straight
+	load_sigil_vfx()
+
+func air_sigil():
+	player_ref.current_element = Globals.Elements.AIR
+	player_ref.current_bullet_pattern = BulletSpawner.fire_one_straight
+	load_sigil_vfx()
+
+func dark_sigil():
+	player_ref.current_element = Globals.Elements.DARK
 	player_ref.current_bullet_pattern = BulletSpawner.fire_one_straight
 	load_sigil_vfx()
 

@@ -55,6 +55,7 @@ func next_phrase() -> void:
 		
 		text_tween = create_tween()
 		text_label.visible_ratio = 0.0
+		
 		text_tween.tween_property(text_label, "visible_ratio", 1.0, 1.0)
 	else:
 		var t = create_tween()

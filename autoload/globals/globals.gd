@@ -55,7 +55,9 @@ func _unhandled_key_input(event: InputEvent) -> void:
 #top is weak to bottom
 enum Elements {
 	UNSET,
-	FIRE,
+	AIR,
 	WATER,
-	VEGANS
+	VEGANS,
+	DARK,
+	FIRE,
 }
