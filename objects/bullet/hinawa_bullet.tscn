@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c40uooic75as5"]
+
+[ext_resource type="PackedScene" uid="uid://c16bxsiokr13i" path="res://objects/bullet/bullet.tscn" id="1_7jju0"]
+
+[node name="HinawaBullet" instance=ExtResource("1_7jju0")]
+speed = 6.0
