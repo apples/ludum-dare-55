@@ -27,6 +27,7 @@ func check_sigil_sequence():
 		trigger_41352_star_sigil()
 
 func trigger_41352_star_sigil():
+	player_ref.current_bullet_pattern = BulletSpawner.fire_circle
 	print("that's a star yo")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -19,6 +19,8 @@ var current_speed = NORMAL_SPEED
 var summoning_circle_ref: Node2D
 var summoning = false
 
+var current_bullet_pattern = BulletSpawner.fire_one_straight
+
 func _ready() -> void:
 	Globals.player_health = starting_health
 	Globals.player_health_changed.connect(_on_player_health_changed)
@@ -81,7 +83,7 @@ func summon_tick():
 
 func shoot_bullet():
 	if refire_delay_timer.is_stopped():
-		BulletSpawner.fire_one_straight(
+		current_bullet_pattern.call(
 			self, homing_bullet_scene,
 			$bullet_spawn_location.position,
 			$bullet_spawn_location.rotation)
