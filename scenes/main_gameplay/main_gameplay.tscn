@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c3rvm3rw6opg"]
+[gd_scene load_steps=19 format=3 uid="uid://c3rvm3rw6opg"]
 
 [ext_resource type="Script" path="res://node_types/camera_shake.gd" id="1_lrklj"]
 [ext_resource type="Script" path="res://scenes/main_gameplay/main_gameplay.gd" id="1_wt4mr"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cwcfvig1wond3" path="res://objects/summoning_circle/summoning_circle.tscn" id="7_6sfe8"]
 [ext_resource type="Script" path="res://ui/hearts.gd" id="7_u0gx2"]
 [ext_resource type="Script" path="res://scenes/main_gameplay/summon_meter.gd" id="8_2alke"]
+[ext_resource type="Script" path="res://ui/health_bar.gd" id="10_ggp8c"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fenso"]
 normal = Vector2(1, 0)
@@ -201,6 +202,13 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_kplpg")
 value = 100.0
 show_percentage = false
 script = ExtResource("8_2alke")
+
+[node name="HealthBar" type="ColorRect" parent="UI"]
+offset_top = 70.0
+offset_right = 920.0
+offset_bottom = 78.0
+color = Color(0, 0.733246, 5.77569e-07, 1)
+script = ExtResource("10_ggp8c")
 
 [node name="SummoningCircle" parent="." instance=ExtResource("7_6sfe8")]
 position = Vector2(1, -7)
