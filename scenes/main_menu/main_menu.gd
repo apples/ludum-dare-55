@@ -7,6 +7,7 @@ extends Control
 
 func _ready() -> void:
 	start_game_button.grab_focus()
+	MusicMan.music(  preload("res://sfx/hjr_undersea_scramble.ogg"), DataStore.current.music_volume)
 
 
 func _on_start_game_button_pressed() -> void:
@@ -17,7 +18,7 @@ func _on_how_to_play_button_pressed() -> void:
 	pass # Replace with function body.
 
 func _on_options_button_pressed() -> void:
-	pass # Replace with function body.
+	SceneGirl.change_scene("res://scenes/options_menu/options_menu.tscn")
 
 
 func _on_start_game_button_mouse_entered() -> void:
