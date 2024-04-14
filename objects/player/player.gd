@@ -24,7 +24,7 @@ var summoning_circle_ref: Node2D
 var summoning = false
 
 var current_bullet_pattern = BulletSpawner.fire_three_arc
-var current_bullet_type = bullet_scene
+var current_bullet_type = jericho_bullet_scene
 var current_element = Globals.Elements.UNSET
 
 func _ready() -> void:
@@ -91,7 +91,7 @@ func shoot_bullet():
 	if refire_delay_timer.is_stopped():
 		current_bullet_pattern.call(
 			self,
-			jericho_bullet_scene,
+			current_bullet_type,
 			$bullet_spawn_location.position,
 			$bullet_spawn_location.rotation)
 		refire_delay_timer.start()

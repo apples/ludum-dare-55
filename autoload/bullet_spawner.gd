@@ -177,7 +177,7 @@ static func fire_spiral(
 
 
 static func _team(caller: Node2D) -> Bullet.Team:
-	if caller is BombBullet:
+	if caller is Bullet:
 		return caller.allegiance
 	elif caller.is_in_group("Player"):
 		return Bullet.Team.PLAYER
@@ -187,6 +187,6 @@ static func _team(caller: Node2D) -> Bullet.Team:
 static func _element(caller: Node2D) -> Globals.Elements:
 	if caller is Player:
 		return caller.current_element
-	elif caller is BombBullet:
+	elif caller is Bullet:
 		return caller.element
 	return Globals.Elements.UNSET
