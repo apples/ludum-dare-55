@@ -3,6 +3,7 @@ extends Node2D
 var player_ref: CharacterBody2D
 var sigil_sequence_active = false
 var current_sigil_sequence = []
+var sigil_scene = preload("res://objects/sigil/sigil.tscn")
 
 
 # Called when the node enters the scene tree for the first time.
@@ -29,11 +30,19 @@ func check_sigil_sequence():
 func trigger_41352_star_sigil():
 	player_ref.current_bullet_pattern = BulletSpawner.fire_circle
 	print("that's a star yo")
+	load_sigil_vfx()
+
+func load_sigil_vfx():
+	var new_sigil_vfx = sigil_scene.instantiate()
+	var sigil_sfx_pos = Vector2(500, 525)
+	new_sigil_vfx.set_position(sigil_sfx_pos)
+	self.get_parent().add_child(new_sigil_vfx)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if current_sigil_sequence.size() == 5:
 		if $SigilCreatedTimer.is_stopped():
+			check_sigil_sequence()
 			$SigilCreatedTimer.start()
 
 
@@ -55,6 +64,6 @@ func player_started_summoning():
 	$Candle5.is_player_on_candle()
 
 func _on_sigil_created_timer_timeout():
-	check_sigil_sequence()
+	#check_sigil_sequence()
 	reset_summoning_circle()
 	print("yooooo")
