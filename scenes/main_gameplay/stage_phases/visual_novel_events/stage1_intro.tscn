@@ -27,8 +27,5 @@ start_right_side = false
 [node name="VisualNovelEvent" instance=ExtResource("1_4vsxa")]
 dialog = SubResource("Resource_0w3kb")
 
-[node name="PortraitLeft" parent="ViewRoot" index="0"]
-layout_mode = 0
-
-[node name="PortraitRight" parent="ViewRoot" index="1"]
+[node name="PortraitRight" parent="Node2D/ViewRoot" index="1"]
 layout_mode = 0

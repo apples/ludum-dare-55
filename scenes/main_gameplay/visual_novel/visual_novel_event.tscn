@@ -42,6 +42,7 @@ metadata/_edit_use_anchors_ = true
 unique_name_in_owner = true
 auto_translate_mode = 1
 custom_minimum_size = Vector2(425, 550)
+layout_mode = 0
 offset_left = 495.0
 offset_top = 300.0
 offset_right = 920.0
