@@ -23,7 +23,8 @@ func _ready():
 
 func _start_on_delay(controller, path_follower, delay_time):
 	await controller.wait_for(delay_time)
-	create_tween().tween_property(path_follower, \"progress_ratio\", 1.0, 10)
+	var tw = create_tween().tween_property(path_follower, \"progress_ratio\", 1.0, 10)
+	tw.finished.connect(func(): controller.kill())
 
 
 func _process(delta: float) -> void:
