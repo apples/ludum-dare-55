@@ -17,21 +17,18 @@ func _physics_process(delta: float) -> void:
 
 func hit(damage: int, element_type: Globals.Elements) -> void:
 	var element_mod = 1
-	if element == Globals.Elements.FIRE:
-		if element_type == Globals.Elements.WATER:
+	if(element == Globals.Elements.UNSET || 
+	element_type == Globals.Elements.UNSET || 
+	element == element_type):
+		pass
+	else:
+		var a = (Globals.Elements.size() - 2) / 2 # 1 if 3, 2 if 5
+		var offset = a - element
+		if (element_type + offset + Globals.Elements.size() - 1) % (Globals.Elements.size() - 1) > a:
 			element_mod = 2
-		elif element_type == Globals.Elements.VEGANS:
+		else:
 			element_mod = .5
-	elif element == Globals.Elements.WATER:
-		if element_type == Globals.Elements.VEGANS:
-			element_mod = 2
-		elif element_type == Globals.Elements.FIRE:
-			element_mod = .5
-	elif element == Globals.Elements.VEGANS:
-		if element_type == Globals.Elements.FIRE:
-			element_mod = 2
-		elif element_type == Globals.Elements.WATER:
-			element_mod = .5
+	
 	
 	health -= damage * element_mod
 	if health <= 0:
