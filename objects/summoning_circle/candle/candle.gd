@@ -1,4 +1,4 @@
-extends Node2D
+extends Area2D
 var summoning_circle_ref: Node2D
 var active = false
 var index = 0
@@ -20,11 +20,19 @@ func deactivate_candle():
 	$CandleLightSprite.frame = 0
 	active = false
 
+func is_player_on_candle():
+	var bodies = self.get_overlapping_bodies()
+	for n in range(bodies.size()):
+		if bodies[n].name == "Player":
+			trigger_activate_candle()
+
 func _on_body_entered(body):
 	if body.name == "Player" and Input.is_action_pressed("Summon"):
-		if Globals.summon_ink > 0:
-			summoning_circle_ref.sigil_sequence_active = true
-			summoning_circle_ref.push_active_candle(index)
-			Globals.summon_ink = 100
-			activate_candle()
-			# signal to summoning circle
+		trigger_activate_candle()
+
+func trigger_activate_candle():
+	if Globals.summon_ink > 0:
+		summoning_circle_ref.sigil_sequence_active = true
+		summoning_circle_ref.push_active_candle(index)
+		Globals.summon_ink += 15
+		activate_candle()

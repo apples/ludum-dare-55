@@ -27,6 +27,7 @@ func check_sigil_sequence():
 		trigger_41352_star_sigil()
 
 func trigger_41352_star_sigil():
+	player_ref.current_bullet_pattern = BulletSpawner.fire_circle
 	print("that's a star yo")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -37,7 +38,7 @@ func _process(delta):
 
 
 func reset_summoning_circle():
-	Globals.summon_ink = 100
+	#Globals.summon_ink = 100
 	sigil_sequence_active = false
 	current_sigil_sequence = []
 	$Candle1.deactivate_candle()
@@ -46,6 +47,12 @@ func reset_summoning_circle():
 	$Candle4.deactivate_candle()
 	$Candle5.deactivate_candle()
 
+func player_started_summoning():
+	$Candle1.is_player_on_candle()
+	$Candle2.is_player_on_candle()
+	$Candle3.is_player_on_candle()
+	$Candle4.is_player_on_candle()
+	$Candle5.is_player_on_candle()
 
 func _on_sigil_created_timer_timeout():
 	check_sigil_sequence()
