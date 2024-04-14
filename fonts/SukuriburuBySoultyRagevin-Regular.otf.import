@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://ba2sqadr7at8k"
-path="res://.godot/imported/Beholden-Regular.ttf-65c8aa2900514ab0e83da384f82a068f.fontdata"
+uid="uid://b83vweh5jpmg0"
+path="res://.godot/imported/SukuriburuBySoultyRagevin-Regular.otf-3909c872a53418f32581b0c07437c627.fontdata"
 
 [deps]
 
-source_file="res://fonts/Beholden-Regular.ttf"
-dest_files=["res://.godot/imported/Beholden-Regular.ttf-65c8aa2900514ab0e83da384f82a068f.fontdata"]
+source_file="res://fonts/SukuriburuBySoultyRagevin-Regular.otf"
+dest_files=["res://.godot/imported/SukuriburuBySoultyRagevin-Regular.otf-3909c872a53418f32581b0c07437c627.fontdata"]
 
 [params]
 
