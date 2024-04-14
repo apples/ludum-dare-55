@@ -73,6 +73,28 @@ static func fire_three_arc(
 		
 		await caller.get_tree().create_timer(0.033333).timeout
 
+static func fire_three_arc_immediate(
+	caller: Node2D,
+	bullet_type: PackedScene,
+	offset: Vector2,
+	angle: float) -> void:
+	
+	var scene = caller.get_tree().get_root()
+	
+	for i in range(3):
+		var transform = caller.global_transform
+		
+		transform = transform.scaled(Vector2.ONE)
+		transform = transform.rotated_local(deg_to_rad(-15 + i * 15))
+		transform = transform.translated_local(offset)
+		transform = transform.rotated_local(angle)
+		
+		var bullet = bullet_type.instantiate()
+		bullet.global_transform = transform
+		bullet.allegiance = _team(caller)
+		bullet.element = _element(caller)
+		scene.add_child(bullet)
+
 static func fire_five_arc(
 	caller: Node2D,
 	bullet_type: PackedScene,
