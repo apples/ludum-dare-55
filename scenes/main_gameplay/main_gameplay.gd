@@ -29,11 +29,15 @@ func next_stage_phase() -> void:
 		current_stage_phase = stage.phases[stage_phase].instantiate()
 		current_stage_phase.phase_complete.connect(_on_phase_complete)
 		add_child(current_stage_phase)
-	if stage_phase == stage.phases.size() - 1:
-		%HealthBar.visible = true
+		if stage_phase == stage.phases.size() - 1:
+			%HealthBar.visible = true
 	else:
 		%HealthBar.visible = false
 		print_rich("[rainbow][tornado]STAGE DONE!!!![/tornado][/rainbow]")
+		print(stage.stage_name)
+		if stage.stage_name == "Oak Hill II" && !Save.current.levels_beaten.has("0"):
+			Save.current.levels_beaten.append("0")
+			Save.save()
 
 func _on_phase_complete() -> void:
 	next_stage_phase()
