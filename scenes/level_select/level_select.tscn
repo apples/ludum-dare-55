@@ -1,13 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://b47bekomubotr"]
+[gd_scene load_steps=7 format=3 uid="uid://b47bekomubotr"]
 
 [ext_resource type="Texture2D" uid="uid://b8pgots7rhv5y" path="res://textures/fishy.png" id="1_cgyoc"]
 [ext_resource type="Script" path="res://scenes/level_select/level_select.gd" id="1_n4oea"]
 [ext_resource type="Texture2D" uid="uid://dfrbcms32h0s5" path="res://textures/fishyDark.png" id="2_jq0oc"]
+[ext_resource type="Texture2D" uid="uid://c3o1ry345bkvl" path="res://textures/levelSelectTemp.png" id="2_ywhfp"]
 [ext_resource type="Texture2D" uid="uid://ds37j38egatnn" path="res://textures/octy.png" id="3_y01rs"]
 [ext_resource type="Texture2D" uid="uid://btce1qfw3cd3l" path="res://textures/octyDark.png" id="4_hpna1"]
 
 [node name="LevelSelect" type="Node2D"]
 script = ExtResource("1_n4oea")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1440.0
+offset_bottom = 1080.0
+texture = ExtResource("2_ywhfp")
 
 [node name="Label" type="Label" parent="."]
 anchors_preset = 5
@@ -20,16 +26,18 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 128
 text = "Level Select"
 
-[node name="FirstLevelButton" type="TextureButton" parent="."]
-offset_left = 172.0
-offset_top = 382.0
-offset_right = 428.0
-offset_bottom = 638.0
+[node name="A2" type="TextureButton" parent="."]
+offset_left = 174.0
+offset_top = 166.0
+offset_right = 430.0
+offset_bottom = 422.0
+disabled = true
 texture_normal = ExtResource("1_cgyoc")
 texture_pressed = ExtResource("2_jq0oc")
+texture_disabled = ExtResource("2_jq0oc")
 stretch_mode = 4
 
-[node name="Label" type="Label" parent="FirstLevelButton"]
+[node name="Label" type="Label" parent="A2"]
 layout_mode = 0
 offset_left = -136.0
 offset_top = 282.0
@@ -38,17 +46,19 @@ offset_bottom = 323.0
 theme_override_font_sizes/font_size = 64
 text = "The Ocean Hides its Fish Secrets"
 
-[node name="SecondLevelButton" type="TextureButton" parent="."]
+[node name="B2" type="TextureButton" parent="."]
 auto_translate_mode = 1
-offset_left = 901.0
-offset_top = 384.0
-offset_right = 1157.0
-offset_bottom = 640.0
+offset_left = 966.0
+offset_top = 157.0
+offset_right = 1222.0
+offset_bottom = 413.0
+disabled = true
 texture_normal = ExtResource("3_y01rs")
 texture_pressed = ExtResource("4_hpna1")
+texture_disabled = ExtResource("4_hpna1")
 stretch_mode = 4
 
-[node name="Label" type="Label" parent="SecondLevelButton"]
+[node name="Label" type="Label" parent="B2"]
 auto_translate_mode = 1
 layout_mode = 0
 offset_left = -136.0
@@ -59,5 +69,73 @@ theme_override_font_sizes/font_size = 64
 text = "Hidden Squid-like Creatures,
  Hidden in the Depths"
 
-[connection signal="pressed" from="FirstLevelButton" to="." method="_on_first_level_button_pressed"]
-[connection signal="pressed" from="SecondLevelButton" to="." method="_on_second_level_button_pressed"]
+[node name="A1" type="TextureButton" parent="."]
+auto_translate_mode = 1
+offset_left = 346.0
+offset_top = 631.0
+offset_right = 474.0
+offset_bottom = 759.0
+disabled = true
+texture_normal = ExtResource("1_cgyoc")
+texture_pressed = ExtResource("2_jq0oc")
+texture_disabled = ExtResource("2_jq0oc")
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="A1"]
+auto_translate_mode = 1
+layout_mode = 0
+offset_left = 50.0
+offset_top = 156.0
+offset_right = 83.0
+offset_bottom = 197.0
+theme_override_font_sizes/font_size = 64
+text = "A1"
+
+[node name="B1" type="TextureButton" parent="."]
+auto_translate_mode = 1
+offset_left = 925.0
+offset_top = 624.0
+offset_right = 1053.0
+offset_bottom = 752.0
+disabled = true
+texture_normal = ExtResource("3_y01rs")
+texture_pressed = ExtResource("4_hpna1")
+texture_disabled = ExtResource("4_hpna1")
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="B1"]
+auto_translate_mode = 1
+layout_mode = 0
+offset_left = 50.0
+offset_top = 156.0
+offset_right = 83.0
+offset_bottom = 197.0
+theme_override_font_sizes/font_size = 64
+text = "B1"
+
+[node name="0" type="TextureButton" parent="."]
+auto_translate_mode = 1
+offset_left = 638.0
+offset_top = 840.0
+offset_right = 766.0
+offset_bottom = 968.0
+texture_normal = ExtResource("1_cgyoc")
+texture_pressed = ExtResource("2_jq0oc")
+texture_disabled = ExtResource("2_jq0oc")
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="0"]
+auto_translate_mode = 1
+layout_mode = 0
+offset_left = 50.0
+offset_top = 156.0
+offset_right = 83.0
+offset_bottom = 197.0
+theme_override_font_sizes/font_size = 64
+text = "Start"
+
+[connection signal="pressed" from="A2" to="." method="_on_a_2_pressed"]
+[connection signal="pressed" from="B2" to="." method="_on_b_2_pressed"]
+[connection signal="pressed" from="A1" to="." method="_on_a_1_pressed"]
+[connection signal="pressed" from="B1" to="." method="_on_b_1_pressed"]
+[connection signal="pressed" from="0" to="." method="_on_first_level_button_pressed"]
