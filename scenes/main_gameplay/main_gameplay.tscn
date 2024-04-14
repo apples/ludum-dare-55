@@ -82,6 +82,71 @@ script = ExtResource("1_lrklj")
 [node name="Player" parent="." instance=ExtResource("2_8jdjt")]
 position = Vector2(485, 561)
 
+[node name="PauseLayer" type="CanvasLayer" parent="Player"]
+unique_name_in_owner = true
+process_mode = 2
+visible = false
+
+[node name="PauseMenu" type="CenterContainer" parent="Player/PauseLayer"]
+process_mode = 2
+auto_translate_mode = 1
+offset_left = 409.0
+offset_top = 585.0
+offset_right = 589.0
+offset_bottom = 863.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Player/PauseLayer/PauseMenu"]
+auto_translate_mode = 1
+layout_mode = 2
+theme_override_constants/separation = 80
+
+[node name="Title" type="MarginContainer" parent="Player/PauseLayer/PauseMenu/VBoxContainer"]
+auto_translate_mode = 1
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="Player/PauseLayer/PauseMenu/VBoxContainer/Title"]
+auto_translate_mode = 1
+layout_mode = 2
+theme_override_font_sizes/font_size = 72
+text = "The Game"
+
+[node name="MenuButtonContainer" type="VBoxContainer" parent="Player/PauseLayer/PauseMenu/VBoxContainer"]
+auto_translate_mode = 1
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="CenterContainer" type="CenterContainer" parent="Player/PauseLayer/PauseMenu/VBoxContainer/MenuButtonContainer"]
+auto_translate_mode = 1
+layout_mode = 2
+
+[node name="ResumeGameButton" type="Button" parent="Player/PauseLayer/PauseMenu/VBoxContainer/MenuButtonContainer/CenterContainer"]
+unique_name_in_owner = true
+auto_translate_mode = 1
+layout_mode = 2
+theme_type_variation = &"MainMenuButton"
+text = "Resume Game"
+
+[node name="CenterContainer2" type="CenterContainer" parent="Player/PauseLayer/PauseMenu/VBoxContainer/MenuButtonContainer"]
+auto_translate_mode = 1
+layout_mode = 2
+
+[node name="HowToPlayButton" type="Button" parent="Player/PauseLayer/PauseMenu/VBoxContainer/MenuButtonContainer/CenterContainer2"]
+unique_name_in_owner = true
+auto_translate_mode = 1
+layout_mode = 2
+theme_type_variation = &"MainMenuButton"
+text = "How To Play"
+
+[node name="CenterContainer3" type="CenterContainer" parent="Player/PauseLayer/PauseMenu/VBoxContainer/MenuButtonContainer"]
+auto_translate_mode = 1
+layout_mode = 2
+
+[node name="OptionsButton" type="Button" parent="Player/PauseLayer/PauseMenu/VBoxContainer/MenuButtonContainer/CenterContainer3"]
+auto_translate_mode = 1
+layout_mode = 2
+theme_type_variation = &"MainMenuButton"
+text = "Options"
+
 [node name="UI" type="Node2D" parent="."]
 
 [node name="Score" type="Label" parent="UI"]
@@ -115,3 +180,4 @@ script = ExtResource("8_2alke")
 position = Vector2(1, -7)
 
 [connection signal="player_died" from="Player" to="." method="_on_player_player_died"]
+[connection signal="pressed" from="Player/PauseLayer/PauseMenu/VBoxContainer/MenuButtonContainer/CenterContainer/ResumeGameButton" to="." method="_on_resume_game_button_pressed"]
