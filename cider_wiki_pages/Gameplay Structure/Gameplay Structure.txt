@@ -1,0 +1,11 @@
+Gameplay is organized into stages, which are composed of a list of stage phases. Phases are a pattern of behavior for a collection of enemies. Most basic behaviors are one or more instances of an [code]enemy[/code] scene following internal paths over a [code]play_time[/code] number of seconds.
+
+It should be possible to composite multiple phases into a single phase by instantiating them within a new phase scene.
+
+Phase scenes created by inheriting from [code]StagePhase[/code] signal completion to the main gameplay loop when their [code]enemies[/code] array is either empty or none of the nodes in it are valid. This causes phases to proceed automatically if the player kills all of the enemies within a phase.
+
+Stages are stored in [code]main_gameplay/stages[/code] and are resources with a name and a list of phases to execute. To create a new stage, just duplicate an existing one and rename it.
+
+Stage phases are stored in [code]main_gameplay/stage_phases[/code]. To make a new phase, duplicate one of the existing phases in [code]simple_patterns[/code], and just draw new paths to attach the enemies to and make sure they're connected in the [code]_ready()[/code] function.
+
+Most movement along the paths can be controlled by creating a tween that scales the [code]PathFollow2D.progress_ratio[/code] between 0.0 and 1.0.
