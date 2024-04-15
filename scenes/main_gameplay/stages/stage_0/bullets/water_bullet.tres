@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="BulletResource" load_steps=4 format=3 uid="uid://dlykk3ojdwlq5"]
 
 [ext_resource type="Script" path="res://objects/bullet/bullet_resource.gd" id="1_b7b53"]
-[ext_resource type="SpriteFrames" uid="uid://dun7i56ujqh2x" path="res://particles/normal_shot.tres" id="2_vtruc"]
+[ext_resource type="SpriteFrames" uid="uid://dngmelh0bwo38" path="res://particles/bullet_blue.tres" id="2_ggybf"]
 [ext_resource type="PackedScene" uid="uid://c16bxsiokr13i" path="res://objects/bullet/bullet.tscn" id="3_ngcxy"]
 
 [resource]
@@ -12,6 +12,6 @@ element = 2
 speed = 7.5
 speen = 0.0
 size = 1.0
-sprite_size = 1.0
-sprite = ExtResource("2_vtruc")
+sprite_size = 3.0
+sprite = ExtResource("2_ggybf")
 z_index = 80
