@@ -16,10 +16,14 @@ func _on_start_game_button_pressed() -> void:
 
 
 func _on_how_to_play_button_pressed() -> void:
-	get_tree().root.add_child(how_to_play_scene.instantiate())
+	var os = how_to_play_scene.instantiate()
+	get_tree().root.add_child(os)
+	os.tree_exited.connect(_return_from_how_to_play)
 
 func _on_options_button_pressed() -> void:
-	get_tree().root.add_child(options_scene.instantiate())
+	var os = options_scene.instantiate()
+	get_tree().root.add_child(os)
+	os.tree_exited.connect(_return_from_options)
 
 
 func _on_start_game_button_mouse_entered() -> void:
@@ -33,3 +37,8 @@ func _on_how_to_play_button_mouse_entered() -> void:
 func _on_options_button_mouse_entered() -> void:
 	options_button.grab_focus()
 
+func _return_from_options()->void:
+	options_button.grab_focus()
+	
+func _return_from_how_to_play()->void:
+	how_to_play_button.grab_focus()
