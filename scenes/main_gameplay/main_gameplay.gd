@@ -27,6 +27,7 @@ func next_stage_phase() -> void:
 		current_stage_phase = null
 	stage_phase += 1
 	if stage_phase < stage.phases.size():
+		print("Starting Phase: ", stage.phases[stage_phase].description)
 		current_stage_phase = stage.phases[stage_phase].stage_phase.instantiate()
 		if "enemy_resource" in current_stage_phase:
 			current_stage_phase.enemy_resource = stage.phases[stage_phase].enemy_resource
