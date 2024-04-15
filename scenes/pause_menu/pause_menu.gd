@@ -23,5 +23,11 @@ func _on_main_menu_button_pressed() -> void:
 
 func _on_options_button_pressed() -> void:
 	get_tree().paused = true
-	self.visible = false
-	get_tree().root.add_child(options_scene.instantiate())
+	%PauseLayer.visible = false
+	var os = options_scene.instantiate()
+	get_tree().root.add_child(os)
+	os.tree_exited.connect(_unhide_pause_menu)
+func _unhide_pause_menu()->void:
+	%PauseLayer.visible = true
+
+
