@@ -13,6 +13,11 @@ signal changed
 ## Emitted when the player's health changes
 signal player_health_changed
 
+var haxor: int = 1:
+	set(v): haxor = v; 
+var cheat_timeout: int = 0:
+	set(v): cheat_timeout = v; 
+
 ## Example variable.
 var player_health: int = 5:
 	set(v):
@@ -65,7 +70,6 @@ func _ready() -> void:
 		main_gameplay_stage = Stage.new()
 		main_gameplay_stage.stage_name = "Test"
 		main_gameplay_stage.phases.append(stage_phase)
-		Globals.player_invuln= 12000
 		print_rich("[color=green]LOADED TEST PHASE:[/color] %s" % [test_stage_phase])
 
 ## Reset most variables to their default state.
