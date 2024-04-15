@@ -1,9 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://dl3lrfam021ul"]
+[gd_scene load_steps=6 format=3 uid="uid://dl3lrfam021ul"]
 
 [ext_resource type="Script" path="res://scenes/main_menu/main_menu.gd" id="1_te6vx"]
+[ext_resource type="Shader" path="res://materials/tiling_shader.gdshader" id="2_xfkfg"]
+[ext_resource type="Texture2D" uid="uid://c031a0c5v45ux" path="res://textures/tiledBlueBackground.png" id="3_fqvt0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ts50w"]
 bg_color = Color(0.501961, 0.419608, 0.564706, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lpt4d"]
+shader = ExtResource("2_xfkfg")
 
 [node name="MainMenu" type="PanelContainer"]
 anchors_preset = 15
@@ -13,6 +18,14 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ts50w")
 script = ExtResource("1_te6vx")
+
+[node name="Background" type="TextureRect" parent="."]
+auto_translate_mode = 1
+material = SubResource("ShaderMaterial_lpt4d")
+layout_mode = 2
+texture = ExtResource("3_fqvt0")
+expand_mode = 1
+stretch_mode = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
