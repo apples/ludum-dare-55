@@ -138,6 +138,7 @@ func shoot_bullet():
 			$bullet_spawn_location.position,
 			$bullet_spawn_location.rotation
 		)
+		MusicMan.sfx(preload("res://sfx/player_shoot.wav"))
 		refire_delay_timer.start()
 
 func _on_player_health_changed() -> void:
