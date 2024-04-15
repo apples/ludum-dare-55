@@ -1,9 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://c3rvm3rw6opg"]
+[gd_scene load_steps=21 format=3 uid="uid://c3rvm3rw6opg"]
 
 [ext_resource type="Script" path="res://node_types/camera_shake.gd" id="1_lrklj"]
 [ext_resource type="Script" path="res://scenes/main_gameplay/main_gameplay.gd" id="1_wt4mr"]
 [ext_resource type="PackedScene" uid="uid://cv58ruem01fvv" path="res://objects/player/player.tscn" id="2_8jdjt"]
-[ext_resource type="Resource" uid="uid://crjcdljkom5nt" path="res://scenes/main_gameplay/stages/hinawa_test_stage.tres" id="2_btnwa"]
 [ext_resource type="PackedScene" uid="uid://ddc45fjr30s3c" path="res://scenes/main_gameplay/background/background.tscn" id="3_sf0ra"]
 [ext_resource type="Texture2D" uid="uid://dtajjiutgllfj" path="res://textures/cloud.png" id="4_3jwll"]
 [ext_resource type="Script" path="res://ui/score.gd" id="6_sq3jg"]
@@ -53,7 +52,6 @@ corner_radius_bottom_left = 8
 
 [node name="MainGameplay" type="Node2D"]
 script = ExtResource("1_wt4mr")
-stage = ExtResource("2_btnwa")
 
 [node name="Walls" type="StaticBody2D" parent="." groups=["Wall"]]
 

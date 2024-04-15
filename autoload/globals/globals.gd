@@ -42,6 +42,9 @@ var boss_max_health: int = 100:
 var boss_health: int = boss_max_health:
 	set(v): boss_health = v; changed.emit()
 
+var main_gameplay_stage: Stage = null:
+	set(v): main_gameplay_stage = v; changed.emit()
+
 
 ## Reset all variables to their default state.
 func reset():
@@ -49,6 +52,7 @@ func reset():
 	player_health = 0
 	player_pos = Vector2.ZERO
 	score = 0
+	main_gameplay_stage = null
 
 #region Debug overlay
 var _overlay
