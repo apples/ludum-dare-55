@@ -145,8 +145,10 @@ func _on_player_health_changed() -> void:
 		#TODO death SFX
 		$DeathTimer.start()
 		$DeathParticles.emitting = true
+		MusicMan.sfx(preload("res://sfx/creed.ogg"))
 	else:
 		Globals.player_invuln = invuln_frame_time
+		MusicMan.sfx(preload("res://sfx/player_hit.wav"))
 
 
 func _on_death_timer_timeout() -> void:
