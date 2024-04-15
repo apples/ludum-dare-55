@@ -32,15 +32,15 @@ func push_active_candle(index: int):
 
 func check_sigil_sequence():
 	print(current_sigil_sequence)
-	if current_sigil_sequence == [4,1,3,5,2]:
+	if current_sigil_sequence == [4,1,3,5,2] or current_sigil_sequence == [2,5,3,1,4]:
 		star_sigil()
-	elif current_sigil_sequence == [3,4,5,1,2]:
+	elif current_sigil_sequence == [3,4,5,1,2] or current_sigil_sequence == [2,1,5,4,3]:
 		circle_sigil()
-	elif current_sigil_sequence == [1,5,2,3,4]:
+	elif current_sigil_sequence == [1,5,2,3,4] or current_sigil_sequence == [4,3,2,5,1]:
 		s_sigil()
-	elif current_sigil_sequence == [5,4,1,3,2]:
+	elif current_sigil_sequence == [5,4,1,3,2] or current_sigil_sequence == [2,3,1,4,5]:
 		w_sigil()
-	elif current_sigil_sequence == [2,5,1,3,4]:
+	elif current_sigil_sequence == [2,5,1,3,4] or current_sigil_sequence == [4,3,1,5,2]:
 		spiral_sigil()
 	#elif current_sigil_sequence == [5,4,3,2,1]:
 		#vegan_sigil()

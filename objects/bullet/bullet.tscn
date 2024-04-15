@@ -17,7 +17,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_o1ss5"]
 radius = 11.0
 
-[node name="Bullet" type="Node2D"]
+[node name="Bullet" type="Node2D" groups=["Bullet"]]
 z_index = 80
 z_as_relative = false
 script = ExtResource("1_hu4wm")
