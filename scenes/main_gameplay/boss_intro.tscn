@@ -176,7 +176,8 @@ theme_override_fonts/font = SubResource("FontVariation_msfl6")
 theme_override_font_sizes/font_size = 90
 text = "NAUTICAL THREAT"
 horizontal_alignment = 1
-visible_ratio = -0.0666667
+visible_characters = 0
+visible_ratio = 0.0
 script = SubResource("GDScript_xdp2q")
 
 [node name="NameLabel" type="Label" parent="."]
@@ -203,7 +204,8 @@ theme_override_fonts/font = SubResource("FontVariation_msfl6")
 theme_override_font_sizes/font_size = 120
 text = "GRATIN"
 horizontal_alignment = 1
-visible_ratio = -0.166667
+visible_characters = 0
+visible_ratio = 0.0
 script = SubResource("GDScript_xdp2q")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="queue_free" unbinds=1]
