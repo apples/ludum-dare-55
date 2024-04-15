@@ -1,0 +1,49 @@
+[gd_resource type="Resource" script_class="VisualNovelDialog" load_steps=11 format=3 uid="uid://c81ybrdae8h8g"]
+
+[ext_resource type="Script" path="res://resource_types/visual_novel_phrase.gd" id="1_reljq"]
+[ext_resource type="Script" path="res://resource_types/visual_novel_dialog.gd" id="2_turt5"]
+
+[sub_resource type="Resource" id="Resource_ejwx0"]
+script = ExtResource("1_reljq")
+character = 0
+rich_text = "Oh, um.. hello!"
+
+[sub_resource type="Resource" id="Resource_5dd05"]
+script = ExtResource("1_reljq")
+character = 1
+rich_text = "Hello."
+
+[sub_resource type="Resource" id="Resource_1hvwh"]
+script = ExtResource("1_reljq")
+character = 0
+rich_text = "Are you the one causing the fish to go mad?"
+
+[sub_resource type="Resource" id="Resource_x42e5"]
+script = ExtResource("1_reljq")
+character = 1
+rich_text = "Sorry, but no. I'm the guardian of these waters."
+
+[sub_resource type="Resource" id="Resource_mtjca"]
+script = ExtResource("1_reljq")
+character = 1
+rich_text = "It is my duty to eliminate all trespassers."
+
+[sub_resource type="Resource" id="Resource_btevx"]
+script = ExtResource("1_reljq")
+character = 0
+rich_text = "Am I trespassing?"
+
+[sub_resource type="Resource" id="Resource_rksef"]
+script = ExtResource("1_reljq")
+character = 1
+rich_text = "I believe so, yes."
+
+[sub_resource type="Resource" id="Resource_qve8s"]
+script = ExtResource("1_reljq")
+character = 0
+rich_text = "... oh no."
+
+[resource]
+script = ExtResource("2_turt5")
+phrases = Array[ExtResource("1_reljq")]([SubResource("Resource_ejwx0"), SubResource("Resource_5dd05"), SubResource("Resource_1hvwh"), SubResource("Resource_x42e5"), SubResource("Resource_mtjca"), SubResource("Resource_btevx"), SubResource("Resource_rksef"), SubResource("Resource_qve8s")])
+start_right_side = false

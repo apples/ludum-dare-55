@@ -21,7 +21,7 @@ animations = [{
 script = ExtResource("3_wkb8s")
 sprite_frames = SubResource("SpriteFrames_weog2")
 element = 0
-health = 500.0
+health = 1000.0
 score_value = 10000.0
 initial_shoot_delay = 0.0
 shoot_cooldown = 0.0
@@ -30,7 +30,7 @@ shoot_cooldown = 0.0
 script = ExtResource("1_qqi6u")
 
 [node name="LuscaEnemy" parent="." instance=ExtResource("2_jkglm")]
-position = Vector2(384, 107)
+position = Vector2(468, -137)
 enemy_resource = SubResource("Resource_caw24")
 
 [node name="Outline" parent="LuscaEnemy" index="0"]
@@ -40,5 +40,9 @@ scale = Vector2(0.5, 0.5)
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("3_01rdi")
 flip_v = false
+
+[node name="ReferenceRect" type="ReferenceRect" parent="."]
+offset_right = 920.0
+offset_bottom = 1080.0
 
 [editable path="LuscaEnemy"]
