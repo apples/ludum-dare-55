@@ -50,10 +50,10 @@ func hit(damage: int, element_type: Globals.Elements) -> void:
 		var offset = a - element
 		if (element_type + offset + Globals.Elements.size() - 1) % (Globals.Elements.size() - 1) > a:
 			element_mod = 2
-			MusicMan.sfx(preload("res://sfx/enemyhit_effective.wav"))
+			MusicMan.sfx(preload("res://sfx/enemyhit_effective_2.wav"), null, 1, true, 0.5)
 		else:
 			element_mod = .5
-			MusicMan.sfx(preload("res://sfx/enemyhit_dis.wav"))
+			MusicMan.sfx(preload("res://sfx/enemyhit_dis_2.wav"), null, 1, true, 0.5)
 	
 	
 	health -= damage * element_mod
