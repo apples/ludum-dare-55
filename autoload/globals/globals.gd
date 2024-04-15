@@ -17,8 +17,8 @@ signal player_health_changed
 var player_health: int = 3:
 	set(v):
 		if player_invuln > 0:
-			push_error("Player health cannot be changed while invuln")
-			breakpoint
+			#push_error("Player health cannot be changed while invuln")
+			#breakpoint
 			return
 		player_health = v;
 		player_health_changed.emit();

@@ -41,8 +41,6 @@ func _physics_process(delta: float) -> void:
 	
 	if Globals.player_invuln > 0:
 		Globals.player_invuln -= 1
-		if Globals.player_invuln <= 0:
-			$CollisionShape2D.set_deferred("disabled", false)
 	
 	if Input.is_action_pressed("Menu"):
 		_pause()
@@ -110,7 +108,6 @@ func _on_player_health_changed() -> void:
 		$DeathParticles.emitting = true
 	else:
 		Globals.player_invuln = invuln_frame_time
-		$CollisionShape2D.set_deferred("disabled", true)
 
 
 func _on_death_timer_timeout() -> void:
