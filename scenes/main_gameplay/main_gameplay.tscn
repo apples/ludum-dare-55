@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cwcfvig1wond3" path="res://objects/summoning_circle/summoning_circle.tscn" id="7_6sfe8"]
 [ext_resource type="Script" path="res://ui/hearts.gd" id="7_u0gx2"]
 [ext_resource type="Script" path="res://scenes/main_gameplay/summon_meter.gd" id="8_2alke"]
-[ext_resource type="PackedScene" uid="uid://b0gu8ciysfxcg" path="res://scenes/main_gameplay/summons_ui.tscn" id="10_geq1w"]
+[ext_resource type="PackedScene" path="res://scenes/main_gameplay/summons_ui.tscn" id="10_geq1w"]
 [ext_resource type="Script" path="res://ui/health_bar.gd" id="10_ggp8c"]
 [ext_resource type="Texture2D" uid="uid://b5tualivrtibx" path="res://textures/panel-frame.png" id="11_k3ooy"]
 

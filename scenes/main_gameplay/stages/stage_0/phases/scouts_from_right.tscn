@@ -21,7 +21,7 @@ func _ready() -> void:
 		child_phase.enemy_resource = enemy_resource
 		child_phase.play_time = 2.0
 		child_phase.start_point = Vector2(930, -10)
-		child_phase.end_point = Vector2((i * 920/count) + (920/count/2), yvalue)
+		child_phase.end_point = Vector2(((i + 1) * 920/5) + (920/5/2), yvalue)
 		child_phase.phase_complete.connect(func(): remaining_children -= 1)
 		add_child(child_phase)
 
