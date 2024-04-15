@@ -84,7 +84,7 @@ func load_sigil_vfx(sigil_texture):
 
 func load_failed_sigil_vfx():
 	var new_failed_sigil_vfx = failed_sigil_scene.instantiate()
-	var failed_sigil_sfx_pos = Vector2(500, 535)
+	var failed_sigil_sfx_pos = global_position + Vector2(500, 535)
 	new_failed_sigil_vfx.set_position(failed_sigil_sfx_pos)
 	self.get_parent().add_child(new_failed_sigil_vfx)
 
@@ -116,4 +116,3 @@ func player_started_summoning():
 func _on_sigil_created_timer_timeout():
 	#check_sigil_sequence()
 	reset_summoning_circle()
-	print("yooooo")
