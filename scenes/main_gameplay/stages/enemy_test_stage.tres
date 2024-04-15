@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Stage" load_steps=11 format=3 uid="uid://c0kqnsyjxyb5w"]
+[gd_resource type="Resource" script_class="Stage" load_steps=11 format=3 uid="uid://dv80wlk4i6ql6"]
 
 [ext_resource type="Resource" path="res://objects/enemy/resources/fire_fesh.tres" id="1_2yt4t"]
 [ext_resource type="Script" path="res://resource_types/Phase.gd" id="2_o4sdy"]
