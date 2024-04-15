@@ -1,5 +1,8 @@
 extends StagePhase
 
+const LUSCA_COMPLETE = preload("res://scenes/main_gameplay/stage_phases/boss_phases/lusca_complete.tscn")
+const LUSCA_INTRO = preload("res://scenes/main_gameplay/stage_phases/boss_phases/lusca_intro.tscn")
+
 @onready var boss: CharacterBody2D = $LuscaEnemy
 
 var angle = 0.0
@@ -10,8 +13,8 @@ var fire_timers = []
 func _ready() -> void:
 	print("hi")
 	enemies = [boss]
-	boss.tree_exited.connect(func (): _goto("nothing"))
-	_goto("1")
+	boss.tree_exited.connect(func (): _goto("E"))
+	_goto("0")
 
 func _always_process(delta: float) -> void:
 	super._process(delta)
@@ -33,11 +36,25 @@ func _fire_timers() -> Array:
 			result.append(false)
 	return result
 
-func _state_1_enter() -> void:
+func _state_0_enter() -> void:
 	fire_rates = [17, 53]
 	fire_timers = fire_rates.duplicate()
 
+func _state_0_physics_process(delta: float) -> void:
+	boss.position = boss.position.move_toward(Vector2(920/2, 200), delta * 150.0)
+	if boss.position.is_equal_approx(Vector2(920/2, 200)):
+		_goto("1")
+		get_parent().add_child(LUSCA_INTRO.instantiate())
+
+func _state_1_enter() -> void:
+	fire_rates = [17, 93]
+	fire_timers = fire_rates.duplicate()
+
 func _state_1_physics_process(delta: float) -> void:
+	if not boss or boss.health < 750:
+		_goto("2")
+		return
+	
 	angle += TAU / 200.0
 	
 	var fire = _fire_timers()
@@ -68,6 +85,83 @@ func _state_1_physics_process(delta: float) -> void:
 		b.shoot(boss, Vector2.RIGHT.rotated(global_angle_to_target) * 100, global_angle_to_target)
 
 
+
+func _state_2_enter() -> void:
+	fire_rates = [120]
+	fire_timers = fire_rates.duplicate()
+	
+	boss.element = Globals.Elements.WATER
+
+func _state_2_exit() -> void:
+	boss.element = Globals.Elements.UNSET
+
+func _state_2_physics_process(delta: float) -> void:
+	if not boss or boss.health < 500:
+		_goto("3")
+		return
+	
+	var fire = _fire_timers()
+	
+	if fire[0]:
+		var b = BulletResource.new()
+		b.pattern = BulletSpawner.Pattern.TWO_STRAIGHT
+		b.type = preload("res://objects/bullet/bullet.tscn")
+		b.speed = 8
+		b.speen = 0
+		b.size = 3
+		b.sprite_size = 1.0 / b.size
+		b.z_index = 60
+		b.sprite = preload("res://particles/big_shot.tres")
+		var player = get_tree().get_nodes_in_group("Player")[0]
+		assert(player)
+		
+		var global_angle_to_target = boss.global_position.angle_to_point(player.global_position)
+		b.shoot(boss, Vector2.RIGHT.rotated(global_angle_to_target) * 100, global_angle_to_target)
+
+
+
+
+func _state_3_enter() -> void:
+	fire_rates = [120]
+	fire_timers = fire_rates.duplicate()
+
+func _state_3_physics_process(delta: float) -> void:
+	if not boss:
+		_goto("E")
+		return
+	
+	var fire = _fire_timers()
+	
+	if fire[0]:
+		var b = BulletResource.new()
+		b.pattern = BulletSpawner.Pattern.THREE_ARC
+		b.type = preload("res://objects/bullet/bullet.tscn")
+		b.speed = 5
+		b.speen = 0
+		b.size = 2
+		b.sprite_size = 1.0 / b.size
+		b.z_index = 60
+		b.sprite = preload("res://particles/big_shot.tres")
+		var player = get_tree().get_nodes_in_group("Player")[0]
+		assert(player)
+		
+		var global_angle_to_target = boss.global_position.angle_to_point(player.global_position)
+		b.shoot(boss, Vector2.RIGHT.rotated(global_angle_to_target) * 100, global_angle_to_target)
+
+
+
+
+func _state_E_enter() -> void:
+	get_parent().add_child(LUSCA_COMPLETE.instantiate())
+
+func _state_E_process(delta: float) -> void:
+	phase_complete.emit()
+	queue_free()
+
+
+
+
+
 #region State machine core
 # do not touch please
 var _states: Dictionary
@@ -84,6 +178,8 @@ func _add_state(state_name: String) -> void:
 		push_warning("State %s has no state functions! Typo?" % [state_name])
 		breakpoint
 func _goto(state_name: StringName) -> void:
+	if _current_state == state_name:
+		return
 	if _current_state and _states[_current_state].get("exit", Callable()): _states[_current_state].exit.call()
 	_current_state = state_name
 	if not _current_state: return

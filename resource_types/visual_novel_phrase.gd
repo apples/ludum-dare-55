@@ -2,9 +2,9 @@ class_name VisualNovelPhrase
 extends Resource
 
 enum Character {
-	Bingus,
-	Yolder,
-	Numi,
+	Olive,
+	Lusca,
+	Gratin,
 }
 
 @export var character: Character
