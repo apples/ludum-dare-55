@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://cg3qoc8ax7bl"]
+
+[sub_resource type="GDScript" id="GDScript_reuby"]
+script/source = "extends Node2D
+
+signal phase_complete
+
+const SCENE = preload(\"res://scenes/main_gameplay/stages/stage_0/phases/move_to_spot_and_stay.tscn\")
+
+@export var enemy_resource: EnemyResource
+@export var count: int = 3
+@export var yvalue: float = 270.0
+# Called when the node enters the scene tree for the first time.
+
+var remaining_children = 0
+
+func _ready() -> void:
+	remaining_children = count
+	for i in count:
+		var child_phase = SCENE.instantiate()
+		child_phase.enemy_resource = enemy_resource
+		child_phase.play_time = 2.0
+		child_phase.start_point = Vector2(930, -10)
+		child_phase.end_point = Vector2((i * 920/count) + (920/count/2), yvalue)
+		child_phase.phase_complete.connect(func(): remaining_children -= 1)
+		add_child(child_phase)
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	if remaining_children == 0:
+		phase_complete.emit()
+		queue_free()
+"
+
+[node name="ParadeFrontFromLeft" type="Node2D"]
+script = SubResource("GDScript_reuby")

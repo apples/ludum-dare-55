@@ -19,7 +19,8 @@ func _on_first_level_button_pressed() -> void:
 
 
 func _on_b_1_pressed() -> void:
-	Globals.main_gameplay_stage = preload("res://scenes/main_gameplay/stages/stage_0/stage_0.tres")
+
+	Globals.main_gameplay_stage = preload("res://scenes/main_gameplay/stages/stage_1b/stage_1b.tres")
 	SceneGirl.change_scene("res://scenes/main_gameplay/main_gameplay.tscn")
 
 func _on_a_1_pressed() -> void:
