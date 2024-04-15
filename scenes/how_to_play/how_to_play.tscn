@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://dm8vni40rm7ug"]
 
-[ext_resource type="Script" path="res://scenes/pause_menu/pause_menu.gd" id="1_wu3uj"]
+[ext_resource type="Script" path="res://scenes/how_to_play/how_to_play.gd" id="1_5rmvt"]
 [ext_resource type="PackedScene" uid="uid://ddc45fjr30s3c" path="res://scenes/main_gameplay/background/background.tscn" id="3_sutrt"]
 [ext_resource type="Texture2D" uid="uid://dtajjiutgllfj" path="res://textures/cloud.png" id="4_wlliu"]
 [ext_resource type="Script" path="res://node_types/camera_shake.gd" id="5_xtgx1"]
@@ -44,8 +44,8 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[node name="PauseMenu" type="Node2D"]
-script = ExtResource("1_wu3uj")
+[node name="HowToPlay" type="Node2D"]
+script = ExtResource("1_5rmvt")
 
 [node name="Walls" type="StaticBody2D" parent="." groups=["Wall"]]
 
@@ -159,82 +159,38 @@ grow_horizontal = 0
 color = Color(0, 0.733333, 0, 1)
 script = ExtResource("10_0c4ch")
 
-[node name="PauseLayer" type="CanvasLayer" parent="."]
-unique_name_in_owner = true
-process_mode = 2
-
-[node name="PauseMenu" type="CenterContainer" parent="PauseLayer"]
-process_mode = 2
+[node name="TitleLabel" type="Label" parent="."]
 auto_translate_mode = 1
-offset_left = 409.0
-offset_top = 585.0
-offset_right = 589.0
-offset_bottom = 863.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PauseLayer/PauseMenu"]
-auto_translate_mode = 1
-layout_mode = 2
-theme_override_constants/separation = 80
-
-[node name="Title" type="MarginContainer" parent="PauseLayer/PauseMenu/VBoxContainer"]
-auto_translate_mode = 1
-layout_mode = 2
-
-[node name="TitleLabel" type="Label" parent="PauseLayer/PauseMenu/VBoxContainer/Title"]
-auto_translate_mode = 1
-layout_mode = 2
+offset_left = 341.0
+offset_top = 163.0
+offset_right = 631.0
+offset_bottom = 215.0
+scale = Vector2(1.01005, 1)
 theme_override_font_sizes/font_size = 72
-text = "Game Paused"
+text = "How To Play
+"
 
-[node name="MenuButtonContainer" type="VBoxContainer" parent="PauseLayer/PauseMenu/VBoxContainer"]
+[node name="ReturnButton" type="Button" parent="."]
 auto_translate_mode = 1
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="CenterContainer" type="CenterContainer" parent="PauseLayer/PauseMenu/VBoxContainer/MenuButtonContainer"]
-auto_translate_mode = 1
-layout_mode = 2
-
-[node name="ResumeGameButton" type="Button" parent="PauseLayer/PauseMenu/VBoxContainer/MenuButtonContainer/CenterContainer"]
-unique_name_in_owner = true
-auto_translate_mode = 1
-layout_mode = 2
+offset_left = 319.0
+offset_top = 830.0
+offset_right = 664.0
+offset_bottom = 879.0
+scale = Vector2(0.961083, 0.975809)
 theme_type_variation = &"MainMenuButton"
-text = "Resume Game"
+text = "Return to Previous Menu
+"
 
-[node name="CenterContainer2" type="CenterContainer" parent="PauseLayer/PauseMenu/VBoxContainer/MenuButtonContainer"]
-auto_translate_mode = 1
-layout_mode = 2
-
-[node name="HowToPlayButton" type="Button" parent="PauseLayer/PauseMenu/VBoxContainer/MenuButtonContainer/CenterContainer2"]
-unique_name_in_owner = true
-auto_translate_mode = 1
-layout_mode = 2
-theme_type_variation = &"MainMenuButton"
-text = "How To Play"
-
-[node name="CenterContainer3" type="CenterContainer" parent="PauseLayer/PauseMenu/VBoxContainer/MenuButtonContainer"]
-auto_translate_mode = 1
-layout_mode = 2
-
-[node name="OptionsButton" type="Button" parent="PauseLayer/PauseMenu/VBoxContainer/MenuButtonContainer/CenterContainer3"]
-auto_translate_mode = 1
-layout_mode = 2
-theme_type_variation = &"MainMenuButton"
-text = "Options"
-
-[node name="CenterContainer4" type="CenterContainer" parent="PauseLayer/PauseMenu/VBoxContainer/MenuButtonContainer"]
-auto_translate_mode = 1
-layout_mode = 2
-
-[node name="MainMenuButton" type="Button" parent="PauseLayer/PauseMenu/VBoxContainer/MenuButtonContainer/CenterContainer4"]
-auto_translate_mode = 1
-layout_mode = 2
-theme_type_variation = &"MainMenuButton"
-text = "Main Menu"
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(300, 0)
+offset_left = 338.0
+offset_top = 271.0
+offset_right = 638.0
+offset_bottom = 754.0
+scale = Vector2(1.00839, 0.971589)
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.z
+"
+fit_content = true
 
 [connection signal="hidden" from="." to="." method="_on_hidden"]
-[connection signal="pressed" from="PauseLayer/PauseMenu/VBoxContainer/MenuButtonContainer/CenterContainer/ResumeGameButton" to="." method="_on_resume_game_button_pressed"]
-[connection signal="pressed" from="PauseLayer/PauseMenu/VBoxContainer/MenuButtonContainer/CenterContainer2/HowToPlayButton" to="." method="_on_how_to_play_button_pressed"]
-[connection signal="pressed" from="PauseLayer/PauseMenu/VBoxContainer/MenuButtonContainer/CenterContainer3/OptionsButton" to="." method="_on_options_button_pressed"]
-[connection signal="pressed" from="PauseLayer/PauseMenu/VBoxContainer/MenuButtonContainer/CenterContainer4/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]
