@@ -12,6 +12,6 @@ element = 2
 speed = 7.5
 speen = 0.0
 size = 1.0
-sprite_size = 2.0
+sprite_size = 1.5
 sprite = ExtResource("2_ggybf")
 z_index = 80
