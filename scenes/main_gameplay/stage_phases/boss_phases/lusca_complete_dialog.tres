@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="VisualNovelDialog" load_steps=8 format=3 uid="uid://d2mkcqo3x38m1"]
+
+[ext_resource type="Script" path="res://resource_types/visual_novel_phrase.gd" id="1_7qeg3"]
+[ext_resource type="Script" path="res://resource_types/visual_novel_dialog.gd" id="2_i0n7m"]
+
+[sub_resource type="Resource" id="Resource_ejwx0"]
+script = ExtResource("1_7qeg3")
+character = 1
+rich_text = "Alright, you win! The seas are yours to command."
+
+[sub_resource type="Resource" id="Resource_5dd05"]
+script = ExtResource("1_7qeg3")
+character = 0
+rich_text = "Oh, uh... I don't want to control the seas. I'm just trying to help the fish."
+
+[sub_resource type="Resource" id="Resource_1hvwh"]
+script = ExtResource("1_7qeg3")
+character = 1
+rich_text = "You should have said that sooner..."
+
+[sub_resource type="Resource" id="Resource_q6chy"]
+script = ExtResource("1_7qeg3")
+character = 1
+rich_text = "I have been sensing some strange things to the east."
+
+[sub_resource type="Resource" id="Resource_4bqcm"]
+script = ExtResource("1_7qeg3")
+character = 0
+rich_text = "Thanks for the help!"
+
+[resource]
+script = ExtResource("2_i0n7m")
+phrases = Array[ExtResource("1_7qeg3")]([SubResource("Resource_ejwx0"), SubResource("Resource_5dd05"), SubResource("Resource_1hvwh"), SubResource("Resource_q6chy"), SubResource("Resource_4bqcm")])
+start_right_side = true
