@@ -35,12 +35,7 @@ func next_stage_phase() -> void:
 		if stage_phase == stage.phases.size() - 1:
 			%HealthBar.visible = true
 	else:
-		%HealthBar.visible = false
-		print_rich("[rainbow][tornado]STAGE DONE!!!![/tornado][/rainbow]")
-		print(stage.stage_name)
-		if stage.stage_name == "Oak Hill II" && !Save.current.levels_beaten.has("0"):
-			Save.current.levels_beaten.append("0")
-			Save.save()
+		stage_complete()
 
 func _on_phase_complete() -> void:
 	next_stage_phase()
@@ -49,10 +44,16 @@ func _on_bouncing_character_body_2d_bounce(collision: KinematicCollision2D) -> v
 	#camera_shake.apply_impulse(Vector2.from_angle(randf_range(0, TAU)) * 2000)
 	camera_shake.rumble(50, 0.25)
 
-
 func _on_player_player_died() -> void:
 	SceneGirl.change_scene("res://scenes/game_over/game_over.tscn")
 
-
+func stage_complete():
+	%HealthBar.visible = false
+	print_rich("[rainbow][tornado]STAGE DONE!!!![/tornado][/rainbow]")
+	print(stage.stage_name)
+	if stage.stage_name == "Oak Hill II" && !Save.current.levels_beaten.has("0"):
+		Save.current.levels_beaten.append("0")
+		Save.save()
+	SceneGirl.change_scene("res://scenes/win/win.tscn")
 
 
