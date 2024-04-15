@@ -43,8 +43,8 @@ layout_mode = 2
 
 [node name="TitleLabel" type="Label" parent="CenterContainer/VBoxContainer/Title"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 72
-text = "The Game"
+theme_override_font_sizes/font_size = 80
+text = "Veiled Ocean: Echoes of Nautical Grief"
 
 [node name="MenuButtonContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
@@ -57,6 +57,7 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"MainMenuButton"
+theme_override_font_sizes/font_size = 64
 text = "Start Game"
 
 [node name="CenterContainer2" type="CenterContainer" parent="CenterContainer/VBoxContainer/MenuButtonContainer"]
@@ -66,6 +67,7 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"MainMenuButton"
+theme_override_font_sizes/font_size = 48
 text = "How To Play"
 
 [node name="CenterContainer3" type="CenterContainer" parent="CenterContainer/VBoxContainer/MenuButtonContainer"]
@@ -75,6 +77,7 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"MainMenuButton"
+theme_override_font_sizes/font_size = 48
 text = "Options"
 
 [connection signal="mouse_entered" from="CenterContainer/VBoxContainer/MenuButtonContainer/CenterContainer/StartGameButton" to="." method="_on_start_game_button_mouse_entered"]
