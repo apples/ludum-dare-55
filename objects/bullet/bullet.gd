@@ -16,10 +16,12 @@ var damage := 1
 @onready var sprite_2d: AnimatedSprite2D = $Sprite2D
 
 var sprite_frames: SpriteFrames
+var sprite_size: float = 1.0
 
 func _ready() -> void:
 	if sprite_frames:
 		sprite_2d.sprite_frames = sprite_frames
+	sprite_2d.scale = Vector2(sprite_size, sprite_size)
 
 func _process(delta: float) -> void:
 	sprite_2d.rotation += speen * delta
