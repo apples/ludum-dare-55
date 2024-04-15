@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b47bekomubotr"]
+[gd_scene load_steps=21 format=3 uid="uid://b47bekomubotr"]
 
 [ext_resource type="Texture2D" uid="uid://b8pgots7rhv5y" path="res://textures/fishy.png" id="1_cgyoc"]
 [ext_resource type="Script" path="res://scenes/level_select/level_select.gd" id="1_n4oea"]
@@ -14,13 +14,14 @@
 [ext_resource type="Texture2D" uid="uid://scgqbwsnsj8s" path="res://sprites/gratin_silhouette.png" id="6_nvl7t"]
 [ext_resource type="Texture2D" uid="uid://cjcx7dnecpvax" path="res://sprites/gratin_silhouette_darkest.png" id="7_0wlh6"]
 [ext_resource type="Texture2D" uid="uid://cplpu3vweaf88" path="res://sprites/gratin_silhouette_darker.png" id="8_gawo0"]
-[ext_resource type="Texture2D" uid="uid://dy1ditu17ne57" path="res://sprites/grey.png" id="13_t2pkn"]
-[ext_resource type="Texture2D" uid="uid://bffqvelu2vjsg" path="res://sprites/light_grey.png" id="14_6byg1"]
+[ext_resource type="Texture2D" uid="uid://chc3unv1nudcb" path="res://textures/fishyDarkest.png" id="12_k2svl"]
+[ext_resource type="Texture2D" uid="uid://cor5lmiduefol" path="res://textures/octyDarker.png" id="15_47l44"]
+[ext_resource type="Texture2D" uid="uid://cgfl5pes2a455" path="res://textures/whiteFish.png" id="15_q8s1r"]
+[ext_resource type="Texture2D" uid="uid://dbf5sa5x0rfvr" path="res://textures/darkGreyFish.png" id="16_7m8lk"]
+[ext_resource type="Texture2D" uid="uid://832i0erbw1sw" path="res://textures/greyFish.png" id="17_y3m4t"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ddc8n"]
 shader = ExtResource("2_hsujl")
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_7hxhw"]
 
 [node name="LevelSelect" type="Node2D"]
 script = ExtResource("1_n4oea")
@@ -102,8 +103,9 @@ offset_right = 474.0
 offset_bottom = 759.0
 disabled = true
 texture_normal = ExtResource("1_cgyoc")
-texture_pressed = ExtResource("2_jq0oc")
-texture_disabled = ExtResource("2_jq0oc")
+texture_pressed = ExtResource("12_k2svl")
+texture_hover = ExtResource("2_jq0oc")
+texture_disabled = ExtResource("12_k2svl")
 stretch_mode = 4
 
 [node name="Label" type="Label" parent="A1"]
@@ -124,8 +126,9 @@ offset_right = 1053.0
 offset_bottom = 752.0
 disabled = true
 texture_normal = ExtResource("3_y01rs")
-texture_pressed = ExtResource("4_hpna1")
-texture_disabled = ExtResource("4_hpna1")
+texture_pressed = ExtResource("15_47l44")
+texture_hover = ExtResource("4_hpna1")
+texture_disabled = ExtResource("15_47l44")
 stretch_mode = 4
 
 [node name="Label" type="Label" parent="B1"]
@@ -144,10 +147,10 @@ offset_left = 638.0
 offset_top = 840.0
 offset_right = 766.0
 offset_bottom = 968.0
-texture_normal = SubResource("CanvasTexture_7hxhw")
-texture_pressed = ExtResource("13_t2pkn")
-texture_hover = ExtResource("14_6byg1")
-texture_disabled = ExtResource("13_t2pkn")
+texture_normal = ExtResource("15_q8s1r")
+texture_pressed = ExtResource("16_7m8lk")
+texture_hover = ExtResource("17_y3m4t")
+texture_disabled = ExtResource("16_7m8lk")
 stretch_mode = 4
 
 [node name="Label" type="Label" parent="0"]
