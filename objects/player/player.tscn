@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cv58ruem01fvv"]
+[gd_scene load_steps=11 format=3 uid="uid://cv58ruem01fvv"]
 
 [ext_resource type="Script" path="res://objects/player/player.gd" id="1_cwmge"]
 [ext_resource type="Texture2D" uid="uid://bbecl65o8oslo" path="res://particles/circle.png" id="2_av8ut"]
@@ -11,6 +11,28 @@ particles_animation = true
 particles_anim_h_frames = 8
 particles_anim_v_frames = 1
 particles_anim_loop = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5k6uw"]
+atlas = ExtResource("5_im6m2")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nakqw"]
+atlas = ExtResource("5_im6m2")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o2yom"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5k6uw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nakqw")
+}],
+"loop": false,
+"name": &"default",
+"speed": 1.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l1bt7"]
 size = Vector2(16, 16)
@@ -52,8 +74,8 @@ sprite_frames = ExtResource("4_23vh4")
 autoplay = "default"
 frame_progress = 0.357355
 
-[node name="Hitbox" type="Sprite2D" parent="."]
-texture = ExtResource("5_im6m2")
+[node name="Hitbox" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_o2yom")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_l1bt7")
