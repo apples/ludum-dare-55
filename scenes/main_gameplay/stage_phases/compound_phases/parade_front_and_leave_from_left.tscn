@@ -1,11 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://n5j07su0noe7"]
+[gd_scene load_steps=2 format=3 uid="uid://c080x0d57j0ic"]
 
 [sub_resource type="GDScript" id="GDScript_reuby"]
 script/source = "extends Node2D
 
 signal phase_complete
 
-const SCENE = preload(\"res://scenes/main_gameplay/stage_phases/simple_patterns/move_to_spot_then_leave.tscn\")
+const SCENE = preload(\"res://scenes/main_gameplay/stage_phases/simple_patterns/move_to_spot_and_stay.tscn\")
 
 @export var enemy_resource: EnemyResource
 @export var count: int = 10
@@ -19,7 +19,8 @@ func _ready() -> void:
 	for i in count:
 		var child_phase = SCENE.instantiate()
 		child_phase.enemy_resource = enemy_resource
-		child_phase.mark_point = Vector2((i * 920/count) + (920/count/2), yvalue)
+		child_phase.play_time = 2.0
+		child_phase.end_point = Vector2((i * 920/count) + (920/count/2), yvalue)
 		child_phase.phase_complete.connect(func(): remaining_children -= 1)
 		add_child(child_phase)
 
