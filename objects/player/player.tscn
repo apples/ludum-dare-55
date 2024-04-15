@@ -6,12 +6,6 @@
 [ext_resource type="SpriteFrames" uid="uid://c82frb8ommm2b" path="res://objects/player/player.tres" id="4_23vh4"]
 [ext_resource type="Texture2D" uid="uid://dul74mpx47ud7" path="res://textures/player_hitbox.png" id="5_im6m2"]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_raekm"]
-particles_animation = true
-particles_anim_h_frames = 8
-particles_anim_v_frames = 1
-particles_anim_loop = true
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_5k6uw"]
 atlas = ExtResource("5_im6m2")
 region = Rect2(0, 0, 16, 16)
@@ -34,8 +28,14 @@ animations = [{
 "speed": 1.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_l1bt7"]
-size = Vector2(16, 16)
+[sub_resource type="CircleShape2D" id="CircleShape2D_jl3n0"]
+radius = 8.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_raekm"]
+particles_animation = true
+particles_anim_h_frames = 8
+particles_anim_v_frames = 1
+particles_anim_loop = true
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_cwmge")
@@ -53,18 +53,6 @@ gizmo_extents = 5.0
 wait_time = 0.25
 one_shot = true
 
-[node name="DeathParticles" type="CPUParticles2D" parent="."]
-material = SubResource("CanvasItemMaterial_raekm")
-emitting = false
-speed_scale = 1.5
-texture = ExtResource("3_jw4bc")
-emission_shape = 2
-emission_sphere_radius = 20.0
-spread = 180.0
-gravity = Vector2(0, 0)
-anim_speed_min = 1.0
-anim_speed_max = 1.0
-
 [node name="DeathTimer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
@@ -78,6 +66,19 @@ frame_progress = 0.357355
 sprite_frames = SubResource("SpriteFrames_o2yom")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_l1bt7")
+shape = SubResource("CircleShape2D_jl3n0")
+
+[node name="DeathParticles" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_raekm")
+emitting = false
+speed_scale = 1.5
+texture = ExtResource("3_jw4bc")
+emission_shape = 2
+emission_sphere_radius = 55.0
+spread = 180.0
+gravity = Vector2(0, 0)
+scale_amount_max = 4.0
+anim_speed_min = 1.0
+anim_speed_max = 1.0
 
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

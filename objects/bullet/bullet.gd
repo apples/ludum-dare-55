@@ -8,7 +8,7 @@ enum Team {
 
 var damage := 1
 
-@export var speed = 12.0
+@export var speed = 6.0
 @export var allegiance: Team = Team.PLAYER
 @export var element: Globals.Elements = Globals.Elements.UNSET
 @onready var sprite_2d: AnimatedSprite2D = $Sprite2D
