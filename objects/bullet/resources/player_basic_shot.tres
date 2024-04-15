@@ -1,19 +1,8 @@
-[gd_resource type="Resource" script_class="BulletResource" load_steps=5 format=3 uid="uid://dr4cdaxvge8hl"]
+[gd_resource type="Resource" script_class="BulletResource" load_steps=4 format=3 uid="uid://dr4cdaxvge8hl"]
 
 [ext_resource type="Script" path="res://objects/bullet/bullet_resource.gd" id="1_tdw7r"]
 [ext_resource type="PackedScene" uid="uid://c16bxsiokr13i" path="res://objects/bullet/bullet.tscn" id="2_c22oo"]
-[ext_resource type="Texture2D" uid="uid://cqh0pxxjdejpn" path="res://particles/bullet_17.png" id="2_q80ul"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_4hmxr"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_q80ul")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[ext_resource type="SpriteFrames" uid="uid://ceuixdm66ajy7" path="res://particles/player_basic_shot_frames.tres" id="2_jlr08"]
 
 [resource]
 script = ExtResource("1_tdw7r")
@@ -22,4 +11,7 @@ type = ExtResource("2_c22oo")
 element = null
 speed = 30.0
 speen = 0.0
-sprite = SubResource("SpriteFrames_4hmxr")
+size = null
+sprite_size = null
+sprite = ExtResource("2_jlr08")
+z_index = 5
