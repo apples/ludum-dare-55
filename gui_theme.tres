@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://cy6gwsvlnrel7"]
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://cy6gwsvlnrel7"]
 
 [ext_resource type="FontFile" uid="uid://b83vweh5jpmg0" path="res://fonts/SukuriburuBySoultyRagevin-Regular.otf" id="1_uii85"]
 
@@ -13,7 +13,7 @@ content_margin_left = 20.0
 content_margin_top = 10.0
 content_margin_right = 20.0
 content_margin_bottom = 10.0
-bg_color = Color(0.298039, 0.298039, 0.298039, 1)
+bg_color = Color(0.00392157, 0.298039, 0.831373, 1)
 corner_radius_top_left = 2
 corner_radius_top_right = 2
 corner_radius_bottom_right = 2
@@ -24,11 +24,14 @@ content_margin_left = 20.0
 content_margin_top = 10.0
 content_margin_right = 20.0
 content_margin_bottom = 10.0
-bg_color = Color(0.298039, 0.298039, 0.298039, 1)
+bg_color = Color(0.298039, 0.286275, 0.878431, 1)
 corner_radius_top_left = 2
 corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0y12b"]
+bg_color = Color(0.00392157, 0.298039, 0.831373, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w3mof"]
 content_margin_left = 20.0
@@ -41,7 +44,7 @@ content_margin_left = 20.0
 content_margin_top = 10.0
 content_margin_right = 20.0
 content_margin_bottom = 10.0
-bg_color = Color(0.298039, 0.298039, 0.298039, 1)
+bg_color = Color(0.00392157, 0.298039, 0.831373, 1)
 corner_radius_top_left = 2
 corner_radius_top_right = 2
 corner_radius_bottom_right = 2
@@ -54,5 +57,6 @@ MainMenuButton/base_type = &"Button"
 MainMenuButton/styles/disabled = SubResource("StyleBoxEmpty_js7gm")
 MainMenuButton/styles/focus = SubResource("StyleBoxFlat_ejf61")
 MainMenuButton/styles/hover = SubResource("StyleBoxFlat_dttv6")
+MainMenuButton/styles/hover_pressed = SubResource("StyleBoxFlat_0y12b")
 MainMenuButton/styles/normal = SubResource("StyleBoxEmpty_w3mof")
 MainMenuButton/styles/pressed = SubResource("StyleBoxFlat_2yd22")
