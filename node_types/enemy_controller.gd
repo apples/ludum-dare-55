@@ -16,8 +16,13 @@ var position: Vector2:
 
 static func from(node: Node) -> EnemyController:
 	if not node.has_meta("enemy_controller"):
+		breakpoint
 		return null
-	return node.get_meta("enemy_controller", null) as EnemyController
+	var ec = node.get_meta("enemy_controller", null) as EnemyController
+	if not ec:
+		breakpoint
+		return null
+	return ec
 
 func _enter_tree() -> void:
 	get_parent().set_meta("enemy_controller", self)
