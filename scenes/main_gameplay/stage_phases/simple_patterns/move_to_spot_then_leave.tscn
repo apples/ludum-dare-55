@@ -21,7 +21,8 @@ func _sequence(controller: EnemyController):
 	await controller.move_to_point_over_time(mark_point, move_time)
 	await controller.wait_for(pause_time)
 	await controller.move_to_point_over_time(exit_point, move_time)
-	controller.kill()
+	if controller:
+		controller.kill()
 "
 
 [node name="left_to_right_conga_loop" type="Node2D"]
