@@ -11,6 +11,7 @@ var star_sigil_texture = preload("res://particles/star.png")
 var circle_sigil_texture = preload("res://particles/circle_sigil.png")
 var s_sigil_texture = preload("res://particles/s_sigil.png")
 var w_sigil_texture = preload("res://particles/w_sigil.png")
+var spiral_sigil_texture = preload("res://particles/spiral_sigil.png")
 
 
 # Called when the node enters the scene tree for the first time.
@@ -37,8 +38,10 @@ func check_sigil_sequence():
 		circle_sigil()
 	elif current_sigil_sequence == [1,5,2,3,4]:
 		s_sigil()
-	elif current_sigil_sequence == [5,4,1,3,2 ]:
+	elif current_sigil_sequence == [5,4,1,3,2]:
 		w_sigil()
+	elif current_sigil_sequence == [2,5,1,3,4]:
+		spiral_sigil()
 	#elif current_sigil_sequence == [5,4,3,2,1]:
 		#vegan_sigil()
 	#elif current_sigil_sequence == [4,3,5,2,1]:
@@ -66,6 +69,11 @@ func w_sigil():
 	#player_ref.current_element = Globals.Elements.FIRE
 	#player_ref.current_bullet_resource = preload("res://objects/bullet/resources/fire_bomb.tres")
 	load_sigil_vfx(w_sigil_texture)
+
+func spiral_sigil():
+	#player_ref.current_element = Globals.Elements.FIRE
+	#player_ref.current_bullet_resource = preload("res://objects/bullet/resources/fire_bomb.tres")
+	load_sigil_vfx(spiral_sigil_texture)
 
 func load_sigil_vfx(sigil_texture):
 	var new_sigil_vfx = sigil_scene.instantiate()

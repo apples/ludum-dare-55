@@ -45,7 +45,6 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [node name="PauseMenu" type="Node2D"]
-clip_children = 1
 script = ExtResource("1_wu3uj")
 
 [node name="Walls" type="StaticBody2D" parent="." groups=["Wall"]]
@@ -234,6 +233,7 @@ layout_mode = 2
 theme_type_variation = &"MainMenuButton"
 text = "Main Menu"
 
+[connection signal="hidden" from="." to="." method="_on_hidden"]
 [connection signal="pressed" from="PauseLayer/PauseMenu/VBoxContainer/MenuButtonContainer/CenterContainer/ResumeGameButton" to="." method="_on_resume_game_button_pressed"]
 [connection signal="pressed" from="PauseLayer/PauseMenu/VBoxContainer/MenuButtonContainer/CenterContainer3/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="PauseLayer/PauseMenu/VBoxContainer/MenuButtonContainer/CenterContainer4/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
