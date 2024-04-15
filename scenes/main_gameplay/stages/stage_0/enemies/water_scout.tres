@@ -7,7 +7,7 @@
 script = ExtResource("1_a4x2j")
 sprite_frames = ExtResource("2_3uk32")
 element = 2
-health = 2.0
+health = 20.0
 score_value = 100.0
 initial_shoot_delay = 0.0
 shoot_cooldown = 0.0
