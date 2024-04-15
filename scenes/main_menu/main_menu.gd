@@ -4,6 +4,7 @@ extends Control
 @onready var how_to_play_button: Button = %HowToPlayButton
 @onready var options_button: Button = %OptionsButton
 var options_scene = preload("res://scenes/options_menu/options_menu.tscn") 
+var how_to_play_scene = preload("res://scenes/how_to_play/how_to_play.tscn") 
 
 func _ready() -> void:
 	start_game_button.grab_focus()
@@ -15,7 +16,7 @@ func _on_start_game_button_pressed() -> void:
 
 
 func _on_how_to_play_button_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().root.add_child(how_to_play_scene.instantiate())
 
 func _on_options_button_pressed() -> void:
 	get_tree().root.add_child(options_scene.instantiate())
