@@ -6,10 +6,13 @@ extends Node
 @onready var options_button: Button = %OptionsButton
 
 var options_scene = preload("res://scenes/options_menu/options_menu.tscn") 
+var how_to_play_scene = preload("res://scenes/how_to_play/how_to_play.tscn") 
 
 
 func _ready() -> void:
 	self.process_mode= Node.PROCESS_MODE_ALWAYS
+	#resume_game_button.grab_focus()
+	
 func _on_resume_game_button_pressed() -> void:
 	get_tree().paused = false
 	self.queue_free()
@@ -31,3 +34,11 @@ func _unhide_pause_menu()->void:
 	%PauseLayer.visible = true
 
 
+
+
+func _on_how_to_play_button_pressed() -> void:
+	get_tree().paused = true
+	%PauseLayer.visible = false
+	var os = how_to_play_scene.instantiate()
+	get_tree().root.add_child(os)
+	os.tree_exited.connect(_unhide_pause_menu)
