@@ -43,7 +43,7 @@ func hit(damage: int, element_type: Globals.Elements) -> void:
 	if(element == Globals.Elements.UNSET || 
 	element_type == Globals.Elements.UNSET || 
 	element == element_type):
-		MusicMan.sfx(preload("res://sfx/enemyhit_normal.wav"))
+		MusicMan.sfx(preload("res://sfx/enemyhit_normal_2.wav"), null, 1, true, 0.5)
 		pass
 	else:
 		var a = (Globals.Elements.size() - 2) / 2 # 1 if 3, 2 if 5

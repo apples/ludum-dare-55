@@ -89,7 +89,7 @@ func music(stream: AudioStream, xfade: float = 1.0) -> void:
 ## [param stream]: the sound effect stream to play.
 ## [param who]: key for [param max_polyphony].
 ## [param max_polyphony]: maximum simultaneous playbacks for the [param stream] and [param who].
-func sfx(stream: AudioStream, who = null, max_polyphony: int = 1, no_restart: bool = false) -> void:
+func sfx(stream: AudioStream, who = null, max_polyphony: int = 1, no_restart: bool = false, volume = 1.0) -> void:
 	assert(stream != null)
 	assert(max_polyphony >= 0)
 	
@@ -122,3 +122,5 @@ func sfx(stream: AudioStream, who = null, max_polyphony: int = 1, no_restart: bo
 		return
 	
 	audio_stream_player.play()
+	
+	audio_stream_player.volume_db = linear_to_db(volume)
