@@ -8,7 +8,7 @@
 script = ExtResource("1_1j6bs")
 sprite_frames = ExtResource("2_v53cj")
 element = 1
-health = 2.0
+health = 20.0
 score_value = 100.0
 bullet_resource = ExtResource("1_bx2am")
 initial_shoot_delay = 1.0
