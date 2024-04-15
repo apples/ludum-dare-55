@@ -1,9 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://b208u01vovphw"]
+[gd_scene load_steps=6 format=3 uid="uid://b208u01vovphw"]
 
 [ext_resource type="Script" path="res://scenes/game_over/game_over.gd" id="1_e50my"]
+[ext_resource type="Shader" path="res://materials/tiling_shader.gdshader" id="2_8xad2"]
+[ext_resource type="Texture2D" uid="uid://c031a0c5v45ux" path="res://textures/tiledBlueBackground.png" id="3_8dbmo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ts50w"]
 bg_color = Color(0.501961, 0.419608, 0.564706, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ooc1k"]
+shader = ExtResource("2_8xad2")
 
 [node name="GameOver" type="PanelContainer"]
 anchors_preset = 15
@@ -14,8 +19,15 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ts50w")
 script = ExtResource("1_e50my")
 
+[node name="Background" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_ooc1k")
+layout_mode = 2
+texture = ExtResource("3_8dbmo")
+expand_mode = 1
+stretch_mode = 1
+
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(480, 360)
+position = Vector2(720, 540)
 ignore_rotation = false
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
