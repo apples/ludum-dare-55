@@ -7,12 +7,6 @@
 [ext_resource type="Shader" path="res://materials/color_fill.gdshader" id="4_qkspo"]
 [ext_resource type="Texture2D" uid="uid://dul74mpx47ud7" path="res://textures/player_hitbox.png" id="5_im6m2"]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_raekm"]
-particles_animation = true
-particles_anim_h_frames = 8
-particles_anim_v_frames = 1
-particles_anim_loop = true
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_glsue"]
 shader = ExtResource("4_qkspo")
 shader_parameter/fillColor = Vector4(2.08165e-12, 2.08165e-12, 2.08165e-12, 2.08165e-12)

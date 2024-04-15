@@ -33,7 +33,7 @@ var current_element = Globals.Elements.UNSET
 var invuln_frame_time = 80
 
 func _ready() -> void:
-	Globals.player_health = starting_health
+	#Globals.player_health = starting_health
 	Globals.player_health_changed.connect(_on_player_health_changed)
 
 

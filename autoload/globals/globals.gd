@@ -14,7 +14,7 @@ signal changed
 signal player_health_changed
 
 ## Example variable.
-var player_health: int = 3:
+var player_health: int = 5:
 	set(v):
 		if player_invuln > 0:
 			#push_error("Player health cannot be changed while invuln")
@@ -46,13 +46,16 @@ var main_gameplay_stage: Stage = null:
 	set(v): main_gameplay_stage = v; changed.emit()
 
 
-## Reset all variables to their default state.
+## Reset most variables to their default state.
 func reset():
 	player_invuln = 0
-	player_health = 0
+	player_health = 5
 	player_pos = Vector2.ZERO
 	score = 0
-	main_gameplay_stage = null
+	summon_ink = 100
+	boss_max_health = 100
+	boss_health = boss_max_health
+	#main_gameplay_stage = null
 
 #region Debug overlay
 var _overlay

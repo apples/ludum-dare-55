@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="Stage" load_steps=11 format=3 uid="uid://c0kqnsyjxyb5w"]
 
-[ext_resource type="Resource" uid="uid://blu0f5lli61vq" path="res://objects/enemy/resources/fire_fesh.tres" id="1_2yt4t"]
+[ext_resource type="Resource" path="res://objects/enemy/resources/fire_fesh.tres" id="1_2yt4t"]
 [ext_resource type="Script" path="res://resource_types/Phase.gd" id="2_o4sdy"]
 [ext_resource type="Script" path="res://resource_types/stage_sequence.gd" id="3_hp72b"]
 [ext_resource type="PackedScene" uid="uid://creyxsyit7dtd" path="res://scenes/main_gameplay/stage_phases/simple_patterns/left_to_right_conga_loop.tscn" id="3_kwwi7"]
 [ext_resource type="PackedScene" uid="uid://b1hhvs22skcgv" path="res://scenes/main_gameplay/stage_phases/simple_patterns/move_to_spot_then_leave.tscn" id="3_nenfl"]
-[ext_resource type="Resource" uid="uid://cagb2v2iqljlg" path="res://objects/enemy/resources/vegan_fosh.tres" id="4_lxtle"]
-[ext_resource type="Resource" uid="uid://cyfvet7t0dmfx" path="res://objects/enemy/resources/water_fush.tres" id="5_ci0ch"]
+[ext_resource type="Resource" path="res://objects/enemy/resources/vegan_fosh.tres" id="4_lxtle"]
+[ext_resource type="Resource" path="res://objects/enemy/resources/water_fush.tres" id="5_ci0ch"]
 
 [sub_resource type="Resource" id="Resource_aw7hr"]
 script = ExtResource("2_o4sdy")
