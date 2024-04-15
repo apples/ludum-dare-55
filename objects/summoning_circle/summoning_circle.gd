@@ -34,14 +34,19 @@ func check_sigil_sequence():
 	print(current_sigil_sequence)
 	if current_sigil_sequence == [4,1,3,5,2] or current_sigil_sequence == [2,5,3,1,4]:
 		star_sigil()
+		MusicMan.sfx(preload("res://sfx/summon_good.wav"))
 	elif current_sigil_sequence == [3,4,5,1,2] or current_sigil_sequence == [2,1,5,4,3]:
 		circle_sigil()
+		MusicMan.sfx(preload("res://sfx/summon_good.wav"))
 	elif current_sigil_sequence == [1,5,2,3,4] or current_sigil_sequence == [4,3,2,5,1]:
 		s_sigil()
+		MusicMan.sfx(preload("res://sfx/summon_good.wav"))
 	elif current_sigil_sequence == [5,4,1,3,2] or current_sigil_sequence == [2,3,1,4,5]:
 		w_sigil()
+		MusicMan.sfx(preload("res://sfx/summon_good.wav"))
 	elif current_sigil_sequence == [2,5,1,3,4] or current_sigil_sequence == [4,3,1,5,2]:
 		spiral_sigil()
+		MusicMan.sfx(preload("res://sfx/summon_good.wav"))
 	#elif current_sigil_sequence == [5,4,3,2,1]:
 		#vegan_sigil()
 	#elif current_sigil_sequence == [4,3,5,2,1]:
@@ -49,6 +54,7 @@ func check_sigil_sequence():
 	else:
 		load_failed_sigil_vfx()
 		camera_shake_ref.rumble(10, 1)
+		MusicMan.sfx(preload("res://sfx/summon_bad.wav"))
 
 func circle_sigil():
 	player_ref.current_element = Globals.Elements.VEGANS
