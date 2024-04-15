@@ -8,7 +8,7 @@ func _ready() -> void:
 	%music_volume.value = DataStore.current.music_volume
 	%master_volume.value = DataStore.current.master_volume
 	%sfx_volume.value = DataStore.current.sfx_volume
-	#return_button.grab_focus()
+	return_button.grab_focus()
 func _on_master_volume_value_changed(value: float) -> void:
 	print(value)
 	DataStore.current.master_volume = value
@@ -42,3 +42,4 @@ func _on_sfx_volume_value_changed(value: float) -> void:
 
 func _on_return_button_pressed() -> void:
 	self.queue_free()
+
