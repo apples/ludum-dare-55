@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://b0gu8ciysfxcg"]
+[gd_scene load_steps=6 format=3 uid="uid://b0gu8ciysfxcg"]
 
 [ext_resource type="Texture2D" uid="uid://c1p01a43oafbd" path="res://textures/w_sigil_instruct.png" id="1_tta8i"]
+[ext_resource type="Texture2D" uid="uid://dhcl6a2o8pyt2" path="res://textures/s_sigil_instruct.png" id="2_lkojo"]
+[ext_resource type="Texture2D" uid="uid://c5sk3sxvwfb5i" path="res://textures/spiral_sigil_instruct.png" id="3_cqpxo"]
+[ext_resource type="Texture2D" uid="uid://dc1k65fhku07x" path="res://textures/star_sigil_instruct.png" id="4_ano0l"]
+[ext_resource type="Texture2D" uid="uid://bwp1ms7tsq42l" path="res://textures/circle_sigil_instruct.png" id="5_vo0p2"]
 
 [node name="SummonsUI" type="Control"]
 layout_mode = 3
@@ -17,8 +21,108 @@ text = "Summons:"
 
 [node name="WSigil" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 12.0
-offset_top = 94.0
-offset_right = 140.0
-offset_bottom = 222.0
+offset_left = 7.0
+offset_top = 93.0
+offset_right = 135.0
+offset_bottom = 221.0
 texture = ExtResource("1_tta8i")
+
+[node name="SSigil" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 228.0
+offset_right = 135.0
+offset_bottom = 356.0
+texture = ExtResource("2_lkojo")
+
+[node name="SpiralSigil" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 674.0
+offset_right = 131.0
+offset_bottom = 802.0
+texture = ExtResource("3_cqpxo")
+
+[node name="StarSigil" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 535.0
+offset_right = 129.0
+offset_bottom = 663.0
+texture = ExtResource("4_ano0l")
+
+[node name="CircleSigil" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 380.0
+offset_right = 131.0
+offset_bottom = 508.0
+texture = ExtResource("5_vo0p2")
+
+[node name="Equals" type="Label" parent="."]
+layout_mode = 0
+offset_left = 159.0
+offset_top = 115.0
+offset_right = 206.0
+offset_bottom = 196.0
+theme_override_font_sizes/font_size = 80
+text = "="
+
+[node name="Equals2" type="Label" parent="."]
+auto_translate_mode = 1
+layout_mode = 0
+offset_left = 159.0
+offset_top = 248.0
+offset_right = 206.0
+offset_bottom = 329.0
+theme_override_font_sizes/font_size = 80
+text = "="
+
+[node name="Equals3" type="Label" parent="."]
+auto_translate_mode = 1
+layout_mode = 0
+offset_left = 160.0
+offset_top = 404.0
+offset_right = 207.0
+offset_bottom = 485.0
+theme_override_font_sizes/font_size = 80
+text = "="
+
+[node name="Equals4" type="Label" parent="."]
+auto_translate_mode = 1
+layout_mode = 0
+offset_left = 158.0
+offset_top = 556.0
+offset_right = 205.0
+offset_bottom = 637.0
+theme_override_font_sizes/font_size = 80
+text = "="
+
+[node name="Equals5" type="Label" parent="."]
+auto_translate_mode = 1
+layout_mode = 0
+offset_left = 155.0
+offset_top = 694.0
+offset_right = 202.0
+offset_bottom = 775.0
+theme_override_font_sizes/font_size = 80
+text = "="
+
+[node name="QuestionMarks" type="Label" parent="."]
+layout_mode = 0
+offset_left = 253.0
+offset_top = 569.0
+offset_right = 313.0
+offset_bottom = 628.0
+theme_override_font_sizes/font_size = 81
+text = "??"
+
+[node name="QuestionMarks2" type="Label" parent="."]
+auto_translate_mode = 1
+layout_mode = 0
+offset_left = 255.0
+offset_top = 714.0
+offset_right = 315.0
+offset_bottom = 773.0
+theme_override_font_sizes/font_size = 81
+text = "??"
