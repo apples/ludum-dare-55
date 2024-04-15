@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="EnemyResource" load_steps=3 format=3 uid="uid://mkfre5ispr13"]
+[gd_resource type="Resource" script_class="EnemyResource" load_steps=4 format=3 uid="uid://mkfre5ispr13"]
 
+[ext_resource type="Resource" path="res://objects/bullet/resources/vegan_three.tres" id="1_aji1s"]
 [ext_resource type="Script" path="res://objects/enemy/enemy_resource.gd" id="1_b8qhh"]
 [ext_resource type="SpriteFrames" uid="uid://cwsk4l0v65oqd" path="res://objects/enemy/resources/fosh.tres" id="2_uxjcj"]
 
@@ -9,5 +10,6 @@ sprite_frames = ExtResource("2_uxjcj")
 element = 3
 health = 20.0
 score_value = 100.0
-initial_shoot_delay = 0.0
-shoot_cooldown = 0.0
+bullet_resource = ExtResource("1_aji1s")
+initial_shoot_delay = 0.15
+shoot_cooldown = 0.15
