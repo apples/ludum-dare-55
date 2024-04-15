@@ -14,7 +14,8 @@ func _ready():
 		var e = create_enemy()
 		pf.add_child(e)
 		var tw = create_tween().tween_property(pf, \"progress_ratio\", 1.0, play_time)
-		tw.finished.connect(func(): EnemyController.from(e).kill())
+		var controller = EnemyController.from(e)
+		tw.finished.connect(func(): if controller: controller.kill())
 "
 
 [sub_resource type="Curve2D" id="Curve2D_rugxg"]
