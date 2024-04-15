@@ -54,6 +54,8 @@ func stage_complete():
 	if stage.stage_name == "Oak Hill II" && !Save.current.levels_beaten.has("0"):
 		Save.current.levels_beaten.append("0")
 		Save.save()
+	for bullet in get_tree().get_nodes_in_group("Bullet"):
+		bullet.queue_free()
 	SceneGirl.change_scene("res://scenes/win/win.tscn")
 
 
