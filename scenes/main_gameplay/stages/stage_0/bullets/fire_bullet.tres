@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="BulletResource" load_steps=4 format=3 uid="uid://cifgf6kauta0i"]
+
+[ext_resource type="Script" path="res://objects/bullet/bullet_resource.gd" id="1_k50mu"]
+[ext_resource type="SpriteFrames" uid="uid://dun7i56ujqh2x" path="res://particles/normal_shot.tres" id="2_8116i"]
+[ext_resource type="PackedScene" uid="uid://c16bxsiokr13i" path="res://objects/bullet/bullet.tscn" id="3_8tlkc"]
+
+[resource]
+script = ExtResource("1_k50mu")
+pattern = 1
+type = ExtResource("3_8tlkc")
+element = 0
+speed = 9.0
+speen = 0.0
+size = 1.0
+sprite_size = 1.0
+sprite = ExtResource("2_8116i")
+z_index = 80
