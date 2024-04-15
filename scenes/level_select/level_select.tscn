@@ -1,11 +1,13 @@
-[gd_scene load_steps=16 format=3 uid="uid://b47bekomubotr"]
+[gd_scene load_steps=19 format=3 uid="uid://b47bekomubotr"]
 
 [ext_resource type="Texture2D" uid="uid://b8pgots7rhv5y" path="res://textures/fishy.png" id="1_cgyoc"]
 [ext_resource type="Script" path="res://scenes/level_select/level_select.gd" id="1_n4oea"]
+[ext_resource type="Shader" path="res://materials/tiling_shader.gdshader" id="2_hsujl"]
 [ext_resource type="Texture2D" uid="uid://dfrbcms32h0s5" path="res://textures/fishyDark.png" id="2_jq0oc"]
-[ext_resource type="Texture2D" uid="uid://c3o1ry345bkvl" path="res://textures/levelSelectTemp.png" id="2_ywhfp"]
 [ext_resource type="Texture2D" uid="uid://sjg7eo8470q7" path="res://sprites/lusca_silhouette.png" id="3_la860"]
+[ext_resource type="Texture2D" uid="uid://c031a0c5v45ux" path="res://textures/tiledBlueBackground.png" id="3_mrq00"]
 [ext_resource type="Texture2D" uid="uid://ds37j38egatnn" path="res://textures/octy.png" id="3_y01rs"]
+[ext_resource type="Texture2D" uid="uid://bq4hc3u0yffja" path="res://textures/arrows.png" id="4_bbki1"]
 [ext_resource type="Texture2D" uid="uid://btce1qfw3cd3l" path="res://textures/octyDark.png" id="4_hpna1"]
 [ext_resource type="Texture2D" uid="uid://c3xy4pbstu3gr" path="res://sprites/lusca_silhouette_darkest.png" id="4_lpdgh"]
 [ext_resource type="Texture2D" uid="uid://dwew4eljf82uq" path="res://sprites/lusca_silhouette_darker.png" id="5_hoedw"]
@@ -15,15 +17,26 @@
 [ext_resource type="Texture2D" uid="uid://dy1ditu17ne57" path="res://sprites/grey.png" id="13_t2pkn"]
 [ext_resource type="Texture2D" uid="uid://bffqvelu2vjsg" path="res://sprites/light_grey.png" id="14_6byg1"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ddc8n"]
+shader = ExtResource("2_hsujl")
+
 [sub_resource type="CanvasTexture" id="CanvasTexture_7hxhw"]
 
 [node name="LevelSelect" type="Node2D"]
 script = ExtResource("1_n4oea")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_ddc8n")
 offset_right = 1440.0
 offset_bottom = 1080.0
-texture = ExtResource("2_ywhfp")
+texture = ExtResource("3_mrq00")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="Arrows" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_bbki1")
 
 [node name="Label" type="Label" parent="."]
 anchors_preset = 5

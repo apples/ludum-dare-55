@@ -1,9 +1,29 @@
-[gd_resource type="Resource" script_class="Stage" load_steps=3 format=3 uid="uid://c0kqnsyjxyb5w"]
+[gd_resource type="Resource" script_class="Stage" load_steps=11 format=3 uid="uid://dv80wlk4i6ql6"]
 
-[ext_resource type="PackedScene" uid="uid://n5j07su0noe7" path="res://scenes/main_gameplay/stage_phases/compound_phases/parade_front_from_left.tscn" id="1_jy2bu"]
+[ext_resource type="Resource" path="res://objects/enemy/resources/fire_fesh.tres" id="1_2yt4t"]
+[ext_resource type="Script" path="res://resource_types/Phase.gd" id="2_o4sdy"]
 [ext_resource type="Script" path="res://resource_types/stage_sequence.gd" id="3_hp72b"]
+[ext_resource type="PackedScene" uid="uid://creyxsyit7dtd" path="res://scenes/main_gameplay/stage_phases/simple_patterns/left_to_right_conga_loop.tscn" id="3_kwwi7"]
+[ext_resource type="PackedScene" uid="uid://b1hhvs22skcgv" path="res://scenes/main_gameplay/stage_phases/simple_patterns/move_to_spot_then_leave.tscn" id="3_nenfl"]
+[ext_resource type="Resource" path="res://objects/enemy/resources/vegan_fosh.tres" id="4_lxtle"]
+[ext_resource type="Resource" path="res://objects/enemy/resources/water_fush.tres" id="5_ci0ch"]
+
+[sub_resource type="Resource" id="Resource_aw7hr"]
+script = ExtResource("2_o4sdy")
+stage_phase = ExtResource("3_kwwi7")
+enemy_resource = ExtResource("1_2yt4t")
+
+[sub_resource type="Resource" id="Resource_ygbw7"]
+script = ExtResource("2_o4sdy")
+stage_phase = ExtResource("3_nenfl")
+enemy_resource = ExtResource("4_lxtle")
+
+[sub_resource type="Resource" id="Resource_4xf2a"]
+script = ExtResource("2_o4sdy")
+stage_phase = ExtResource("3_nenfl")
+enemy_resource = ExtResource("5_ci0ch")
 
 [resource]
 script = ExtResource("3_hp72b")
 stage_name = "Oak Hill II"
-phases = Array[PackedScene]([ExtResource("1_jy2bu")])
+phases = Array[ExtResource("2_o4sdy")]([SubResource("Resource_aw7hr"), SubResource("Resource_ygbw7"), SubResource("Resource_4xf2a")])

@@ -7,6 +7,7 @@ signal phase_complete
 
 const SCENE = preload(\"res://scenes/main_gameplay/stage_phases/simple_patterns/move_to_spot_and_stay.tscn\")
 
+@export var enemy_resource: EnemyResource
 @export var count: int = 10
 @export var yvalue: float = 540.0
 # Called when the node enters the scene tree for the first time.
@@ -17,6 +18,7 @@ func _ready() -> void:
 	remaining_children = count
 	for i in count:
 		var child_phase = SCENE.instantiate()
+		child_phase.enemy_resource = enemy_resource
 		child_phase.play_time = 2.0
 		child_phase.end_point = Vector2((i * 920/count) + (920/count/2), yvalue)
 		child_phase.phase_complete.connect(func(): remaining_children -= 1)
@@ -27,6 +29,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if remaining_children == 0:
 		phase_complete.emit()
+		queue_free()
 "
 
 [node name="ParadeFrontFromLeft" type="Node2D"]

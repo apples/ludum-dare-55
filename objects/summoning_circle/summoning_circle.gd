@@ -32,15 +32,15 @@ func push_active_candle(index: int):
 
 func check_sigil_sequence():
 	print(current_sigil_sequence)
-	if current_sigil_sequence == [4,1,3,5,2]:
+	if current_sigil_sequence == [4,1,3,5,2] or current_sigil_sequence == [2,5,3,1,4]:
 		star_sigil()
-	elif current_sigil_sequence == [3,4,5,1,2]:
+	elif current_sigil_sequence == [3,4,5,1,2] or current_sigil_sequence == [2,1,5,4,3]:
 		circle_sigil()
-	elif current_sigil_sequence == [1,5,2,3,4]:
+	elif current_sigil_sequence == [1,5,2,3,4] or current_sigil_sequence == [4,3,2,5,1]:
 		s_sigil()
-	elif current_sigil_sequence == [5,4,1,3,2]:
+	elif current_sigil_sequence == [5,4,1,3,2] or current_sigil_sequence == [2,3,1,4,5]:
 		w_sigil()
-	elif current_sigil_sequence == [2,5,1,3,4]:
+	elif current_sigil_sequence == [2,5,1,3,4] or current_sigil_sequence == [4,3,1,5,2]:
 		spiral_sigil()
 	#elif current_sigil_sequence == [5,4,3,2,1]:
 		#vegan_sigil()
@@ -84,7 +84,7 @@ func load_sigil_vfx(sigil_texture):
 
 func load_failed_sigil_vfx():
 	var new_failed_sigil_vfx = failed_sigil_scene.instantiate()
-	var failed_sigil_sfx_pos = Vector2(500, 535)
+	var failed_sigil_sfx_pos = global_position + Vector2(500, 535)
 	new_failed_sigil_vfx.set_position(failed_sigil_sfx_pos)
 	self.get_parent().add_child(new_failed_sigil_vfx)
 
@@ -116,4 +116,3 @@ func player_started_summoning():
 func _on_sigil_created_timer_timeout():
 	#check_sigil_sequence()
 	reset_summoning_circle()
-	print("yooooo")

@@ -13,6 +13,8 @@ enum Pattern {
 	SPIRAL
 }
 
+static var bullet_id: int = 0
+
 static func fire_pattern(
 	pattern: Pattern,
 	bullet_type: PackedScene,
@@ -20,12 +22,26 @@ static func fire_pattern(
 	secondary_bullet: BulletResource,
 	caller: Node2D,
 	offset: Vector2,
-	angle: float) -> void:
+	angle: float,
+	speed: float = 6.0,
+	speen: float = 5.0,
+	size: float = 1.0,
+	sprite: SpriteFrames = null,
+	sprite_size: float = 1.0,
+	z_index: int = 80) -> void:
 	
 	var allegiance: Bullet.Team = _team(caller)
 	var bullet_created: Callable = func(bullet: Bullet):
 		bullet.allegiance = allegiance
 		bullet.element = element
+		bullet.speed = speed
+		bullet.speen = speen
+		bullet.scale = Vector2(size, size)
+		bullet.sprite_size = sprite_size
+		bullet.z_index = z_index
+		
+		if sprite:
+			bullet.sprite_frames = sprite
 		
 		if "secondary_bullet" in bullet:
 			bullet.secondary_bullet = secondary_bullet
@@ -46,17 +62,22 @@ static func fire_one_straight(
 	angle: float,
 	bullet_created: Callable) -> void:
 	
-	var scene = caller.get_tree().get_root()
-	
 	var transform = caller.global_transform
 	transform = transform.scaled(Vector2.ONE)
 	transform = transform.translated_local(offset)
 	transform = transform.rotated_local(angle)
 	
+	var bullet = create_bullet(caller, bullet_type, transform, bullet_created)
+
+static func create_bullet(caller, bullet_type, transform, bullet_created) -> Node:
+	var scene = caller.get_tree().get_root()
+	bullet_id += 1
 	var bullet = bullet_type.instantiate()
+	bullet.name = "Bullet%s" % bullet_id
 	bullet.global_transform = transform
 	bullet_created.call(bullet)
 	scene.add_child(bullet)
+	return bullet
 
 static func fire_two_straight(
 	bullet_type: PackedScene,
@@ -72,15 +93,8 @@ static func fire_two_straight(
 	transform = transform.translated_local(offset)
 	transform = transform.rotated_local(angle)
 	
-	var bullet = bullet_type.instantiate()
-	bullet.global_transform = transform.translated_local(Vector2i(-25, 0))
-	bullet_created.call(bullet)
-	scene.add_child(bullet)
-	
-	bullet = bullet_type.instantiate()
-	bullet.global_transform = transform.translated_local(Vector2i(25, 0))
-	bullet_created.call(bullet)
-	scene.add_child(bullet)
+	create_bullet(caller, bullet_type, transform.translated_local(Vector2i(-25, 0)), bullet_created)
+	create_bullet(caller, bullet_type, transform.translated_local(Vector2i(25, 0)), bullet_created)
 
 static func fire_three_arc(
 	bullet_type: PackedScene,
@@ -102,10 +116,7 @@ static func fire_three_arc(
 		transform = transform.translated_local(offset)
 		transform = transform.rotated_local(angle)
 		
-		var bullet = bullet_type.instantiate()
-		bullet.global_transform = transform
-		bullet_created.call(bullet)
-		scene.add_child(bullet)
+		var bullet = create_bullet(caller, bullet_type, transform, bullet_created)
 		
 		await caller.get_tree().create_timer(0.033333).timeout
 
@@ -126,10 +137,7 @@ static func fire_three_arc_immediate(
 		transform = transform.translated_local(offset)
 		transform = transform.rotated_local(angle)
 		
-		var bullet = bullet_type.instantiate()
-		bullet.global_transform = transform
-		bullet_created.call(bullet)
-		scene.add_child(bullet)
+		var bullet = create_bullet(caller, bullet_type, transform, bullet_created)
 
 static func fire_five_arc(
 	bullet_type: PackedScene,
@@ -177,10 +185,7 @@ static func fire_circle(
 		transform = transform.translated_local(offset)
 		transform = transform.rotated_local(angle)
 		
-		var bullet = bullet_type.instantiate()
-		bullet.global_transform = transform
-		bullet_created.call(bullet)
-		scene.add_child(bullet)
+		var bullet = create_bullet(caller, bullet_type, transform, bullet_created)
 
 static func fire_spiral(
 	bullet_type: PackedScene,
@@ -204,10 +209,7 @@ static func fire_spiral(
 		transform = transform.translated_local(offset)
 		transform = transform.rotated_local(angle)
 		
-		var bullet = bullet_type.instantiate()
-		bullet.global_transform = transform
-		bullet_created.call(bullet)
-		scene.add_child(bullet)
+		var bullet = create_bullet(caller, bullet_type, transform, bullet_created)
 		
 		await caller.get_tree().create_timer(0.01).timeout
 

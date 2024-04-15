@@ -1,14 +1,16 @@
 extends StagePhase
 
-@onready var enemy: CharacterBody2D = $Enemy
+@onready var boss: CharacterBody2D = $LuscaEnemy
 
-var fire_speed = 7
-var next_fire_frame = fire_speed
 var angle = 0.0
 
+var fire_rates = []
+var fire_timers = []
+
 func _ready() -> void:
-	enemies = [enemy]
-	enemy.tree_exited.connect(func (): _goto("nothing"))
+	print("hi")
+	enemies = [boss]
+	boss.tree_exited.connect(func (): _goto("nothing"))
 	_goto("1")
 
 func _always_process(delta: float) -> void:
@@ -17,18 +19,53 @@ func _always_process(delta: float) -> void:
 func _always_physics_process(delta: float) -> void:
 	pass
 
-func construct_bullet(bullet: Bullet) -> void:
-	bullet.allegiance = Bullet.Team.ENEMY
-
 func _state_nothing_physics_process(delta: float) -> void:
 	pass
 
+func _fire_timers() -> Array:
+	var result = []
+	for i in fire_timers.size():
+		fire_timers[i] -= 1
+		if fire_timers[i] <= 0:
+			fire_timers[i] = fire_rates[i]
+			result.append(true)
+		else:
+			result.append(false)
+	return result
+
+func _state_1_enter() -> void:
+	fire_rates = [17, 53]
+	fire_timers = fire_rates.duplicate()
+
 func _state_1_physics_process(delta: float) -> void:
-	next_fire_frame -= 1
-	if next_fire_frame <= 0:
-		next_fire_frame = fire_speed
-		angle += TAU / 200.0
-		BulletSpawner.fire_spiral(preload("res://objects/bullet/bullet.tscn"), enemy, Vector2.ZERO, angle, construct_bullet)
+	angle += TAU / 200.0
+	
+	var fire = _fire_timers()
+	
+	if fire[0]:
+		var b = BulletResource.new()
+		b.pattern = BulletSpawner.Pattern.SPIRAL
+		b.type = preload("res://objects/bullet/bullet.tscn")
+		b.speed = 7
+		b.speen = 0
+		b.size = 1
+		b.shoot(boss, Vector2.ZERO, angle)
+	
+	if fire[1]:
+		var b = BulletResource.new()
+		b.pattern = BulletSpawner.Pattern.ONE_STRAIGHT
+		b.type = preload("res://objects/bullet/bullet.tscn")
+		b.speed = 1
+		b.speen = 0
+		b.size = 5
+		b.sprite_size = 1.0 / b.size
+		b.z_index = 50
+		b.sprite = preload("res://particles/big_shot.tres")
+		var player = get_tree().get_nodes_in_group("Player")[0]
+		assert(player)
+		
+		var global_angle_to_target = boss.global_position.angle_to_point(player.global_position)
+		b.shoot(boss, Vector2.RIGHT.rotated(global_angle_to_target) * 100, global_angle_to_target)
 
 
 #region State machine core

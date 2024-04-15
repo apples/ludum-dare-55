@@ -14,7 +14,7 @@ signal changed
 signal player_health_changed
 
 ## Example variable.
-var player_health: int = 3:
+var player_health: int = 5:
 	set(v):
 		if player_invuln > 0:
 			#push_error("Player health cannot be changed while invuln")
@@ -45,14 +45,39 @@ var boss_health: int = boss_max_health:
 var main_gameplay_stage: Stage = null:
 	set(v): main_gameplay_stage = v; changed.emit()
 
+func _ready() -> void:
+	reset()
+	
+	if OS.has_environment("LD55_TEST_STAGE_PHASE"):
+		var test_stage_phase = OS.get_environment("LD55_TEST_STAGE_PHASE")
+		var phase_scene: PackedScene = load(test_stage_phase)
+		if not phase_scene:
+			push_error("Invalid test stage phase: '", test_stage_phase, "'")
+			breakpoint
+			return
+		var stage_phase = Phase.new()
+		stage_phase.stage_phase = phase_scene
+		stage_phase.enemy_resource = load([
+			"res://objects/enemy/resources/fire_fesh.tres",
+			"res://objects/enemy/resources/vegan_fosh.tres",
+			"res://objects/enemy/resources/water_fush.tres",
+		].pick_random())
+		main_gameplay_stage = Stage.new()
+		main_gameplay_stage.stage_name = "Test"
+		main_gameplay_stage.phases.append(stage_phase)
+		Globals.player_invuln= 12000
+		print_rich("[color=green]LOADED TEST PHASE:[/color] %s" % [test_stage_phase])
 
-## Reset all variables to their default state.
+## Reset most variables to their default state.
 func reset():
 	player_invuln = 0
-	player_health = 0
+	player_health = 5
 	player_pos = Vector2.ZERO
 	score = 0
-	main_gameplay_stage = null
+	summon_ink = 100
+	boss_max_health = 100
+	boss_health = boss_max_health
+	#main_gameplay_stage = null
 
 #region Debug overlay
 var _overlay

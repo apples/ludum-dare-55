@@ -3,6 +3,9 @@ extends Node2D
 
 signal phase_complete
 
+@export var enemy_resource: EnemyResource
+var enemy: PackedScene = preload("res://objects/enemy/enemy.tscn")
+
 var enemies: Array[Node] = []
 
 # Called when the node enters the scene tree for the first time.
@@ -30,3 +33,9 @@ func behavior_move_to_points(
 		await controller.wait_for(pause_time)
 	if die_at_end:
 		controller.kill()
+
+func create_enemy() -> Node:
+	var e = enemy.instantiate()
+	e.enemy_resource = enemy_resource
+	enemies.append(e)
+	return e
