@@ -2,6 +2,7 @@ extends StagePhase
 
 const GRATIN_COMPLETE = preload("res://scenes/main_gameplay/stage_phases/boss_phases/gratin_complete.tscn")
 const GRATIN_INTRO = preload("res://scenes/main_gameplay/stage_phases/boss_phases/gratin_intro.tscn")
+const BOSS_INTRO = preload("res://scenes/main_gameplay/boss_intro.tscn")
 
 @onready var boss: CharacterBody2D = $GratinEnemy
 
@@ -10,8 +11,9 @@ var angle = 0.0
 var fire_rates = []
 var fire_timers = []
 
+var bi
+
 func _ready() -> void:
-	print("hi")
 	enemies = [boss]
 	boss.tree_exited.connect(func (): _goto("E"))
 	_goto("0")
@@ -37,12 +39,15 @@ func _fire_timers() -> Array:
 	return result
 
 func _state_0_enter() -> void:
+	bi = BOSS_INTRO.instantiate()
+	bi.get_node("NameLabel").text = "GRATIN"
+	get_parent().add_child(bi)
 	fire_rates = [17, 53]
 	fire_timers = fire_rates.duplicate()
 
 func _state_0_physics_process(delta: float) -> void:
 	boss.position = boss.position.move_toward(Vector2(920/2, 200), delta * 150.0)
-	if boss.position.is_equal_approx(Vector2(920/2, 200)):
+	if boss.position.is_equal_approx(Vector2(920/2, 200)) and not is_instance_valid(bi):
 		_goto("1")
 		get_parent().add_child(GRATIN_INTRO.instantiate())
 
