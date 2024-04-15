@@ -11,17 +11,17 @@ func _ready():
 	for i in enemy_count:
 		var pf = PathFollow2D.new()
 		pf.rotates = false
-		pf.progress_ratio = 1.0
 		$Path2D.add_child(pf)
+		pf.progress_ratio = 1.0
 		var e = create_enemy()
 		pf.add_child(e)
-		_start_on_delay(EnemyController.from(e), pf, 0.25 * i)
+		_start_on_delay(EnemyController.from(e), pf, 0.5 * i)
 
 
 func _start_on_delay(controller, path_follower, delay_time):
 	await controller.wait_for(delay_time)
 	var tw = create_tween().tween_property(path_follower, \"progress_ratio\", 0.0, play_time)
-	tw.finished.connect(func(): controller.kill())
+	tw.finished.connect(func(): if controller: controller.kill())
 "
 
 [sub_resource type="Curve2D" id="Curve2D_oxwgs"]
