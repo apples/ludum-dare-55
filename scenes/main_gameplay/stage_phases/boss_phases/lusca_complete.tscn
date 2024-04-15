@@ -5,9 +5,3 @@
 
 [node name="VisualNovelEvent" instance=ExtResource("1_cprqi")]
 dialog = ExtResource("2_olcvk")
-
-[node name="PortraitLeft" parent="Node2D/Portraits" index="0"]
-position = Vector2(-306.667, 24)
-
-[node name="PortraitRight" parent="Node2D/Portraits" index="1"]
-position = Vector2(306.667, 26)
