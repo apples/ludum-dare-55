@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Stage" load_steps=7 format=3 uid="uid://cm0o5nxq6kwqu"]
+
+[ext_resource type="Script" path="res://objects/enemy/enemy_resource.gd" id="1_eyprd"]
+[ext_resource type="Script" path="res://resource_types/Phase.gd" id="2_3hrgk"]
+[ext_resource type="PackedScene" uid="uid://dajq5cj0mn6nx" path="res://scenes/main_gameplay/stage_phases/boss_phases/lusca.tscn" id="3_66w46"]
+[ext_resource type="Script" path="res://resource_types/stage_sequence.gd" id="4_if316"]
+
+[sub_resource type="Resource" id="Resource_ohuy3"]
+script = ExtResource("1_eyprd")
+element = 0
+health = 0.0
+score_value = 0.0
+initial_shoot_delay = 0.0
+shoot_cooldown = 0.0
+
+[sub_resource type="Resource" id="Resource_snwnm"]
+script = ExtResource("2_3hrgk")
+description = ""
+stage_phase = ExtResource("3_66w46")
+enemy_resource = SubResource("Resource_ohuy3")
+
+[resource]
+script = ExtResource("4_if316")
+stage_name = "Oak Hill II"
+phases = Array[ExtResource("2_3hrgk")]([SubResource("Resource_snwnm")])
