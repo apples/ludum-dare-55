@@ -1,14 +1,15 @@
 extends StagePhase
 
-@onready var enemy: CharacterBody2D = $Enemy
+@onready var boss: CharacterBody2D = $LuscaEnemy
 
-var fire_speed = 7
+var fire_speed = 17
 var next_fire_frame = fire_speed
 var angle = 0.0
 
 func _ready() -> void:
-	enemies = [enemy]
-	enemy.tree_exited.connect(func (): _goto("nothing"))
+	print("hi")
+	enemies = [boss]
+	boss.tree_exited.connect(func (): _goto("nothing"))
 	_goto("1")
 
 func _always_process(delta: float) -> void:
@@ -28,7 +29,7 @@ func _state_1_physics_process(delta: float) -> void:
 	if next_fire_frame <= 0:
 		next_fire_frame = fire_speed
 		angle += TAU / 200.0
-		BulletSpawner.fire_spiral(preload("res://objects/bullet/bullet.tscn"), enemy, Vector2.ZERO, angle, construct_bullet)
+		BulletSpawner.fire_spiral(preload("res://objects/bullet/bullet.tscn"), boss, Vector2.ZERO, angle, construct_bullet)
 
 
 #region State machine core

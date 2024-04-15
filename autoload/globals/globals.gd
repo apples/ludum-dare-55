@@ -45,6 +45,22 @@ var boss_health: int = boss_max_health:
 var main_gameplay_stage: Stage = null:
 	set(v): main_gameplay_stage = v; changed.emit()
 
+func _ready() -> void:
+	reset()
+	
+	if OS.has_environment("LD55_TEST_STAGE_PHASE"):
+		var test_stage_phase = OS.get_environment("LD55_TEST_STAGE_PHASE")
+		var phase_scene: PackedScene = load(test_stage_phase)
+		if not phase_scene:
+			push_error("Invalid test stage phase: '", test_stage_phase, "'")
+			breakpoint
+			return
+		var stage_phase = Phase.new()
+		stage_phase.stage_phase = phase_scene
+		main_gameplay_stage = Stage.new()
+		main_gameplay_stage.stage_name = "Test"
+		main_gameplay_stage.phases.append(stage_phase)
+		print_rich("[color=green]LOADED TEST PHASE:[/color] %s" % [test_stage_phase])
 
 ## Reset most variables to their default state.
 func reset():
