@@ -162,6 +162,7 @@ script = ExtResource("8_2alke")
 
 [node name="HealthBar" type="ColorRect" parent="UI/UIPanelRoot"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -175,10 +176,10 @@ color = Color(0, 0.733333, 0, 1)
 script = ExtResource("10_ggp8c")
 
 [node name="SummonsUI" parent="UI/UIPanelRoot" instance=ExtResource("10_geq1w")]
-offset_left = 70.0
-offset_top = 252.0
-offset_right = 70.0
-offset_bottom = 252.0
+offset_left = 60.0
+offset_top = 161.0
+offset_right = 60.0
+offset_bottom = 161.0
 
 [node name="TextureRect" type="TextureRect" parent="UI/UIPanelRoot"]
 layout_mode = 0
