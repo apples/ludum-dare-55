@@ -15,6 +15,8 @@ var pause_scene = preload("res://scenes/pause_menu/pause_menu.tscn")
 
 @onready var brush_pos = self.global_position #Vector2(0, 0)
 @onready var refire_delay_timer = $RefireDelay
+@onready var outline = $Outline
+
 const brush_circle_radius = 25
 
 const NORMAL_SPEED = 300.0
@@ -67,9 +69,25 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	
+	set_element_outline()
+	
 	# regenerate ink
 	if Globals.summon_ink < 100 and summoning == false:
 		Globals.summon_ink += 0.50
+
+func set_element_outline():
+	if current_element == Globals.Elements.FIRE:
+		outline.material.set("shader_parameter/fillColor", Vector4(1, 0, 0, 1))
+	if current_element == Globals.Elements.WATER:
+		outline.material.set("shader_parameter/fillColor", Vector4(0, 0, 1, 1))
+	if current_element == Globals.Elements.VEGANS:
+		outline.material.set("shader_parameter/fillColor", Vector4(0, 1, 0, 1))
+	#if element == Globals.Elements.AIR:
+		#outline.material.set("shader_parameter/fillColor", Vector4(1, 1, 0, 1))
+	#if element == Globals.Elements.DARK:
+		#outline.material.set("shader_parameter/fillColor", Vector4(0.5, 0, 1, 1))
+	if current_element == Globals.Elements.UNSET:
+		outline.material.set("shader_parameter/fillColor", Vector4(0, 0, 0, 0))
 
 # Called when colliding with something for any reason.
 func _collision(other: PhysicsBody2D) -> void:
