@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://cay30lk6nwb5t"]
+
+[sub_resource type="GDScript" id="GDScript_uvbc5"]
+script/source = "extends StagePhase
+
+@export var enemy_count: int = 20
+@export var play_time: float = 20
+
+
+func _ready():
+	for i in enemy_count:
+		var pf = PathFollow2D.new()
+		pf.rotates = false
+		$Path2D.add_child(pf)
+		pf.progress_ratio = 0.0
+		var e = create_enemy()
+		pf.add_child(e)
+		_start_on_delay(EnemyController.from(e), pf, 0.5 * i)
+
+
+func _start_on_delay(controller, path_follower, delay_time):
+	await controller.wait_for(delay_time)
+	var tw = create_tween().tween_property(path_follower, \"progress_ratio\", 01.0, play_time)
+	tw.finished.connect(func(): if controller: controller.kill())
+"
+
+[sub_resource type="Curve2D" id="Curve2D_oxwgs"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -49, -97, 0, 0, 0, 0, 970, 22, 0, 0, 0, 0, -15, 29, 0, 0, 0, 0, -13, 97, 0, 0, 0, 0, 970, 89, 0, 0, 0, 0, 968, 167, 0, 0, 0, 0, -18, 170, 0, 0, 0, 0, -18, 259, 0, 0, 0, 0, 966, 252, 0, 0, 0, 0, 963, 357, 0, 0, 0, 0, -18, 346, 0, 0, 0, 0, -21, 432, 0, 0, 0, 0, 962, 441, 0, 0, 0, 0, 962, 514, 0, 0, 0, 0, -18, 492, 0, 0, 0, 0, -15, 570, 0, 0, 0, 0, 957, 595, 0, 0, 0, 0, 962, 670, 0, 0, 0, 0, -27, 648, 0, 0, 0, 0, -19, 743, 0, 0, 0, 0, 957, 743, 0, 0, 0, 0, 968, -59)
+}
+point_count = 22
+
+[node name="left_to_right_conga_loop2" type="Node2D"]
+script = SubResource("GDScript_uvbc5")
+
+[node name="GamePlayZoneRef" type="ReferenceRect" parent="."]
+offset_right = 920.0
+offset_bottom = 1080.0
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_oxwgs")

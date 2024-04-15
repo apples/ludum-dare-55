@@ -1,0 +1,64 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4u8sxwy3r7v5"]
+
+[sub_resource type="GDScript" id="GDScript_uvbc5"]
+script/source = "extends StagePhase
+
+@export var play_time: float = 05.0
+
+
+func _ready():
+	for path in [$Path1, $Path2, $Path3, $Path4, $Path5, $Path6, $Path7, $Path8]:
+		var pf = PathFollow2D.new()
+		pf.rotates = false
+		path.add_child(pf)
+		var e = create_enemy()
+		pf.add_child(e)
+		var tw = create_tween().tween_property(pf, \"progress_ratio\", 1.0, play_time)
+		var controller = EnemyController.from(e)
+		tw.finished.connect(func(): if controller: controller.kill())
+"
+
+[sub_resource type="Curve2D" id="Curve2D_rugxg"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 98, -70, 0, 0, 0, 0, 98, 456, 0, 0, 0, 0, 113, 488, 0, 0, 0, 0, 143, 504, 0, 0, 0, 0, 171, 488, 0, 0, 0, 0, 186, 457, 0, 0, 0, 0, 186, -69)
+}
+point_count = 7
+
+[node name="FixedPivotFrontToBackCounterMarch" type="Node2D"]
+script = SubResource("GDScript_uvbc5")
+
+[node name="GamePlayZoneRef" type="ReferenceRect" parent="."]
+auto_translate_mode = 1
+offset_right = 920.0
+offset_bottom = 1080.0
+
+[node name="Path1" type="Path2D" parent="."]
+curve = SubResource("Curve2D_rugxg")
+
+[node name="Path2" type="Path2D" parent="."]
+position = Vector2(92, 0)
+curve = SubResource("Curve2D_rugxg")
+
+[node name="Path3" type="Path2D" parent="."]
+position = Vector2(184, 0)
+curve = SubResource("Curve2D_rugxg")
+
+[node name="Path4" type="Path2D" parent="."]
+position = Vector2(276, 0)
+curve = SubResource("Curve2D_rugxg")
+
+[node name="Path5" type="Path2D" parent="."]
+position = Vector2(368, 0)
+curve = SubResource("Curve2D_rugxg")
+
+[node name="Path6" type="Path2D" parent="."]
+position = Vector2(460, 0)
+curve = SubResource("Curve2D_rugxg")
+
+[node name="Path7" type="Path2D" parent="."]
+position = Vector2(552, 0)
+curve = SubResource("Curve2D_rugxg")
+
+[node name="Path8" type="Path2D" parent="."]
+position = Vector2(644, 0)
+curve = SubResource("Curve2D_rugxg")

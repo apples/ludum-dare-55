@@ -1,33 +1,46 @@
-[gd_resource type="Resource" script_class="Stage" load_steps=12 format=3 uid="uid://c76evbk6p1fys"]
+[gd_resource type="Resource" script_class="Stage" load_steps=15 format=3 uid="uid://c76evbk6p1fys"]
 
-[ext_resource type="Resource" uid="uid://b8jjwnq8i42hj" path="res://scenes/main_gameplay/stages/stage_1b/enemies/fire_scout.tres" id="1_nin5c"]
+[ext_resource type="Resource" uid="uid://b8jjwnq8i42hj" path="res://scenes/main_gameplay/stages/stage_1b/enemies/fire_scout_slow.tres" id="1_omeau"]
 [ext_resource type="Script" path="res://resource_types/Phase.gd" id="1_y7b8p"]
-[ext_resource type="PackedScene" uid="uid://bbw7rh5dlbnmv" path="res://scenes/main_gameplay/stages/stage_1b/phases/move_to_spot_and_stay.tscn" id="3_n7ph0"]
-[ext_resource type="Resource" uid="uid://uyfdw5cq7rvi" path="res://scenes/main_gameplay/stages/stage_1b/enemies/water_scout.tres" id="4_yl32h"]
-[ext_resource type="PackedScene" uid="uid://cg3qoc8ax7bl" path="res://scenes/main_gameplay/stages/stage_1b/phases/scouts_from_right.tscn" id="5_qo5vu"]
+[ext_resource type="PackedScene" uid="uid://5ea1c34qw01" path="res://scenes/main_gameplay/stages/stage_1b/phases/02_boobs.tscn" id="3_6e8on"]
+[ext_resource type="PackedScene" uid="uid://c4u8sxwy3r7v5" path="res://scenes/main_gameplay/stages/stage_1b/phases/01_front_back.tscn" id="3_rcdl6"]
+[ext_resource type="Resource" uid="uid://bhltry85xfkg0" path="res://scenes/main_gameplay/stages/stage_1b/enemies/fire_scout_fast.tres" id="4_yjrnj"]
+[ext_resource type="Resource" uid="uid://uyfdw5cq7rvi" path="res://scenes/main_gameplay/stages/stage_1b/enemies/water_scout_slow.tres" id="4_yl32h"]
 [ext_resource type="Resource" uid="uid://mkfre5ispr13" path="res://scenes/main_gameplay/stages/stage_1b/enemies/vegan_scout.tres" id="6_0jv1q"]
-[ext_resource type="PackedScene" uid="uid://dfj0ambk0ldxq" path="res://scenes/main_gameplay/stages/stage_1b/phases/scouts_from_left.tscn" id="7_p403x"]
+[ext_resource type="PackedScene" uid="uid://cay30lk6nwb5t" path="res://scenes/main_gameplay/stages/stage_1b/phases/03_invaders.tscn" id="8_ogk8t"]
 [ext_resource type="Script" path="res://resource_types/stage_sequence.gd" id="10_ick1g"]
-
-[sub_resource type="Resource" id="Resource_hjaxp"]
-script = ExtResource("1_y7b8p")
-description = "Fire Scouts"
-stage_phase = ExtResource("3_n7ph0")
-enemy_resource = ExtResource("1_nin5c")
 
 [sub_resource type="Resource" id="Resource_r7nfv"]
 script = ExtResource("1_y7b8p")
 description = "Water Scouts"
-stage_phase = ExtResource("5_qo5vu")
+stage_phase = ExtResource("3_6e8on")
 enemy_resource = ExtResource("4_yl32h")
 
-[sub_resource type="Resource" id="Resource_d1h0i"]
+[sub_resource type="Resource" id="Resource_hjaxp"]
 script = ExtResource("1_y7b8p")
-description = "Vegan Scouts"
-stage_phase = ExtResource("7_p403x")
+description = "Fire Scouts"
+stage_phase = ExtResource("3_rcdl6")
 enemy_resource = ExtResource("6_0jv1q")
+
+[sub_resource type="Resource" id="Resource_4nu5c"]
+script = ExtResource("1_y7b8p")
+description = ""
+stage_phase = ExtResource("3_rcdl6")
+enemy_resource = ExtResource("4_yjrnj")
+
+[sub_resource type="Resource" id="Resource_xwu6d"]
+script = ExtResource("1_y7b8p")
+description = ""
+stage_phase = ExtResource("3_rcdl6")
+enemy_resource = ExtResource("1_omeau")
+
+[sub_resource type="Resource" id="Resource_sfyia"]
+script = ExtResource("1_y7b8p")
+description = ""
+stage_phase = ExtResource("8_ogk8t")
+enemy_resource = ExtResource("1_omeau")
 
 [resource]
 script = ExtResource("10_ick1g")
 stage_name = "Stage 1B"
-phases = Array[ExtResource("1_y7b8p")]([SubResource("Resource_hjaxp"), SubResource("Resource_r7nfv"), SubResource("Resource_d1h0i")])
+phases = Array[ExtResource("1_y7b8p")]([SubResource("Resource_r7nfv"), SubResource("Resource_hjaxp"), SubResource("Resource_4nu5c"), SubResource("Resource_xwu6d"), SubResource("Resource_sfyia")])
