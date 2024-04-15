@@ -1,29 +1,29 @@
 [gd_scene load_steps=11 format=3 uid="uid://dhsnpc1yjqirn"]
 
 [ext_resource type="Script" path="res://objects/summoning_circle/candle/candle.gd" id="1_0u4pf"]
-[ext_resource type="Texture2D" uid="uid://nj8kqtl7mccw" path="res://objects/candle/candle-placeholder.png" id="1_egni8"]
+[ext_resource type="Texture2D" uid="uid://pacgiaadpk1s" path="res://objects/summoning_circle/candle/candle.png" id="2_e387n"]
 [ext_resource type="Texture2D" uid="uid://ba8hr3d6jnxwh" path="res://objects/candle/candle-light.png" id="3_0oj0k"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_y4s26"]
-atlas = ExtResource("1_egni8")
+[sub_resource type="AtlasTexture" id="AtlasTexture_1vb1d"]
+atlas = ExtResource("2_e387n")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ids67"]
-atlas = ExtResource("1_egni8")
+[sub_resource type="AtlasTexture" id="AtlasTexture_e4m1e"]
+atlas = ExtResource("2_e387n")
 region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_10ed1"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_sjmcl"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_y4s26")
+"texture": SubResource("AtlasTexture_1vb1d")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ids67")
+"texture": SubResource("AtlasTexture_e4m1e")
 }],
 "loop": true,
 "name": &"default",
-"speed": 8.0
+"speed": 5.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pn5ac"]
@@ -55,9 +55,9 @@ size = Vector2(32, 47)
 script = ExtResource("1_0u4pf")
 
 [node name="CandleSprite" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_10ed1")
+sprite_frames = SubResource("SpriteFrames_sjmcl")
 autoplay = "default"
-frame_progress = 0.506174
+frame_progress = 0.0496201
 
 [node name="CandleLightSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_nffds")
