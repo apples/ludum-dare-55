@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="BulletResource" load_steps=3 format=3 uid="uid://cohwge5t8llgn"]
 
-[ext_resource type="Script" path="res://objects/bullet/bullet_resource.gd" id="1_twonf"]
-[ext_resource type="PackedScene" uid="uid://c16bxsiokr13i" path="res://objects/bullet/bullet.tscn" id="2_yurxd"]
+[ext_resource type="Script" path="res://objects/bullet/bullet_resource.gd" id="1_42wqx"]
+[ext_resource type="PackedScene" uid="uid://c16bxsiokr13i" path="res://objects/bullet/bullet.tscn" id="2_25po7"]
 
 [resource]
-script = ExtResource("1_twonf")
-pattern = 1
-type = ExtResource("2_yurxd")
+script = ExtResource("1_42wqx")
+pattern = 5
+type = ExtResource("2_25po7")
 element = 2

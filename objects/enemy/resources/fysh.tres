@@ -1,0 +1,25 @@
+[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://os7v1y5lvlbg"]
+
+[ext_resource type="Texture2D" uid="uid://btr1no4vhuy0p" path="res://sprites/fysh_enemy_1.png" id="1_evtaa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_veel3"]
+atlas = ExtResource("1_evtaa")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ounhx"]
+atlas = ExtResource("1_evtaa")
+region = Rect2(96, 0, 96, 96)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_veel3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ounhx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
