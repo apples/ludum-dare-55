@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://b0gu8ciysfxcg"]
+[gd_scene load_steps=9 format=3 uid="uid://b0gu8ciysfxcg"]
 
 [ext_resource type="Texture2D" uid="uid://c1p01a43oafbd" path="res://textures/w_sigil_instruct.png" id="1_tta8i"]
 [ext_resource type="Texture2D" uid="uid://dhcl6a2o8pyt2" path="res://textures/s_sigil_instruct.png" id="2_lkojo"]
 [ext_resource type="Texture2D" uid="uid://c5sk3sxvwfb5i" path="res://textures/spiral_sigil_instruct.png" id="3_cqpxo"]
 [ext_resource type="Texture2D" uid="uid://dc1k65fhku07x" path="res://textures/star_sigil_instruct.png" id="4_ano0l"]
 [ext_resource type="Texture2D" uid="uid://bwp1ms7tsq42l" path="res://textures/circle_sigil_instruct.png" id="5_vo0p2"]
+[ext_resource type="Texture2D" uid="uid://cxlxciuwmsf7r" path="res://textures/water_icon.png" id="6_w0f00"]
+[ext_resource type="Texture2D" uid="uid://c0wt5vuyky6n7" path="res://textures/fire_icon.png" id="7_18t1l"]
+[ext_resource type="Texture2D" uid="uid://c6msqgrnqo7ap" path="res://textures/vegan_icon.png" id="8_5yvp2"]
 
 [node name="SummonsUI" type="Control"]
 layout_mode = 3
@@ -34,22 +37,6 @@ offset_top = 228.0
 offset_right = 135.0
 offset_bottom = 356.0
 texture = ExtResource("2_lkojo")
-
-[node name="SpiralSigil" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 3.0
-offset_top = 674.0
-offset_right = 131.0
-offset_bottom = 802.0
-texture = ExtResource("3_cqpxo")
-
-[node name="StarSigil" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 1.0
-offset_top = 535.0
-offset_right = 129.0
-offset_bottom = 663.0
-texture = ExtResource("4_ano0l")
 
 [node name="CircleSigil" type="TextureRect" parent="."]
 layout_mode = 0
@@ -88,8 +75,27 @@ offset_bottom = 485.0
 theme_override_font_sizes/font_size = 80
 text = "="
 
+[node name="StarSigil" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 1.0
+offset_top = 535.0
+offset_right = 129.0
+offset_bottom = 663.0
+texture = ExtResource("4_ano0l")
+
+[node name="SpiralSigil" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 3.0
+offset_top = 674.0
+offset_right = 131.0
+offset_bottom = 802.0
+texture = ExtResource("3_cqpxo")
+
 [node name="Equals4" type="Label" parent="."]
 auto_translate_mode = 1
+visible = false
 layout_mode = 0
 offset_left = 158.0
 offset_top = 556.0
@@ -100,6 +106,7 @@ text = "="
 
 [node name="Equals5" type="Label" parent="."]
 auto_translate_mode = 1
+visible = false
 layout_mode = 0
 offset_left = 155.0
 offset_top = 694.0
@@ -109,6 +116,7 @@ theme_override_font_sizes/font_size = 80
 text = "="
 
 [node name="QuestionMarks" type="Label" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 253.0
 offset_top = 569.0
@@ -119,6 +127,7 @@ text = "??"
 
 [node name="QuestionMarks2" type="Label" parent="."]
 auto_translate_mode = 1
+visible = false
 layout_mode = 0
 offset_left = 255.0
 offset_top = 714.0
@@ -126,3 +135,89 @@ offset_right = 315.0
 offset_bottom = 773.0
 theme_override_font_sizes/font_size = 81
 text = "??"
+
+[node name="WaterIcon" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 241.0
+offset_top = 90.0
+offset_right = 369.0
+offset_bottom = 218.0
+texture = ExtResource("6_w0f00")
+
+[node name="FireIcon" type="TextureRect" parent="."]
+auto_translate_mode = 1
+layout_mode = 0
+offset_left = 240.0
+offset_top = 228.0
+offset_right = 368.0
+offset_bottom = 356.0
+texture = ExtResource("7_18t1l")
+
+[node name="VeganIcon" type="TextureRect" parent="."]
+auto_translate_mode = 1
+layout_mode = 0
+offset_left = 245.0
+offset_top = 382.0
+offset_right = 373.0
+offset_bottom = 510.0
+texture = ExtResource("8_5yvp2")
+
+[node name="WaterIcon2" type="TextureRect" parent="."]
+auto_translate_mode = 1
+layout_mode = 0
+offset_left = 129.0
+offset_top = 531.0
+offset_right = 257.0
+offset_bottom = 659.0
+texture = ExtResource("6_w0f00")
+
+[node name="Arrow1" type="Label" parent="."]
+auto_translate_mode = 1
+layout_mode = 0
+offset_left = 271.0
+offset_top = 630.0
+offset_right = 351.0
+offset_bottom = 725.0
+rotation = 0.743878
+theme_override_font_sizes/font_size = 80
+text = "→"
+
+[node name="Arrow2" type="Label" parent="."]
+auto_translate_mode = 1
+layout_mode = 0
+offset_left = 240.0
+offset_top = 840.0
+offset_right = 320.0
+offset_bottom = 935.0
+rotation = 3.14537
+theme_override_font_sizes/font_size = 80
+text = "→"
+
+[node name="Arrow3" type="Label" parent="."]
+auto_translate_mode = 1
+layout_mode = 0
+offset_left = 64.0
+offset_top = 683.0
+offset_right = 144.0
+offset_bottom = 778.0
+rotation = 5.47858
+theme_override_font_sizes/font_size = 80
+text = "→"
+
+[node name="FireIcon2" type="TextureRect" parent="."]
+auto_translate_mode = 1
+layout_mode = 0
+offset_left = 266.0
+offset_top = 715.0
+offset_right = 394.0
+offset_bottom = 843.0
+texture = ExtResource("7_18t1l")
+
+[node name="VeganIcon2" type="TextureRect" parent="."]
+auto_translate_mode = 1
+layout_mode = 0
+offset_left = 2.0
+offset_top = 728.0
+offset_right = 130.0
+offset_bottom = 856.0
+texture = ExtResource("8_5yvp2")
