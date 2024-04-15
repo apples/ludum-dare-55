@@ -45,6 +45,9 @@ func _on_bouncing_character_body_2d_bounce(collision: KinematicCollision2D) -> v
 	camera_shake.rumble(50, 0.25)
 
 func _on_player_player_died() -> void:
+	%HealthBar.visible = false
+	for bullet in get_tree().get_nodes_in_group("Bullet"):
+		bullet.queue_free()
 	SceneGirl.change_scene("res://scenes/game_over/game_over.tscn")
 
 func stage_complete():

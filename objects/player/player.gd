@@ -152,7 +152,8 @@ func _on_player_health_changed() -> void:
 func _on_death_timer_timeout() -> void:
 	$DeathParticles.emitting = false
 	player_died.emit()
+
 func _pause()->void:
 	get_tree().paused = true
 	get_tree().root.add_child(pause_scene.instantiate())
-	
+
