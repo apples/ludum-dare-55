@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c3rvm3rw6opg"]
+[gd_scene load_steps=22 format=3 uid="uid://c3rvm3rw6opg"]
 
 [ext_resource type="Script" path="res://node_types/camera_shake.gd" id="1_lrklj"]
 [ext_resource type="Script" path="res://scenes/main_gameplay/main_gameplay.gd" id="1_wt4mr"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cwcfvig1wond3" path="res://objects/summoning_circle/summoning_circle.tscn" id="7_6sfe8"]
 [ext_resource type="Script" path="res://ui/hearts.gd" id="7_u0gx2"]
 [ext_resource type="Script" path="res://scenes/main_gameplay/summon_meter.gd" id="8_2alke"]
+[ext_resource type="Texture2D" uid="uid://c1p01a43oafbd" path="res://textures/w_sigil_instruct.png" id="10_dtkse"]
 [ext_resource type="Script" path="res://ui/health_bar.gd" id="10_ggp8c"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fenso"]
@@ -165,6 +166,14 @@ offset_bottom = 148.0
 grow_horizontal = 0
 color = Color(0, 0.733333, 0, 1)
 script = ExtResource("10_ggp8c")
+
+[node name="TextureRect" type="TextureRect" parent="UI/UIPanelRoot"]
+layout_mode = 0
+offset_left = 82.0
+offset_top = 270.0
+offset_right = 225.0
+offset_bottom = 398.0
+texture = ExtResource("10_dtkse")
 
 [node name="SummoningCircle" parent="." instance=ExtResource("7_6sfe8")]
 position = Vector2(0, 250)
