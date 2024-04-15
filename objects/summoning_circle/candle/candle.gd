@@ -27,7 +27,7 @@ func is_player_on_candle():
 			trigger_activate_candle()
 
 func _on_body_entered(body):
-	if body.name == "Player" and Input.is_action_pressed("Summon"):
+	if body.name == "Player" and Input.is_action_pressed("Summon") and !active:
 		trigger_activate_candle()
 
 func trigger_activate_candle():
