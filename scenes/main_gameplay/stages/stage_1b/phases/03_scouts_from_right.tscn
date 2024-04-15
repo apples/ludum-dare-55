@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://dfj0ambk0ldxq"]
+[gd_scene load_steps=2 format=3 uid="uid://b32nc383ttq4p"]
 
 [sub_resource type="GDScript" id="GDScript_reuby"]
 script/source = "extends Node2D
@@ -20,7 +20,7 @@ func _ready() -> void:
 		var child_phase = SCENE.instantiate()
 		child_phase.enemy_resource = enemy_resource
 		child_phase.play_time = 2.0
-		child_phase.start_point = Vector2(-10, -10)
+		child_phase.start_point = Vector2(930, -10)
 		child_phase.end_point = Vector2((i * 920/count) + (920/count/2), yvalue)
 		child_phase.phase_complete.connect(func(): remaining_children -= 1)
 		add_child(child_phase)
@@ -33,5 +33,5 @@ func _process(delta: float) -> void:
 		queue_free()
 "
 
-[node name="ParadeFrontFromLeft" type="Node2D"]
+[node name="ParadeFrontFromLeft2" type="Node2D"]
 script = SubResource("GDScript_reuby")

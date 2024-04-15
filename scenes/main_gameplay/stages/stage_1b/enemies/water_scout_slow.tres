@@ -12,4 +12,4 @@ health = 20.0
 score_value = 100.0
 bullet_resource = ExtResource("1_nuhxq")
 initial_shoot_delay = 0.15
-shoot_cooldown = 0.15
+shoot_cooldown = 0.9
