@@ -1,14 +1,14 @@
-
-
-
 extends Node
+
+@onready var return_button: Button = %ReturnButton
+
 
 func _ready() -> void:
 	self.process_mode= Node.PROCESS_MODE_ALWAYS
 	%music_volume.value = DataStore.current.music_volume
 	%master_volume.value = DataStore.current.master_volume
 	%sfx_volume.value = DataStore.current.sfx_volume
-
+	#return_button.grab_focus()
 func _on_master_volume_value_changed(value: float) -> void:
 	print(value)
 	DataStore.current.master_volume = value

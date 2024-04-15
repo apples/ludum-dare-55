@@ -50,12 +50,14 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_pressed("Summon"):
 		current_speed = FOCUS_SPEED
+		$Hitbox.frame = 1
 		if !summoning:
 			summoning_circle_ref.player_started_summoning()
 			summoning = true
 		summon_tick()
 	else:
 		current_speed = NORMAL_SPEED
+		$Hitbox.frame = 0
 		summoning = false
 		if summoning_circle_ref.current_sigil_sequence.size() < 5:
 			summoning_circle_ref.reset_summoning_circle()
