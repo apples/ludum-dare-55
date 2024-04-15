@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://objects/enemy/enemy.gd" id="1_5ghjk"]
 [ext_resource type="Shader" path="res://materials/color_fill.gdshader" id="2_4wp46"]
 [ext_resource type="Texture2D" uid="uid://c7lc46m6g41vv" path="res://icon.svg" id="2_uofss"]
-[ext_resource type="SpriteFrames" uid="uid://stnvy5r00r0n" path="res://objects/enemy/resources/fush.tres" id="3_3rsvs"]
+[ext_resource type="SpriteFrames" uid="uid://bpccjegu7ruj8" path="res://objects/enemy/resources/fush.tres" id="3_3rsvs"]
 [ext_resource type="Script" path="res://node_types/enemy_controller.gd" id="4_4bt5k"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cq6ui"]
@@ -15,6 +15,7 @@ radius = 17.4929
 
 [node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
 script = ExtResource("1_5ghjk")
+enemy_resource = null
 
 [node name="Outline" type="AnimatedSprite2D" parent="." groups=["Enemy"]]
 material = SubResource("ShaderMaterial_cq6ui")
@@ -32,7 +33,7 @@ flip_v = true
 scale = Vector2(0.9, 0.9)
 sprite_frames = ExtResource("3_3rsvs")
 autoplay = "default"
-frame_progress = 0.251994
+frame_progress = 0.940607
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Enemy"]]
 shape = SubResource("CircleShape2D_tnbux")
