@@ -12,7 +12,7 @@ var enemy_damaged_secene = preload("res://objects/VFX/enemy_damaged/enemy_damage
 @onready var outline = $Outline
 
 func _ready() -> void:
-	#$Outline/Sprite2D.texture = enemy_resource.texture
+	$Outline/AnimatedSprite2D.sprite_frames = enemy_resource.sprite_frames
 	pass
 
 func _process(delta: float) -> void:
