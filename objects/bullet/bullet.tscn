@@ -14,10 +14,12 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jey2d"]
-size = Vector2(26, 26)
+[sub_resource type="CircleShape2D" id="CircleShape2D_o1ss5"]
+radius = 11.0
 
 [node name="Bullet" type="Node2D"]
+z_index = 80
+z_as_relative = false
 script = ExtResource("1_hu4wm")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
@@ -27,7 +29,6 @@ autoplay = "default"
 [node name="Hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-visible = false
-shape = SubResource("RectangleShape2D_jey2d")
+shape = SubResource("CircleShape2D_o1ss5")
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
