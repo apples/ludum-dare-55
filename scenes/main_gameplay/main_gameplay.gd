@@ -55,9 +55,23 @@ func stage_complete():
 	%HealthBar.visible = false
 	print_rich("[rainbow][tornado]STAGE DONE!!!![/tornado][/rainbow]")
 	print(stage.stage_name)
-	if stage.stage_name == "Oak Hill II" && !Save.current.levels_beaten.has("0"):
+	
+	if stage.stage_name == "Stage 0" && !Save.current.levels_beaten.has("0"):
 		Save.current.levels_beaten.append("0")
 		Save.save()
+	elif stage.stage_name == "A1" && !Save.current.levels_beaten.has("A1"):
+		Save.current.levels_beaten.append("A1")
+		Save.save()
+	elif stage.stage_name == "B1" && !Save.current.levels_beaten.has("B1"):
+		Save.current.levels_beaten.append("B1")
+		Save.save()
+	elif stage.stage_name == "A2" && !Save.current.levels_beaten.has("A2"):
+		Save.current.levels_beaten.append("A2")
+		Save.save()
+	elif stage.stage_name == "B2" && !Save.current.levels_beaten.has("B2"):
+		Save.current.levels_beaten.append("B2")
+		Save.save()
+	
 	for bullet in get_tree().get_nodes_in_group("Bullet"):
 		bullet.queue_free()
 	SceneGirl.change_scene("res://scenes/win/win.tscn")
