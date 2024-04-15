@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EnemyResource" load_steps=4 format=3 uid="uid://blu0f5lli61vq"]
+
+[ext_resource type="Resource" uid="uid://bfnsc7tyejvyb" path="res://objects/bullet/resources/fire_basic.tres" id="1_0u2dr"]
+[ext_resource type="Script" path="res://objects/enemy/enemy_resource.gd" id="2_bik1e"]
+[ext_resource type="SpriteFrames" uid="uid://c2stxcc0byybc" path="res://objects/enemy/resources/fesh.tres" id="3_3fkrf"]
+
+[resource]
+script = ExtResource("2_bik1e")
+sprite_frames = ExtResource("3_3fkrf")
+element = 1
+health = 10.0
+score_value = 100.0
+bullet_resource = ExtResource("1_0u2dr")
+initial_shoot_delay = 1.0
+shoot_cooldown = 0.5

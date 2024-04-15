@@ -24,7 +24,7 @@ func _on_b_1_pressed() -> void:
 	SceneGirl.change_scene("res://scenes/main_gameplay/main_gameplay.tscn")
 
 func _on_a_1_pressed() -> void:
-	Globals.main_gameplay_stage = preload("res://scenes/main_gameplay/stages/enemy_test_stage.tres")
+	Globals.main_gameplay_stage = preload("res://scenes/main_gameplay/stages/stage_a1/stage_1a.tres")
 	SceneGirl.change_scene("res://scenes/main_gameplay/main_gameplay.tscn")
 
 func _on_b_2_pressed() -> void:
