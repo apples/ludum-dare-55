@@ -33,8 +33,8 @@ func next_stage_phase() -> void:
 			current_stage_phase.enemy_resource = stage.phases[stage_phase].enemy_resource
 		current_stage_phase.phase_complete.connect(_on_phase_complete)
 		add_child(current_stage_phase)
-		if stage_phase == stage.phases.size() - 1:
-			%HealthBar.visible = true
+		#if stage_phase == stage.phases.size() - 1:
+			#%HealthBar.visible = true
 	else:
 		stage_complete()
 
@@ -46,13 +46,13 @@ func _on_bouncing_character_body_2d_bounce(collision: KinematicCollision2D) -> v
 	camera_shake.rumble(50, 0.25)
 
 func _on_player_player_died() -> void:
-	%HealthBar.visible = false
+	#%HealthBar.visible = false
 	for bullet in get_tree().get_nodes_in_group("Bullet"):
 		bullet.queue_free()
 	SceneGirl.change_scene("res://scenes/game_over/game_over.tscn")
 
 func stage_complete():
-	%HealthBar.visible = false
+	#%HealthBar.visible = false
 	print_rich("[rainbow][tornado]STAGE DONE!!!![/tornado][/rainbow]")
 	print(stage.stage_name)
 	
