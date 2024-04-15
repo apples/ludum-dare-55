@@ -1,11 +1,21 @@
-[gd_scene load_steps=7 format=3 uid="uid://b47bekomubotr"]
+[gd_scene load_steps=16 format=3 uid="uid://b47bekomubotr"]
 
 [ext_resource type="Texture2D" uid="uid://b8pgots7rhv5y" path="res://textures/fishy.png" id="1_cgyoc"]
 [ext_resource type="Script" path="res://scenes/level_select/level_select.gd" id="1_n4oea"]
 [ext_resource type="Texture2D" uid="uid://dfrbcms32h0s5" path="res://textures/fishyDark.png" id="2_jq0oc"]
 [ext_resource type="Texture2D" uid="uid://c3o1ry345bkvl" path="res://textures/levelSelectTemp.png" id="2_ywhfp"]
+[ext_resource type="Texture2D" uid="uid://sjg7eo8470q7" path="res://sprites/lusca_silhouette.png" id="3_la860"]
 [ext_resource type="Texture2D" uid="uid://ds37j38egatnn" path="res://textures/octy.png" id="3_y01rs"]
 [ext_resource type="Texture2D" uid="uid://btce1qfw3cd3l" path="res://textures/octyDark.png" id="4_hpna1"]
+[ext_resource type="Texture2D" uid="uid://c3xy4pbstu3gr" path="res://sprites/lusca_silhouette_darkest.png" id="4_lpdgh"]
+[ext_resource type="Texture2D" uid="uid://dwew4eljf82uq" path="res://sprites/lusca_silhouette_darker.png" id="5_hoedw"]
+[ext_resource type="Texture2D" uid="uid://scgqbwsnsj8s" path="res://sprites/gratin_silhouette.png" id="6_nvl7t"]
+[ext_resource type="Texture2D" uid="uid://cjcx7dnecpvax" path="res://sprites/gratin_silhouette_darkest.png" id="7_0wlh6"]
+[ext_resource type="Texture2D" uid="uid://cplpu3vweaf88" path="res://sprites/gratin_silhouette_darker.png" id="8_gawo0"]
+[ext_resource type="Texture2D" uid="uid://dy1ditu17ne57" path="res://sprites/grey.png" id="13_t2pkn"]
+[ext_resource type="Texture2D" uid="uid://bffqvelu2vjsg" path="res://sprites/light_grey.png" id="14_6byg1"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_7hxhw"]
 
 [node name="LevelSelect" type="Node2D"]
 script = ExtResource("1_n4oea")
@@ -32,9 +42,10 @@ offset_top = 166.0
 offset_right = 430.0
 offset_bottom = 422.0
 disabled = true
-texture_normal = ExtResource("1_cgyoc")
-texture_pressed = ExtResource("2_jq0oc")
-texture_disabled = ExtResource("2_jq0oc")
+texture_normal = ExtResource("3_la860")
+texture_pressed = ExtResource("4_lpdgh")
+texture_hover = ExtResource("5_hoedw")
+texture_disabled = ExtResource("4_lpdgh")
 stretch_mode = 4
 
 [node name="Label" type="Label" parent="A2"]
@@ -53,9 +64,10 @@ offset_top = 157.0
 offset_right = 1222.0
 offset_bottom = 413.0
 disabled = true
-texture_normal = ExtResource("3_y01rs")
-texture_pressed = ExtResource("4_hpna1")
-texture_disabled = ExtResource("4_hpna1")
+texture_normal = ExtResource("6_nvl7t")
+texture_pressed = ExtResource("7_0wlh6")
+texture_hover = ExtResource("8_gawo0")
+texture_disabled = ExtResource("7_0wlh6")
 stretch_mode = 4
 
 [node name="Label" type="Label" parent="B2"]
@@ -119,9 +131,10 @@ offset_left = 638.0
 offset_top = 840.0
 offset_right = 766.0
 offset_bottom = 968.0
-texture_normal = ExtResource("1_cgyoc")
-texture_pressed = ExtResource("2_jq0oc")
-texture_disabled = ExtResource("2_jq0oc")
+texture_normal = SubResource("CanvasTexture_7hxhw")
+texture_pressed = ExtResource("13_t2pkn")
+texture_hover = ExtResource("14_6byg1")
+texture_disabled = ExtResource("13_t2pkn")
 stretch_mode = 4
 
 [node name="Label" type="Label" parent="0"]
