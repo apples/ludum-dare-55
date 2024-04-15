@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="VisualNovelDialog" load_steps=8 format=3 uid="uid://ljkf5is5rske"]
+
+[ext_resource type="Script" path="res://resource_types/visual_novel_phrase.gd" id="1_ftx23"]
+[ext_resource type="Script" path="res://resource_types/visual_novel_dialog.gd" id="2_1kva3"]
+
+[sub_resource type="Resource" id="Resource_8pfey"]
+script = ExtResource("1_ftx23")
+character = 0
+rich_text = "Oho!"
+
+[sub_resource type="Resource" id="Resource_nu4s3"]
+script = ExtResource("1_ftx23")
+character = 0
+rich_text = "Are you the one who's been causing the fish to go wild?"
+
+[sub_resource type="Resource" id="Resource_78lhn"]
+script = ExtResource("1_ftx23")
+character = 2
+rich_text = "Uh oh, I've been found out!"
+
+[sub_resource type="Resource" id="Resource_sh2v1"]
+script = ExtResource("1_ftx23")
+character = 2
+rich_text = "What are you going to do about it, fishergirl?"
+
+[sub_resource type="Resource" id="Resource_s6anh"]
+script = ExtResource("1_ftx23")
+character = 0
+rich_text = "You're about to find out!"
+
+[resource]
+script = ExtResource("2_1kva3")
+phrases = Array[ExtResource("1_ftx23")]([SubResource("Resource_8pfey"), SubResource("Resource_nu4s3"), SubResource("Resource_78lhn"), SubResource("Resource_sh2v1"), SubResource("Resource_s6anh")])
+start_right_side = false

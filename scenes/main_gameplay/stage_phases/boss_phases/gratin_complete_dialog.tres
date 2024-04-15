@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="VisualNovelDialog" load_steps=6 format=3 uid="uid://dudt461dxbjor"]
+
+[ext_resource type="Script" path="res://resource_types/visual_novel_phrase.gd" id="1_bkup7"]
+[ext_resource type="Script" path="res://resource_types/visual_novel_dialog.gd" id="2_h3hqr"]
+
+[sub_resource type="Resource" id="Resource_leotm"]
+script = ExtResource("1_bkup7")
+character = 0
+rich_text = "Well, what do you have to say?"
+
+[sub_resource type="Resource" id="Resource_vxvwq"]
+script = ExtResource("1_bkup7")
+character = 2
+rich_text = "Grrr... you'll regret this!"
+
+[sub_resource type="Resource" id="Resource_nyflq"]
+script = ExtResource("1_bkup7")
+character = 0
+rich_text = "Somehow, I doubt that."
+
+[resource]
+script = ExtResource("2_h3hqr")
+phrases = Array[ExtResource("1_bkup7")]([SubResource("Resource_leotm"), SubResource("Resource_vxvwq"), SubResource("Resource_nyflq")])
+start_right_side = false
