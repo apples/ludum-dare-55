@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var stage: Stage
+var stage: Stage
 
 @onready var camera_shake: CameraShake = $Camera2D/CameraShake
 var stage_phase: int = -1
@@ -13,6 +13,9 @@ func _ready() -> void:
 	$Player.summoning_circle_ref = $SummoningCircle
 	$SummoningCircle.player_ref = $Player
 	$SummoningCircle.camera_shake_ref = camera_shake
+	
+	stage = Globals.main_gameplay_stage
+	assert(stage != null)
 	
 	if stage:
 		next_stage_phase.call_deferred()

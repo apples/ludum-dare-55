@@ -14,6 +14,7 @@ func _ready() -> void:
 
 
 func _on_first_level_button_pressed() -> void:
+	Globals.main_gameplay_stage = load("res://scenes/main_gameplay/stages/stage_1.tres")
 	SceneGirl.change_scene("res://scenes/main_gameplay/main_gameplay.tscn")
 
 
