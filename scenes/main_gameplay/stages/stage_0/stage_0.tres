@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Stage" load_steps=26 format=3 uid="uid://8xhjemrf2xrb"]
+[gd_resource type="Resource" script_class="Stage" load_steps=29 format=3 uid="uid://8xhjemrf2xrb"]
 
 [ext_resource type="Script" path="res://resource_types/Phase.gd" id="1_264om"]
 [ext_resource type="Script" path="res://resource_types/stage_sequence.gd" id="1_i03vb"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dhd0odooejul8" path="res://scenes/main_gameplay/stages/stage_0/dialogue/before_vegan_scouts.tscn" id="8_rugf1"]
 [ext_resource type="Resource" uid="uid://cptkun18ywjqe" path="res://scenes/main_gameplay/stages/stage_0/enemies/water_shooter.tres" id="11_df7ca"]
 [ext_resource type="PackedScene" uid="uid://d0n1aw41b7m25" path="res://scenes/main_gameplay/stage_phases/simple_patterns/right_to_left_conga_loop.tscn" id="12_2pota"]
+[ext_resource type="Resource" uid="uid://crbic817jqyij" path="res://scenes/main_gameplay/stages/stage_0/enemies/vegan_shooter.tres" id="15_vuu0b"]
 
 [sub_resource type="Resource" id="Resource_a78g8"]
 script = ExtResource("1_264om")
@@ -73,7 +74,19 @@ description = "Vegan Scouts"
 stage_phase = ExtResource("3_iv4tu")
 enemy_resource = ExtResource("6_7cnrq")
 
+[sub_resource type="Resource" id="Resource_eu2of"]
+script = ExtResource("1_264om")
+description = "Vegan Shooters Loop"
+stage_phase = ExtResource("6_ma44o")
+enemy_resource = ExtResource("15_vuu0b")
+
+[sub_resource type="Resource" id="Resource_bpmg7"]
+script = ExtResource("1_264om")
+description = "Vegan Marching Band"
+stage_phase = ExtResource("7_agexh")
+enemy_resource = ExtResource("15_vuu0b")
+
 [resource]
 script = ExtResource("1_i03vb")
 stage_name = "Stage 0"
-phases = Array[ExtResource("1_264om")]([SubResource("Resource_a78g8"), SubResource("Resource_hjaxp"), SubResource("Resource_o4r72"), SubResource("Resource_ydugy"), SubResource("Resource_gppc8"), SubResource("Resource_r7nfv"), SubResource("Resource_a3afr"), SubResource("Resource_q7v67"), SubResource("Resource_neit0"), SubResource("Resource_d1h0i")])
+phases = Array[ExtResource("1_264om")]([SubResource("Resource_a78g8"), SubResource("Resource_hjaxp"), SubResource("Resource_o4r72"), SubResource("Resource_ydugy"), SubResource("Resource_gppc8"), SubResource("Resource_r7nfv"), SubResource("Resource_a3afr"), SubResource("Resource_q7v67"), SubResource("Resource_neit0"), SubResource("Resource_d1h0i"), SubResource("Resource_eu2of"), SubResource("Resource_bpmg7")])
