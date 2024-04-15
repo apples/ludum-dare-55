@@ -1,6 +1,6 @@
 extends Control
 
-@onready var heart_img = preload("res://icon.svg")
+@onready var heart_img = preload("res://textures/heart.png")
 var hearts := []
 
 func _ready() -> void:
