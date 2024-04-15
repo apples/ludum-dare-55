@@ -47,6 +47,7 @@ enabled=PackedStringArray("res://addons/cider_wiki/plugin.cfg", "res://addons/st
 Enemy=""
 Wall=""
 Player=""
+Bullet=""
 
 [gui]
 
