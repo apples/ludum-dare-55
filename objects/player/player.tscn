@@ -1,12 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cv58ruem01fvv"]
+[gd_scene load_steps=11 format=3 uid="uid://cv58ruem01fvv"]
 
 [ext_resource type="Script" path="res://objects/player/player.gd" id="1_cwmge"]
 [ext_resource type="Texture2D" uid="uid://bbecl65o8oslo" path="res://particles/circle.png" id="2_av8ut"]
 [ext_resource type="Texture2D" uid="uid://dwx48q61abh1c" path="res://particles/bomb_explosion.png" id="3_jw4bc"]
-[ext_resource type="SpriteFrames" uid="uid://bysye6q6j5qns" path="res://objects/player/player.tres" id="4_23vh4"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_l1bt7"]
-size = Vector2(62, 119)
+[ext_resource type="SpriteFrames" uid="uid://c82frb8ommm2b" path="res://objects/player/player.tres" id="4_23vh4"]
+[ext_resource type="Texture2D" uid="uid://dul74mpx47ud7" path="res://textures/player_hitbox.png" id="5_im6m2"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_raekm"]
 particles_animation = true
@@ -14,16 +12,37 @@ particles_anim_h_frames = 8
 particles_anim_v_frames = 1
 particles_anim_loop = true
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_5k6uw"]
+atlas = ExtResource("5_im6m2")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nakqw"]
+atlas = ExtResource("5_im6m2")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o2yom"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5k6uw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nakqw")
+}],
+"loop": false,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l1bt7"]
+size = Vector2(16, 16)
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_cwmge")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
 texture = ExtResource("2_av8ut")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, 3.5)
-shape = SubResource("RectangleShape2D_l1bt7")
 
 [node name="bullet_spawn_location" type="Marker2D" parent="."]
 position = Vector2(0, -75)
@@ -54,5 +73,11 @@ one_shot = true
 sprite_frames = ExtResource("4_23vh4")
 autoplay = "default"
 frame_progress = 0.357355
+
+[node name="Hitbox" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_o2yom")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_l1bt7")
 
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

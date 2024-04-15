@@ -57,7 +57,7 @@ script = ExtResource("1_0u4pf")
 [node name="CandleSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sjmcl")
 autoplay = "default"
-frame_progress = 0.0496201
+frame_progress = 0.22323
 
 [node name="CandleLightSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_nffds")
