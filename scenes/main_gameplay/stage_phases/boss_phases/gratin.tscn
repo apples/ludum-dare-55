@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://bc8rykunfyh4a"]
+
+[ext_resource type="Script" path="res://scenes/main_gameplay/stage_phases/boss_phases/gratin.gd" id="1_gx3t5"]
+[ext_resource type="PackedScene" uid="uid://bhdo8r707xjx0" path="res://objects/enemy/enemy.tscn" id="2_00l5g"]
+[ext_resource type="Script" path="res://objects/enemy/enemy_resource.gd" id="3_qb7l8"]
+[ext_resource type="Texture2D" uid="uid://bqhrjbe6brhy6" path="res://sprites/gratin_enemy.png" id="4_m2f67"]
+[ext_resource type="Texture2D" uid="uid://cpbfrigp0fy83" path="res://textures/portrait1.png" id="5_3l88t"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_weog2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_m2f67")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Resource" id="Resource_caw24"]
+script = ExtResource("3_qb7l8")
+sprite_frames = SubResource("SpriteFrames_weog2")
+element = 0
+health = 1000.0
+score_value = 10000.0
+initial_shoot_delay = 0.0
+shoot_cooldown = 0.0
+
+[node name="Gratin" type="Node2D"]
+script = ExtResource("1_gx3t5")
+
+[node name="GratinEnemy" parent="." instance=ExtResource("2_00l5g")]
+position = Vector2(468, -137)
+enemy_resource = SubResource("Resource_caw24")
+
+[node name="Sprite2D" parent="GratinEnemy/Outline" index="0"]
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("5_3l88t")
+flip_v = false
+
+[node name="ReferenceRect" type="ReferenceRect" parent="."]
+offset_right = 920.0
+offset_bottom = 1080.0
+
+[editable path="GratinEnemy"]
