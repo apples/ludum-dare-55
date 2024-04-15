@@ -1,0 +1,54 @@
+[gd_scene load_steps=2 format=3 uid="uid://duovg11smc3s7"]
+
+[sub_resource type="GDScript" id="GDScript_reuby"]
+script/source = "extends StagePhase
+
+const SCENE = preload(\"res://scenes/main_gameplay/stage_phases/simple_patterns/move_to_spot_and_stay.tscn\")
+
+@export var count: int = 9
+# Called when the node enters the scene tree for the first time.
+
+var points = [
+	Vector2(760, 468),
+	Vector2(120, 366),
+	Vector2(650, 244),
+	Vector2(200, 107),
+	Vector2(720, 430),
+	Vector2(160, 400),
+	Vector2(610, 200),
+	Vector2(250, 140),
+]
+var child_idx = 0
+
+func _ready() -> void:
+	_make_enemy()
+
+
+func _make_enemy() -> void:
+	if child_idx == points.size():
+		phase_complete.emit()
+		queue_free()
+		return
+		
+	var child_phase = SCENE.instantiate()
+	child_phase.play_time = 2.0
+	child_phase.start_point = [Vector2(-10,-10), Vector2(930,-10)][child_idx % 2]
+	child_phase.end_point = points[child_idx]
+	child_phase.enemy_resource = enemy_resource
+	child_idx += 1
+	add_child(child_phase)
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[node name="Lingerers" type="Node2D"]
+script = SubResource("GDScript_reuby")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_make_enemy"]
