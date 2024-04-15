@@ -57,8 +57,8 @@ func hit(damage: int, element_type: Globals.Elements) -> void:
 	if health <= 0:
 		Globals.score += score_val
 		queue_free()
-	else: # should we award this?
-		Globals.score += score_val / 4.0
+	#else:
+		#Globals.score += score_val / 4.0
 	
 	var enemy_damaged = enemy_damaged_secene.instantiate()
 	enemy_damaged.position = self.position
