@@ -65,6 +65,7 @@ func _ready() -> void:
 		main_gameplay_stage = Stage.new()
 		main_gameplay_stage.stage_name = "Test"
 		main_gameplay_stage.phases.append(stage_phase)
+		Globals.player_invuln= 12000
 		print_rich("[color=green]LOADED TEST PHASE:[/color] %s" % [test_stage_phase])
 
 ## Reset most variables to their default state.
