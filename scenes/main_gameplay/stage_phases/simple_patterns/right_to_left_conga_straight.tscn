@@ -4,8 +4,8 @@
 script/source = "extends StagePhase
 
 @export var enemy_count: int = 5
-@export var play_time: float = 10
-@export var path_vertical_offset: float = 0.0 
+@export var play_time: float = 5
+@export var path_vertical_offset: float = 0.0
 
 @onready var path = $Path2D
 
@@ -13,9 +13,8 @@ func _ready():
 	path.position.y += path_vertical_offset
 	for i in enemy_count:
 		var pf = PathFollow2D.new()
-		pf.rotates = false
-		pf.progress_ratio = 1.0
 		path.add_child(pf)
+		pf.progress_ratio = 1.0
 		var e = create_enemy()
 		pf.add_child(e)
 		_start_on_delay(EnemyController.from(e), pf, 0.5 * i)
