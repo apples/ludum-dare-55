@@ -260,6 +260,7 @@ auto_translate_mode = 1
 layout_mode = 2
 
 [node name="ReturnButton" type="Button" parent="OptionsLayer/OptionsMenu/VBoxContainer/MenuButtonContainer/CenterContainer8"]
+unique_name_in_owner = true
 auto_translate_mode = 1
 layout_mode = 2
 theme_type_variation = &"MainMenuButton"
