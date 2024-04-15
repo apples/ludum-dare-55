@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EnemyResource" load_steps=4 format=3 uid="uid://cptkun18ywjqe"]
+
+[ext_resource type="Resource" uid="uid://dlykk3ojdwlq5" path="res://scenes/main_gameplay/stages/stage_0/bullets/water_bullet.tres" id="1_ag1ty"]
+[ext_resource type="Script" path="res://objects/enemy/enemy_resource.gd" id="2_06bn5"]
+[ext_resource type="SpriteFrames" uid="uid://dnxosw7bx2ql" path="res://objects/enemy/resources/fush.tres" id="3_5mwfm"]
+
+[resource]
+script = ExtResource("2_06bn5")
+sprite_frames = ExtResource("3_5mwfm")
+element = 2
+health = 20.0
+score_value = 100.0
+bullet_resource = ExtResource("1_ag1ty")
+initial_shoot_delay = 1.0
+shoot_cooldown = 0.75
