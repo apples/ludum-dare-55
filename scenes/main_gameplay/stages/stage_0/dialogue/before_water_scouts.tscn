@@ -1,0 +1,20 @@
+[gd_scene load_steps=6 format=3 uid="uid://b5mtc6qw2gt2m"]
+
+[ext_resource type="PackedScene" uid="uid://b7mjst8blfgna" path="res://scenes/main_gameplay/visual_novel/visual_novel_event.tscn" id="1_jxb1x"]
+[ext_resource type="Script" path="res://resource_types/visual_novel_phrase.gd" id="2_kcw75"]
+[ext_resource type="Script" path="res://resource_types/visual_novel_dialog.gd" id="3_k350x"]
+
+[sub_resource type="Resource" id="Resource_k2sik"]
+script = ExtResource("2_kcw75")
+character = 0
+rich_text = "OH NO!
+[shake]WATER SCOUTS!!![/shake]
+Attack with veganity!"
+
+[sub_resource type="Resource" id="Resource_1nxa0"]
+script = ExtResource("3_k350x")
+phrases = Array[ExtResource("2_kcw75")]([SubResource("Resource_k2sik")])
+start_right_side = false
+
+[node name="VisualNovelEvent" instance=ExtResource("1_jxb1x")]
+dialog = SubResource("Resource_1nxa0")

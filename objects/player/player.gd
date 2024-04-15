@@ -40,7 +40,9 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if Globals.player_health <= 0:
 		return
-	
+	if Globals.cheat_timeout > 0:
+		Globals.cheat_timeout -= 1
+		 
 	if Globals.player_invuln > 0:
 		Globals.player_invuln -= 1
 	
@@ -49,6 +51,23 @@ func _physics_process(delta: float) -> void:
 		
 	if Input.is_action_pressed("Shoot"):
 		shoot_bullet()
+	if Globals.haxor ==1 and Input.is_action_pressed("sigil_1") and  Globals.cheat_timeout ==0:
+			summoning_circle_ref.star_sigil()
+			Globals.cheat_timeout = 50
+	if Globals.haxor ==1 and Input.is_action_pressed("sigil_2") and  Globals.cheat_timeout ==0:
+			summoning_circle_ref.circle_sigil()
+			Globals.cheat_timeout = 50
+	if Globals.haxor ==1 and Input.is_action_pressed("sigil_3") and  Globals.cheat_timeout ==0:
+			summoning_circle_ref.s_sigil()
+			Globals.cheat_timeout = 50
+	if Globals.haxor ==1 and Input.is_action_pressed("sigil_4") and  Globals.cheat_timeout ==0:
+			summoning_circle_ref.w_sigil()
+			Globals.cheat_timeout = 50
+	if Globals.haxor ==1 and Input.is_action_pressed("sigil_5") and  Globals.cheat_timeout ==0:
+			summoning_circle_ref.spiral_sigil()
+			Globals.cheat_timeout = 50
+	if Globals.haxor ==1 and Input.is_action_pressed("invuln_mode") and  Globals.cheat_timeout ==0:
+			Globals.player_invuln = 100000
 	
 	if Input.is_action_pressed("Summon"):
 		current_speed = FOCUS_SPEED
@@ -126,14 +145,17 @@ func _on_player_health_changed() -> void:
 		#TODO death SFX
 		$DeathTimer.start()
 		$DeathParticles.emitting = true
+		MusicMan.sfx(preload("res://sfx/creed.ogg"))
 	else:
 		Globals.player_invuln = invuln_frame_time
+		MusicMan.sfx(preload("res://sfx/player_hit.wav"))
 
 
 func _on_death_timer_timeout() -> void:
 	$DeathParticles.emitting = false
 	player_died.emit()
+
 func _pause()->void:
 	get_tree().paused = true
 	get_tree().root.add_child(pause_scene.instantiate())
-	
+

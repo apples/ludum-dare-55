@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0gu8ciysfxcg"]
+
+[ext_resource type="Texture2D" uid="uid://c1p01a43oafbd" path="res://textures/w_sigil_instruct.png" id="1_tta8i"]
+
+[node name="SummonsUI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="SummonsLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 83.0
+offset_top = 27.0
+offset_right = 326.0
+offset_bottom = 86.0
+theme_override_font_sizes/font_size = 80
+text = "Summons:"
+
+[node name="WSigil" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 94.0
+offset_right = 140.0
+offset_bottom = 222.0
+texture = ExtResource("1_tta8i")
