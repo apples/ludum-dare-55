@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnybiytdb4ucl"]
+
+[ext_resource type="PackedScene" uid="uid://b7mjst8blfgna" path="res://scenes/main_gameplay/visual_novel/visual_novel_event.tscn" id="1_xlnb6"]
+[ext_resource type="Resource" uid="uid://c81ybrdae8h8g" path="res://scenes/main_gameplay/stage_phases/boss_phases/lusca_intro_dialog.tres" id="2_ms287"]
+
+[node name="VisualNovelEvent" instance=ExtResource("1_xlnb6")]
+dialog = ExtResource("2_ms287")
+
+[node name="PortraitRight" parent="Node2D/ViewRoot" index="1"]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 425.0
+offset_bottom = 550.0

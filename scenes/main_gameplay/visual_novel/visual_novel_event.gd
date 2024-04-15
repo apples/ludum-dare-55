@@ -12,6 +12,7 @@ enum VSide {
 var index := -1
 
 var next_side: VSide = VSide.LEFT
+var current_char = null
 
 var text_tween: Tween
 
@@ -42,21 +43,28 @@ func next_phrase() -> void:
 	index += 1
 	if index < dialog.phrases.size():
 		var portrait = portrait_left
-		match next_side:
-			VSide.LEFT:
-				set_dim(portrait_left, false)
-				set_dim(portrait_right, true)
-				next_side = VSide.RIGHT
-			VSide.RIGHT:
-				set_dim(portrait_left, true)
-				set_dim(portrait_right, false)
-				next_side = VSide.LEFT
-				portrait = portrait_right
+		if current_char != dialog.phrases[index].character:
+			match next_side:
+				VSide.LEFT:
+					set_dim(portrait_left, false)
+					set_dim(portrait_right, true)
+					next_side = VSide.RIGHT
+				VSide.RIGHT:
+					set_dim(portrait_left, true)
+					set_dim(portrait_right, false)
+					next_side = VSide.LEFT
+					portrait = portrait_right
+		else:
+			match next_side:
+				VSide.LEFT:
+					portrait = portrait_right
 		match dialog.phrases[index].character:
-			VisualNovelPhrase.Character.Bingus:
-				portrait.texture = preload("res://textures/portrait1.png")
-			VisualNovelPhrase.Character.Yolder:
-				portrait.texture = preload("res://textures/portrait2.png")
+			VisualNovelPhrase.Character.Olive:
+				portrait.texture = preload("res://textures/olive_1.png")
+			VisualNovelPhrase.Character.Lusca:
+				portrait.texture = preload("res://textures/lusca_1.png")
+		
+		current_char = dialog.phrases[index].character
 		
 		text_label.text = dialog.phrases[index].rich_text
 		
