@@ -7,7 +7,7 @@ extends Node
 
 func _ready() -> void:
 	self.process_mode= Node.PROCESS_MODE_ALWAYS
-	#return_button.grab_focus()
+	return_button.grab_focus()
 	
 
 

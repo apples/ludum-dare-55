@@ -51,7 +51,7 @@ func check_sigil_sequence():
 		camera_shake_ref.rumble(10, 1)
 
 func circle_sigil():
-	player_ref.current_element = Globals.Elements.WATER
+	player_ref.current_element = Globals.Elements.VEGANS
 	player_ref.current_bullet_resource = preload("res://objects/bullet/resources/water_five.tres")
 	load_sigil_vfx(circle_sigil_texture)
 
@@ -60,15 +60,16 @@ func s_sigil():
 	player_ref.current_bullet_resource = preload("res://objects/bullet/resources/fire_bomb.tres")
 	load_sigil_vfx(s_sigil_texture)
 
-func star_sigil():
-	player_ref.current_element = Globals.Elements.VEGANS
-	player_ref.current_bullet_resource = preload("res://objects/bullet/resources/vegan_three.tres")
-	load_sigil_vfx(star_sigil_texture)
-
 func w_sigil():
 	#player_ref.current_element = Globals.Elements.FIRE
 	#player_ref.current_bullet_resource = preload("res://objects/bullet/resources/fire_bomb.tres")
+	player_ref.current_element = Globals.Elements.WATER
+	player_ref.current_bullet_resource = preload("res://objects/bullet/resources/vegan_three.tres")
 	load_sigil_vfx(w_sigil_texture)
+
+func star_sigil():
+	load_sigil_vfx(star_sigil_texture)
+
 
 func spiral_sigil():
 	#player_ref.current_element = Globals.Elements.FIRE
