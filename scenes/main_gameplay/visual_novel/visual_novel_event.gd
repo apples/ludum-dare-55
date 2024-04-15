@@ -63,6 +63,8 @@ func next_phrase() -> void:
 				portrait.texture = preload("res://textures/olive_1.png")
 			VisualNovelPhrase.Character.Lusca:
 				portrait.texture = preload("res://textures/lusca_1.png")
+			VisualNovelPhrase.Character.Gratin:
+				portrait.texture = preload("res://textures/gratin_1.png")
 		
 		current_char = dialog.phrases[index].character
 		
