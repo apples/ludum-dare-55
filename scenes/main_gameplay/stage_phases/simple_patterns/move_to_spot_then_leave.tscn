@@ -1,9 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bjliofq1ko0r8"]
+[gd_scene load_steps=2 format=3 uid="uid://b1hhvs22skcgv"]
 
 [sub_resource type="GDScript" id="GDScript_uvbc5"]
 script/source = "extends StagePhase
 
-@export var enemy: PackedScene = preload(\"res://objects/enemy/enemy.tscn\")
 @export var start_point: Vector2 = Vector2(-10,-10)
 @export var mark_point: Vector2 = Vector2(460, 540)
 @export var exit_point: Vector2 = Vector2(930, -10)
@@ -12,9 +11,8 @@ script/source = "extends StagePhase
 
 
 func _ready():
-	var e = enemy.instantiate()
+	var e = create_enemy()
 	add_child(e)
-	enemies.append(e)
 	var c = EnemyController.from(e)
 	c.position = start_point
 	_sequence(c)

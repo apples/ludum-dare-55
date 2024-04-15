@@ -14,7 +14,7 @@ func _ready() -> void:
 
 
 func _on_first_level_button_pressed() -> void:
-	Globals.main_gameplay_stage = load("res://scenes/main_gameplay/stages/stage_1.tres")
+	Globals.main_gameplay_stage = preload("res://scenes/main_gameplay/stages/stage_1.tres")
 	SceneGirl.change_scene("res://scenes/main_gameplay/main_gameplay.tscn")
 
 
@@ -22,7 +22,8 @@ func _on_b_1_pressed() -> void:
 	pass # Replace with function body.
 
 func _on_a_1_pressed() -> void:
-	pass # Replace with function body.
+	Globals.main_gameplay_stage = preload("res://scenes/main_gameplay/stages/enemy_test_stage.tres")
+	SceneGirl.change_scene("res://scenes/main_gameplay/main_gameplay.tscn")
 
 func _on_b_2_pressed() -> void:
 	pass # Replace with function body.
