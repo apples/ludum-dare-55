@@ -16,8 +16,8 @@ var current_char = null
 
 var text_tween: Tween
 
-@onready var portrait_left: TextureRect = %PortraitLeft
-@onready var portrait_right: TextureRect = %PortraitRight
+@onready var portrait_left: Sprite2D = %PortraitLeft
+@onready var portrait_right: Sprite2D = %PortraitRight
 @onready var text_panel: TextureRect = %TextPanel
 @onready var text_label: RichTextLabel = %TextLabel
 
@@ -80,7 +80,7 @@ func next_phrase() -> void:
 			phase_complete.emit()
 			queue_free())
 
-func set_dim(portrait: Control, dim: bool) -> void:
+func set_dim(portrait: Sprite2D, dim: bool) -> void:
 	if dim:
 		create_tween().tween_property(portrait, "scale", Vector2(0.9, 0.9), 0.2)
 		create_tween().tween_property(portrait, "modulate", Color(0.5, 0.5, 0.5), 0.2)
