@@ -1,50 +1,33 @@
-[gd_resource type="Resource" script_class="Stage" load_steps=17 format=3 uid="uid://c76evbk6p1fys"]
+[gd_resource type="Resource" script_class="Stage" load_steps=12 format=3 uid="uid://c76evbk6p1fys"]
 
+[ext_resource type="Resource" uid="uid://b8jjwnq8i42hj" path="res://scenes/main_gameplay/stages/stage_1b/enemies/fire_scout.tres" id="1_nin5c"]
 [ext_resource type="Script" path="res://resource_types/Phase.gd" id="1_y7b8p"]
-[ext_resource type="PackedScene" uid="uid://b5qoernvioq0h" path="res://scenes/main_gameplay/stages/stage_0/dialogue/before_fire_scouts.tscn" id="2_ess4o"]
-[ext_resource type="Resource" uid="uid://dg4aqhsx8nx4i" path="res://scenes/main_gameplay/stages/stage_0/enemies/fire_scout.tres" id="3_qvgva"]
-[ext_resource type="PackedScene" uid="uid://cdqwax0vv4fsv" path="res://scenes/main_gameplay/stages/stage_0/phases/scouts_from_left.tscn" id="4_uv1hf"]
-[ext_resource type="PackedScene" uid="uid://b5mtc6qw2gt2m" path="res://scenes/main_gameplay/stages/stage_0/dialogue/before_water_scouts.tscn" id="5_ktwoi"]
-[ext_resource type="Resource" uid="uid://cwx18k7ryk26r" path="res://scenes/main_gameplay/stages/stage_0/enemies/water_scout.tres" id="6_287e4"]
-[ext_resource type="PackedScene" uid="uid://b2bqjbl6asd63" path="res://scenes/main_gameplay/stages/stage_0/phases/scouts_from_right.tscn" id="7_6anan"]
-[ext_resource type="PackedScene" uid="uid://dhd0odooejul8" path="res://scenes/main_gameplay/stages/stage_0/dialogue/before_vegan_scouts.tscn" id="8_xnpht"]
-[ext_resource type="Resource" uid="uid://bthn7x63rdhat" path="res://scenes/main_gameplay/stages/stage_0/enemies/vegan_scout.tres" id="9_53m2k"]
+[ext_resource type="PackedScene" uid="uid://bbw7rh5dlbnmv" path="res://scenes/main_gameplay/stages/stage_1b/phases/move_to_spot_and_stay.tscn" id="3_n7ph0"]
+[ext_resource type="Resource" uid="uid://uyfdw5cq7rvi" path="res://scenes/main_gameplay/stages/stage_1b/enemies/water_scout.tres" id="4_yl32h"]
+[ext_resource type="PackedScene" uid="uid://cg3qoc8ax7bl" path="res://scenes/main_gameplay/stages/stage_1b/phases/scouts_from_right.tscn" id="5_qo5vu"]
+[ext_resource type="Resource" uid="uid://mkfre5ispr13" path="res://scenes/main_gameplay/stages/stage_1b/enemies/vegan_scout.tres" id="6_0jv1q"]
+[ext_resource type="PackedScene" uid="uid://dfj0ambk0ldxq" path="res://scenes/main_gameplay/stages/stage_1b/phases/scouts_from_left.tscn" id="7_p403x"]
 [ext_resource type="Script" path="res://resource_types/stage_sequence.gd" id="10_ick1g"]
-
-[sub_resource type="Resource" id="Resource_a78g8"]
-script = ExtResource("1_y7b8p")
-description = "Before Fire Scouts Dialogue"
-stage_phase = ExtResource("2_ess4o")
 
 [sub_resource type="Resource" id="Resource_hjaxp"]
 script = ExtResource("1_y7b8p")
 description = "Fire Scouts"
-stage_phase = ExtResource("4_uv1hf")
-enemy_resource = ExtResource("3_qvgva")
-
-[sub_resource type="Resource" id="Resource_gppc8"]
-script = ExtResource("1_y7b8p")
-description = "Before Water Scouts Dialogue"
-stage_phase = ExtResource("5_ktwoi")
+stage_phase = ExtResource("3_n7ph0")
+enemy_resource = ExtResource("1_nin5c")
 
 [sub_resource type="Resource" id="Resource_r7nfv"]
 script = ExtResource("1_y7b8p")
 description = "Water Scouts"
-stage_phase = ExtResource("7_6anan")
-enemy_resource = ExtResource("6_287e4")
-
-[sub_resource type="Resource" id="Resource_neit0"]
-script = ExtResource("1_y7b8p")
-description = "Before Vegan Scouts Dialogue"
-stage_phase = ExtResource("8_xnpht")
+stage_phase = ExtResource("5_qo5vu")
+enemy_resource = ExtResource("4_yl32h")
 
 [sub_resource type="Resource" id="Resource_d1h0i"]
 script = ExtResource("1_y7b8p")
 description = "Vegan Scouts"
-stage_phase = ExtResource("4_uv1hf")
-enemy_resource = ExtResource("9_53m2k")
+stage_phase = ExtResource("7_p403x")
+enemy_resource = ExtResource("6_0jv1q")
 
 [resource]
 script = ExtResource("10_ick1g")
 stage_name = "Stage 1B"
-phases = Array[ExtResource("1_y7b8p")]([SubResource("Resource_a78g8"), SubResource("Resource_hjaxp"), SubResource("Resource_gppc8"), SubResource("Resource_r7nfv"), SubResource("Resource_neit0"), SubResource("Resource_d1h0i")])
+phases = Array[ExtResource("1_y7b8p")]([SubResource("Resource_hjaxp"), SubResource("Resource_r7nfv"), SubResource("Resource_d1h0i")])

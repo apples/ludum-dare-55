@@ -30,7 +30,7 @@ _data = {
 }
 point_count = 19
 
-[node name="left_to_right_conga_loop" type="Node2D"]
+[node name="left_to_right_conga_loop2" type="Node2D"]
 script = SubResource("GDScript_uvbc5")
 
 [node name="GamePlayZoneRef" type="ReferenceRect" parent="."]
