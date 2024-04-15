@@ -25,7 +25,10 @@ static func fire_pattern(
 	angle: float,
 	speed: float = 6.0,
 	speen: float = 5.0,
-	sprite: SpriteFrames = null) -> void:
+	size: float = 1.0,
+	sprite: SpriteFrames = null,
+	sprite_size: float = 1.0,
+	z_index: int = 80) -> void:
 	
 	var allegiance: Bullet.Team = _team(caller)
 	var bullet_created: Callable = func(bullet: Bullet):
@@ -33,6 +36,9 @@ static func fire_pattern(
 		bullet.element = element
 		bullet.speed = speed
 		bullet.speen = speen
+		bullet.scale = Vector2(size, size)
+		bullet.sprite_size = sprite_size
+		bullet.z_index = z_index
 		
 		if sprite:
 			bullet.sprite_frames = sprite
