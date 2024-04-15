@@ -12,6 +12,6 @@ element = 2
 speed = 6.0
 speen = 0.0
 size = 1.0
-sprite_size = 2.0
+sprite_size = 3.0
 sprite = ExtResource("2_pmrsa")
 z_index = 80
