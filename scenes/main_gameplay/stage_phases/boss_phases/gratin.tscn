@@ -1,16 +1,16 @@
-[gd_scene load_steps=8 format=3 uid="uid://bc8rykunfyh4a"]
+[gd_scene load_steps=9 format=3 uid="uid://bc8rykunfyh4a"]
 
 [ext_resource type="Script" path="res://scenes/main_gameplay/stage_phases/boss_phases/gratin.gd" id="1_gx3t5"]
 [ext_resource type="PackedScene" uid="uid://bhdo8r707xjx0" path="res://objects/enemy/enemy.tscn" id="2_00l5g"]
 [ext_resource type="Script" path="res://objects/enemy/enemy_resource.gd" id="3_qb7l8"]
-[ext_resource type="Texture2D" uid="uid://bqhrjbe6brhy6" path="res://sprites/gratin_enemy.png" id="4_m2f67"]
+[ext_resource type="Texture2D" uid="uid://bvnpeg4v8tvkd" path="res://textures/gratin_1.png" id="4_jvkfm"]
 [ext_resource type="Texture2D" uid="uid://cpbfrigp0fy83" path="res://textures/portrait1.png" id="5_3l88t"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_weog2"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_m2f67")
+"texture": ExtResource("4_jvkfm")
 }],
 "loop": true,
 "name": &"default",
@@ -26,6 +26,9 @@ score_value = 10000.0
 initial_shoot_delay = 0.0
 shoot_cooldown = 0.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_58sqr"]
+radius = 98.0
+
 [node name="Gratin" type="Node2D"]
 script = ExtResource("1_gx3t5")
 
@@ -33,10 +36,16 @@ script = ExtResource("1_gx3t5")
 position = Vector2(468, -137)
 enemy_resource = SubResource("Resource_caw24")
 
+[node name="Outline" parent="GratinEnemy" index="0"]
+scale = Vector2(0.5, 0.5)
+
 [node name="Sprite2D" parent="GratinEnemy/Outline" index="0"]
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("5_3l88t")
 flip_v = false
+
+[node name="CollisionShape2D" parent="GratinEnemy" index="1"]
+shape = SubResource("CircleShape2D_58sqr")
 
 [node name="ReferenceRect" type="ReferenceRect" parent="."]
 offset_right = 920.0

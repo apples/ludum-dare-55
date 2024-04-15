@@ -5,9 +5,3 @@
 
 [node name="VisualNovelEvent" instance=ExtResource("1_xlnb6")]
 dialog = ExtResource("2_ms287")
-
-[node name="PortraitRight" parent="Node2D/ViewRoot" index="1"]
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 425.0
-offset_bottom = 550.0
