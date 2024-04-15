@@ -34,6 +34,8 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 		body.hit(damage, element)
 		queue_free()
 	elif allegiance == Team.ENEMY and body.is_in_group("Player"):
+		if Globals.haxor == 1:
+			MusicMan.sfx(preload("res://sfx/player_hit.wav"))
 		if Globals.player_invuln == 0:
 			Globals.player_health -= damage
 			queue_free()
