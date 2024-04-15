@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EnemyResource" load_steps=3 format=3 uid="uid://uyfdw5cq7rvi"]
+
+[ext_resource type="Script" path="res://objects/enemy/enemy_resource.gd" id="1_gv3tu"]
+[ext_resource type="SpriteFrames" uid="uid://dnxosw7bx2ql" path="res://objects/enemy/resources/fush.tres" id="2_koa2i"]
+
+[resource]
+script = ExtResource("1_gv3tu")
+sprite_frames = ExtResource("2_koa2i")
+element = 2
+health = 20.0
+score_value = 100.0
+initial_shoot_delay = 0.0
+shoot_cooldown = 0.0
