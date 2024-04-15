@@ -44,7 +44,7 @@ layout_mode = 2
 [node name="TitleLabel" type="Label" parent="CenterContainer/VBoxContainer/Title"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 72
-text = "The Game"
+text = "Deadliest Catch: The Most Dangerous Game"
 
 [node name="MenuButtonContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
