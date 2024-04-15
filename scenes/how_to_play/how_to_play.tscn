@@ -171,6 +171,7 @@ text = "How To Play
 "
 
 [node name="ReturnButton" type="Button" parent="."]
+unique_name_in_owner = true
 auto_translate_mode = 1
 offset_left = 319.0
 offset_top = 830.0
