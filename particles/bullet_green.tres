@@ -1,0 +1,14 @@
+[gd_resource type="SpriteFrames" load_steps=2 format=3 uid="uid://c5afgnaacynhl"]
+
+[ext_resource type="Texture2D" uid="uid://dyk61xhl6xeif" path="res://particles/bullet_green.png" id="1_m675d"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_m675d")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
