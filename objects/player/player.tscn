@@ -1,11 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://cv58ruem01fvv"]
+[gd_scene load_steps=7 format=3 uid="uid://cv58ruem01fvv"]
 
 [ext_resource type="Script" path="res://objects/player/player.gd" id="1_cwmge"]
 [ext_resource type="Texture2D" uid="uid://bbecl65o8oslo" path="res://particles/circle.png" id="2_av8ut"]
 [ext_resource type="Texture2D" uid="uid://dwx48q61abh1c" path="res://particles/bomb_explosion.png" id="3_jw4bc"]
+[ext_resource type="SpriteFrames" uid="uid://bysye6q6j5qns" path="res://objects/player/player.tres" id="4_23vh4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l1bt7"]
-size = Vector2(16, 16)
+size = Vector2(62, 119)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_raekm"]
 particles_animation = true
@@ -17,13 +18,15 @@ particles_anim_loop = true
 script = ExtResource("1_cwmge")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("2_av8ut")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 3.5)
 shape = SubResource("RectangleShape2D_l1bt7")
 
 [node name="bullet_spawn_location" type="Marker2D" parent="."]
-position = Vector2(0, -25)
+position = Vector2(0, -75)
 rotation = -1.5708
 gizmo_extents = 5.0
 
@@ -46,5 +49,10 @@ anim_speed_max = 1.0
 [node name="DeathTimer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("4_23vh4")
+autoplay = "default"
+frame_progress = 0.357355
 
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

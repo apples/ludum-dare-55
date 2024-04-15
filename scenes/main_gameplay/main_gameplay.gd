@@ -9,13 +9,13 @@ var current_stage_phase: Node
 
 
 func _ready() -> void:
+	stage = Globals.main_gameplay_stage
+	assert(stage != null)
+	
 	# time for tight coupling boyz
 	$Player.summoning_circle_ref = $SummoningCircle
 	$SummoningCircle.player_ref = $Player
 	$SummoningCircle.camera_shake_ref = camera_shake
-	
-	stage = Globals.main_gameplay_stage
-	assert(stage != null)
 	
 	if stage:
 		next_stage_phase.call_deferred()

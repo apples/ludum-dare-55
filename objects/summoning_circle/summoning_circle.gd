@@ -52,7 +52,7 @@ func check_sigil_sequence():
 
 func circle_sigil():
 	player_ref.current_element = Globals.Elements.WATER
-	player_ref.current_bullet_resource = preload("res://objects/bullet/resources/water_basic.tres")
+	player_ref.current_bullet_resource = preload("res://objects/bullet/resources/water_five.tres")
 	load_sigil_vfx(circle_sigil_texture)
 
 func s_sigil():
@@ -62,7 +62,7 @@ func s_sigil():
 
 func star_sigil():
 	player_ref.current_element = Globals.Elements.VEGANS
-	player_ref.current_bullet_resource = preload("res://objects/bullet/resources/fire_basic.tres")
+	player_ref.current_bullet_resource = preload("res://objects/bullet/resources/vegan_three.tres")
 	load_sigil_vfx(star_sigil_texture)
 
 func w_sigil():

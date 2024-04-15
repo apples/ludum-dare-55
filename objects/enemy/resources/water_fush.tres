@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="EnemyResource" load_steps=3 format=3 uid="uid://cyfvet7t0dmfx"]
+[gd_resource type="Resource" script_class="EnemyResource" load_steps=4 format=3 uid="uid://cyfvet7t0dmfx"]
 
+[ext_resource type="Resource" uid="uid://cohwge5t8llgn" path="res://objects/bullet/resources/water_five.tres" id="1_22235"]
 [ext_resource type="Script" path="res://objects/enemy/enemy_resource.gd" id="1_ot8hq"]
 [ext_resource type="SpriteFrames" uid="uid://bpccjegu7ruj8" path="res://objects/enemy/resources/fush.tres" id="2_dxuoq"]
 
@@ -9,5 +10,6 @@ sprite_frames = ExtResource("2_dxuoq")
 element = 2
 health = 10.0
 score_value = 100.0
+bullet_resource = ExtResource("1_22235")
 initial_shoot_delay = 0.0
 shoot_cooldown = 0.0

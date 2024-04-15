@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var enemy_resource: EnemyResource = preload("res://objects/enemy/resources/shoot_and_scoot.tres")
+@export var enemy_resource: EnemyResource = preload("res://objects/enemy/resources/fire_fesh.tres")
 
 @onready var health = enemy_resource.health
 @onready var score_val = enemy_resource.score_value
@@ -12,7 +12,10 @@ var enemy_damaged_secene = preload("res://objects/VFX/enemy_damaged/enemy_damage
 @onready var outline = $Outline
 
 func _ready() -> void:
+	$Outline.sprite_frames = enemy_resource.sprite_frames
+	$Outline.play()
 	$Outline/AnimatedSprite2D.sprite_frames = enemy_resource.sprite_frames
+	$Outline/AnimatedSprite2D.play()
 	pass
 
 func _process(delta: float) -> void:

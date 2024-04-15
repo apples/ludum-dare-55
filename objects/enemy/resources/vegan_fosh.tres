@@ -1,15 +1,15 @@
 [gd_resource type="Resource" script_class="EnemyResource" load_steps=4 format=3 uid="uid://cagb2v2iqljlg"]
 
-[ext_resource type="Resource" uid="uid://bfnsc7tyejvyb" path="res://objects/bullet/resources/fire_basic.tres" id="1_y4vqd"]
+[ext_resource type="Resource" uid="uid://bomig5f4oua1p" path="res://objects/bullet/resources/vegan_three.tres" id="1_7b6w0"]
 [ext_resource type="Script" path="res://objects/enemy/enemy_resource.gd" id="2_6dhr0"]
-[ext_resource type="SpriteFrames" uid="uid://q57xbnqji32a" path="res://objects/enemy/resources/fesh.tres" id="3_8ncfa"]
+[ext_resource type="SpriteFrames" uid="uid://ervbadpnsgh" path="res://objects/enemy/resources/fosh.tres" id="3_qh202"]
 
 [resource]
 script = ExtResource("2_6dhr0")
-sprite_frames = ExtResource("3_8ncfa")
-element = 1
+sprite_frames = ExtResource("3_qh202")
+element = 3
 health = 10.0
 score_value = 100.0
-bullet_resource = ExtResource("1_y4vqd")
+bullet_resource = ExtResource("1_7b6w0")
 initial_shoot_delay = 1.0
 shoot_cooldown = 0.5
