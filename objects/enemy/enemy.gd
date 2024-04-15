@@ -36,6 +36,9 @@ func _physics_process(delta: float) -> void:
 	pass
 
 func hit(damage: int, element_type: Globals.Elements) -> void:
+	if health <= 0: # just in case
+		return
+		
 	var element_mod = 1
 	if(element == Globals.Elements.UNSET || 
 	element_type == Globals.Elements.UNSET || 
@@ -52,8 +55,11 @@ func hit(damage: int, element_type: Globals.Elements) -> void:
 	
 	health -= damage * element_mod
 	if health <= 0:
+		Globals.score += score_val
 		queue_free()
-	Globals.score += score_val
+	else: # should we award this?
+		Globals.score += score_val / 4.0
+	
 	var enemy_damaged = enemy_damaged_secene.instantiate()
 	enemy_damaged.position = self.position
 	get_parent().get_parent().add_child(enemy_damaged)

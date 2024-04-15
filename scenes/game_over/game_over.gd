@@ -10,6 +10,7 @@ func _ready() -> void:
 
 func _on_retry_button_pressed() -> void:
 	SceneGirl.change_scene("res://scenes/main_gameplay/main_gameplay.tscn")
+	Globals.reset()
 
 
 func _on_retry_button_mouse_entered() -> void:
@@ -18,6 +19,7 @@ func _on_retry_button_mouse_entered() -> void:
 
 func _on_main_menu_button_pressed() -> void:
 	SceneGirl.change_scene("res://scenes/main_menu/main_menu.tscn")
+	Globals.reset()
 
 
 func _on_main_menu_button_mouse_entered() -> void:

@@ -3,7 +3,6 @@
 [sub_resource type="GDScript" id="GDScript_uvbc5"]
 script/source = "extends StagePhase
 
-@export var enemy: PackedScene = preload(\"res://objects/enemy/enemy.tscn\")
 @export var enemy_count: int = 5
 @export var play_time: float = 10
 
@@ -14,16 +13,15 @@ func _ready():
 		pf.rotates = false
 		$Path2D.add_child(pf)
 		if enemy != null:
-			var e = enemy.instantiate()
+			var e = create_enemy()
 			pf.add_child(e)
-			enemies.append(e)
 			_start_on_delay(EnemyController.from(e), pf, 0.25 * i)
 
 
 func _start_on_delay(controller, path_follower, delay_time):
 	await controller.wait_for(delay_time)
 	var tw = create_tween().tween_property(path_follower, \"progress_ratio\", 1.0, play_time)
-	tw.finished.connect(func(): controller.kill())
+	tw.finished.connect(func(): if controller: controller.kill())
 "
 
 [sub_resource type="Curve2D" id="Curve2D_oxwgs"]

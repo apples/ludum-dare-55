@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://dajq5cj0mn6nx"]
+
+[ext_resource type="Script" path="res://scenes/main_gameplay/stage_phases/boss_phases/lusca.gd" id="1_qqi6u"]
+[ext_resource type="PackedScene" uid="uid://bhdo8r707xjx0" path="res://objects/enemy/enemy.tscn" id="2_jkglm"]
+[ext_resource type="Texture2D" uid="uid://cpbfrigp0fy83" path="res://textures/portrait1.png" id="3_01rdi"]
+[ext_resource type="Script" path="res://objects/enemy/enemy_resource.gd" id="3_wkb8s"]
+[ext_resource type="Texture2D" uid="uid://c6clsw58kbanw" path="res://textures/lusca_1.png" id="4_enouv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_weog2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_enouv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Resource" id="Resource_caw24"]
+script = ExtResource("3_wkb8s")
+sprite_frames = SubResource("SpriteFrames_weog2")
+element = 0
+health = 500.0
+score_value = 10000.0
+initial_shoot_delay = 0.0
+shoot_cooldown = 0.0
+
+[node name="Lusca" type="Node2D"]
+script = ExtResource("1_qqi6u")
+
+[node name="LuscaEnemy" parent="." instance=ExtResource("2_jkglm")]
+position = Vector2(384, 107)
+enemy_resource = SubResource("Resource_caw24")
+
+[node name="Outline" parent="LuscaEnemy" index="0"]
+scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" parent="LuscaEnemy/Outline" index="0"]
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("3_01rdi")
+flip_v = false
+
+[editable path="LuscaEnemy"]

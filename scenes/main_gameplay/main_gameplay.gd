@@ -27,7 +27,9 @@ func next_stage_phase() -> void:
 		current_stage_phase = null
 	stage_phase += 1
 	if stage_phase < stage.phases.size():
-		current_stage_phase = stage.phases[stage_phase].instantiate()
+		current_stage_phase = stage.phases[stage_phase].stage_phase.instantiate()
+		if "enemy_resource" in current_stage_phase:
+			current_stage_phase.enemy_resource = stage.phases[stage_phase].enemy_resource
 		current_stage_phase.phase_complete.connect(_on_phase_complete)
 		add_child(current_stage_phase)
 		if stage_phase == stage.phases.size() - 1:
