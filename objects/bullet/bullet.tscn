@@ -27,6 +27,7 @@ autoplay = "default"
 [node name="Hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+visible = false
 shape = SubResource("RectangleShape2D_jey2d")
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

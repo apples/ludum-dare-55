@@ -57,6 +57,11 @@ func _ready() -> void:
 			return
 		var stage_phase = Phase.new()
 		stage_phase.stage_phase = phase_scene
+		stage_phase.enemy_resource = load([
+			"res://objects/enemy/resources/fire_fesh.tres",
+			"res://objects/enemy/resources/vegan_fosh.tres",
+			"res://objects/enemy/resources/water_fush.tres",
+		].pick_random())
 		main_gameplay_stage = Stage.new()
 		main_gameplay_stage.stage_name = "Test"
 		main_gameplay_stage.phases.append(stage_phase)

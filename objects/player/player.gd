@@ -28,7 +28,7 @@ var summoning = false
 
 var current_element = Globals.Elements.UNSET
 
-@export var current_bullet_resource: BulletResource = preload("res://objects/bullet/resources/fire_bomb.tres")
+@export var current_bullet_resource: BulletResource = preload("res://objects/bullet/resources/player_basic_shot.tres")
 
 var invuln_frame_time = 80
 
