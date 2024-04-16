@@ -86,7 +86,6 @@ static func create_bullet(caller, bullet_type: PackedScene, transform, bullet_cr
 	else:
 		bullet = pool.pop_back()
 		needs_ready = true
-		print("yaya")
 	
 	bullet.global_transform = transform
 	bullet_created.call(bullet)
