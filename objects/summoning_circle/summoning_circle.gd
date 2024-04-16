@@ -74,12 +74,14 @@ func w_sigil():
 	load_sigil_vfx(w_sigil_texture)
 
 func star_sigil():
+	for bullet in get_tree().get_nodes_in_group("Bullet"):
+		bullet.queue_free()
 	load_sigil_vfx(star_sigil_texture)
 
 
 func spiral_sigil():
-	#player_ref.current_element = Globals.Elements.FIRE
-	#player_ref.current_bullet_resource = preload("res://objects/bullet/resources/fire_bomb.tres")
+	for bullet in get_tree().get_nodes_in_group("Bullet"):
+		bullet.queue_free()
 	load_sigil_vfx(spiral_sigil_texture)
 
 func load_sigil_vfx(sigil_texture):
