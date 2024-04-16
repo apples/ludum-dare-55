@@ -45,7 +45,8 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 		rescind()
 
 func rescind():
-	if not is_inside_tree():
-		return
-	get_parent().remove_child(self)
-	BulletSpawner.rescind(self)
+	(func ():
+		if not is_inside_tree():
+			return
+		get_parent().remove_child(self)
+		BulletSpawner.rescind(self)).call_deferred()
