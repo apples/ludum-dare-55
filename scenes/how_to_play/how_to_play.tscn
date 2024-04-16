@@ -1,8 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://dm8vni40rm7ug"]
+[gd_scene load_steps=10 format=3 uid="uid://dm8vni40rm7ug"]
 
 [ext_resource type="Script" path="res://scenes/how_to_play/how_to_play.gd" id="1_5rmvt"]
 [ext_resource type="Shader" path="res://materials/tiling_shader.gdshader" id="2_ki2kl"]
 [ext_resource type="Texture2D" uid="uid://c031a0c5v45ux" path="res://textures/tiledBlueBackground.png" id="3_4hfhf"]
+[ext_resource type="VideoStream" path="res://textures/summonExample.ogv" id="4_imlh2"]
+[ext_resource type="FontFile" uid="uid://b83vweh5jpmg0" path="res://fonts/SukuriburuBySoultyRagevin-Regular.otf" id="4_nuo34"]
+[ext_resource type="Texture2D" uid="uid://cxlxciuwmsf7r" path="res://textures/water_icon.png" id="6_fusqe"]
+[ext_resource type="Texture2D" uid="uid://c0wt5vuyky6n7" path="res://textures/fire_icon.png" id="7_jwadg"]
+[ext_resource type="Texture2D" uid="uid://c6msqgrnqo7ap" path="res://textures/vegan_icon.png" id="8_ftsp6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tia2o"]
 shader = ExtResource("2_ki2kl")
@@ -18,6 +23,30 @@ offset_bottom = 1080.0
 texture = ExtResource("3_4hfhf")
 expand_mode = 1
 stretch_mode = 1
+
+[node name="ControlsLabel" type="Label" parent="."]
+auto_translate_mode = 1
+offset_left = 48.0
+offset_top = 177.0
+offset_right = 338.0
+offset_bottom = 229.0
+scale = Vector2(1.01005, 1)
+theme_override_font_sizes/font_size = 72
+text = "Controls:
+"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ControlsLabel"]
+layout_mode = 0
+offset_left = -3.9602
+offset_top = 60.0
+offset_right = 465.04
+offset_bottom = 332.0
+theme_override_fonts/normal_font = ExtResource("4_nuo34")
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[color=green]WASD / Arrow Keys[/color] to move
+[color=green]SPACE[/color] to shoot
+[color=green]SHIFT / Z[/color] to start summoning"
 
 [node name="TitleLabel" type="Label" parent="."]
 auto_translate_mode = 1
@@ -42,16 +71,116 @@ theme_type_variation = &"MainMenuButton"
 text = "Return
 "
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-custom_minimum_size = Vector2(300, 0)
-offset_left = 558.0
-offset_top = 326.0
-offset_right = 858.0
-offset_bottom = 809.0
-scale = Vector2(1.00839, 0.971589)
-text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.z
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+offset_left = 906.0
+offset_top = 454.0
+offset_right = 1098.0
+offset_bottom = 678.0
+scale = Vector2(2, 2)
+stream = ExtResource("4_imlh2")
+autoplay = true
+loop = true
+
+[node name="SummoningLabel" type="Label" parent="."]
+auto_translate_mode = 1
+offset_left = 911.0
+offset_top = 191.0
+offset_right = 1201.0
+offset_bottom = 243.0
+scale = Vector2(1.01005, 1)
+theme_override_font_sizes/font_size = 72
+text = "Summoning:
 "
-fit_content = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SummoningLabel"]
+auto_translate_mode = 1
+layout_mode = 0
+offset_left = -3.9602
+offset_top = 60.0
+offset_right = 465.04
+offset_bottom = 332.0
+theme_override_fonts/normal_font = ExtResource("4_nuo34")
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "Completing a summon changes your attack pattern and [color=green]Damage Type[/color]"
+
+[node name="RPSGraphic" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="WaterIcon2" type="TextureRect" parent="RPSGraphic"]
+auto_translate_mode = 1
+offset_left = 222.0
+offset_top = 529.0
+offset_right = 350.0
+offset_bottom = 657.0
+texture = ExtResource("6_fusqe")
+
+[node name="Arrow1" type="Label" parent="RPSGraphic"]
+auto_translate_mode = 1
+offset_left = 364.0
+offset_top = 628.0
+offset_right = 444.0
+offset_bottom = 736.0
+rotation = 0.743878
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "→"
+
+[node name="Arrow2" type="Label" parent="RPSGraphic"]
+auto_translate_mode = 1
+offset_left = 333.0
+offset_top = 838.0
+offset_right = 413.0
+offset_bottom = 946.0
+rotation = 3.14537
+theme_override_font_sizes/font_size = 80
+text = "→"
+
+[node name="Arrow3" type="Label" parent="RPSGraphic"]
+auto_translate_mode = 1
+offset_left = 157.0
+offset_top = 681.0
+offset_right = 237.0
+offset_bottom = 789.0
+rotation = 5.47858
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "→"
+
+[node name="FireIcon2" type="TextureRect" parent="RPSGraphic"]
+auto_translate_mode = 1
+offset_left = 359.0
+offset_top = 713.0
+offset_right = 487.0
+offset_bottom = 841.0
+texture = ExtResource("7_jwadg")
+
+[node name="VeganIcon2" type="TextureRect" parent="RPSGraphic"]
+auto_translate_mode = 1
+offset_left = 95.0
+offset_top = 726.0
+offset_right = 223.0
+offset_bottom = 854.0
+texture = ExtResource("8_ftsp6")
+
+[node name="Label" type="Label" parent="RPSGraphic"]
+layout_mode = 0
+offset_left = 376.0
+offset_top = 657.0
+offset_right = 416.0
+offset_bottom = 686.0
+text = "X2 Damage!"
+
+[node name="Label2" type="Label" parent="RPSGraphic"]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 665.0
+offset_right = 184.0
+offset_bottom = 694.0
+text = "X.5 Damage!"
 
 [connection signal="hidden" from="." to="." method="_on_hidden"]
 [connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]
