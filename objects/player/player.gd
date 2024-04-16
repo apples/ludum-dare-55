@@ -32,6 +32,8 @@ var current_element = Globals.Elements.UNSET
 
 var invuln_frame_time = 80
 
+var f = false
+
 func _ready() -> void:
 	#Globals.player_health = starting_health
 	Globals.player_health_changed.connect(_on_player_health_changed)
@@ -51,8 +53,10 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("Menu"):
 		_pause()
 	
-	if Input.is_action_pressed("Shoot"):
+	f = not f
+	if f and Input.is_action_pressed("Shoot"):
 		shoot_bullet()
+	
 	if Globals.haxor ==1 and Input.is_action_pressed("sigil_1") and  Globals.cheat_timeout ==0:
 			summoning_circle_ref.star_sigil()
 			Globals.cheat_timeout = 50
@@ -148,7 +152,7 @@ func _on_player_health_changed() -> void:
 		#TODO death SFX
 		$DeathTimer.start()
 		$DeathParticles.emitting = true
-		MusicMan.sfx(preload("res://sfx/creed.ogg"))
+		MusicMan.sfx(preload("res://sfx/oh_no_boom.wav"))
 	else:
 		Globals.player_invuln = invuln_frame_time
 		MusicMan.sfx(preload("res://sfx/player_hit.wav"))
