@@ -15,6 +15,8 @@ enum Pattern {
 
 static var bullet_id: int = 0
 
+static var pools = {}
+
 static func fire_pattern(
 	pattern: Pattern,
 	bullet_type: PackedScene,
@@ -40,8 +42,7 @@ static func fire_pattern(
 		bullet.sprite_size = sprite_size
 		bullet.z_index = z_index
 		
-		if sprite:
-			bullet.sprite_frames = sprite
+		bullet.sprite_frames = sprite
 		
 		if "secondary_bullet" in bullet:
 			bullet.secondary_bullet = secondary_bullet
@@ -69,15 +70,38 @@ static func fire_one_straight(
 	
 	var bullet = create_bullet(caller, bullet_type, transform, bullet_created)
 
-static func create_bullet(caller, bullet_type, transform, bullet_created) -> Node:
+static func create_bullet(caller, bullet_type: PackedScene, transform, bullet_created) -> Node:
 	var scene = caller.get_tree().get_root()
 	bullet_id += 1
-	var bullet = bullet_type.instantiate()
-	bullet.name = "Bullet%s" % bullet_id
+	
+	var pool = pools.get(bullet_type.resource_path, [])
+	pools[bullet_type.resource_path] = pool
+	
+	var bullet
+	var needs_ready = false
+	
+	if pool.is_empty():
+		bullet = bullet_type.instantiate()
+		bullet.name = "Bullet%s" % bullet_id
+	else:
+		bullet = pool.pop_back()
+		needs_ready = true
+		print("yaya")
+	
 	bullet.global_transform = transform
 	bullet_created.call(bullet)
 	scene.add_child(bullet)
+	bullet.init()
+	
 	return bullet
+
+static func rescind(bullet: Node) -> void:
+	assert(not bullet.is_inside_tree())
+	
+	var pool = pools.get(bullet.scene_file_path, [])
+	pools[bullet.scene_file_path] = pool
+	
+	pool.append(bullet)
 
 static func fire_two_straight(
 	bullet_type: PackedScene,
