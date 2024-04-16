@@ -56,7 +56,7 @@ func hit(damage: int, element_type: Globals.Elements) -> void:
 			MusicMan.sfx(preload("res://sfx/enemyhit_dis_2.wav"), null, 1, true, 0.5)
 	
 	
-	health -= damage * element_mod
+	health -= damage * element_mod * 2.0
 	if health <= 0:
 		Globals.score += score_val
 		queue_free()
