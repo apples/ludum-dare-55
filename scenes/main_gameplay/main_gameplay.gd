@@ -9,6 +9,7 @@ var current_stage_phase: Node
 
 
 func _ready() -> void:
+	MusicMan.music(preload("res://sfx/hjr_undersea_scramble.ogg"), DataStore.current.music_volume)
 	stage = Globals.main_gameplay_stage
 	assert(stage != null)
 	

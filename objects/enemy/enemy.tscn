@@ -8,6 +8,7 @@
 [ext_resource type="SpriteFrames" uid="uid://1yrw0ng3dklj" path="res://objects/enemy/resources/fysh.tres" id="5_iny8m"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cq6ui"]
+resource_local_to_scene = true
 shader = ExtResource("2_4wp46")
 shader_parameter/fillColor = Vector4(0.5, 0, 1, 1)
 
