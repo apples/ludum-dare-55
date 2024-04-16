@@ -14,13 +14,13 @@ var damage := 1
 @export var element: Globals.Elements = Globals.Elements.UNSET
 
 @onready var sprite_2d: AnimatedSprite2D = $Sprite2D
+@onready var default_sprite_frames := sprite_2d.sprite_frames
 
 var sprite_frames: SpriteFrames
 var sprite_size: float = 1.0
 
-func _ready() -> void:
-	if sprite_frames:
-		sprite_2d.sprite_frames = sprite_frames
+func init() -> void:
+	sprite_2d.sprite_frames = sprite_frames if sprite_frames else default_sprite_frames
 	sprite_2d.scale = Vector2(sprite_size, sprite_size)
 
 func _process(delta: float) -> void:
@@ -32,12 +32,18 @@ func _physics_process(delta: float) -> void:
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if allegiance == Team.PLAYER and body.is_in_group("Enemy"):
 		body.hit(damage, element)
-		queue_free()
+		rescind()
 	elif allegiance == Team.ENEMY and body.is_in_group("Player"):
 		if Globals.haxor == 1:
 			MusicMan.sfx(preload("res://sfx/player_hit.wav"))
 		if Globals.player_invuln == 0:
 			Globals.player_health -= damage
-			queue_free()
+			rescind()
 	elif body.is_in_group("Wall"):
-		queue_free()
+		rescind()
+
+func rescind():
+	if not is_inside_tree():
+		return
+	get_parent().remove_child(self)
+	BulletSpawner.rescind(self)
