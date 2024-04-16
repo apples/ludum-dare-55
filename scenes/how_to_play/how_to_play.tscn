@@ -112,6 +112,7 @@ offset_bottom = 40.0
 
 [node name="WaterIcon2" type="TextureRect" parent="RPSGraphic"]
 auto_translate_mode = 1
+layout_mode = 0
 offset_left = 222.0
 offset_top = 529.0
 offset_right = 350.0
@@ -120,6 +121,7 @@ texture = ExtResource("6_fusqe")
 
 [node name="Arrow1" type="Label" parent="RPSGraphic"]
 auto_translate_mode = 1
+layout_mode = 0
 offset_left = 364.0
 offset_top = 628.0
 offset_right = 444.0
@@ -131,6 +133,7 @@ text = "→"
 
 [node name="Arrow2" type="Label" parent="RPSGraphic"]
 auto_translate_mode = 1
+layout_mode = 0
 offset_left = 333.0
 offset_top = 838.0
 offset_right = 413.0
@@ -141,6 +144,7 @@ text = "→"
 
 [node name="Arrow3" type="Label" parent="RPSGraphic"]
 auto_translate_mode = 1
+layout_mode = 0
 offset_left = 157.0
 offset_top = 681.0
 offset_right = 237.0
@@ -152,6 +156,7 @@ text = "→"
 
 [node name="FireIcon2" type="TextureRect" parent="RPSGraphic"]
 auto_translate_mode = 1
+layout_mode = 0
 offset_left = 359.0
 offset_top = 713.0
 offset_right = 487.0
@@ -160,6 +165,7 @@ texture = ExtResource("7_jwadg")
 
 [node name="VeganIcon2" type="TextureRect" parent="RPSGraphic"]
 auto_translate_mode = 1
+layout_mode = 0
 offset_left = 95.0
 offset_top = 726.0
 offset_right = 223.0
