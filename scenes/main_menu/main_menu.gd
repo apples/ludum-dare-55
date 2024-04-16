@@ -8,7 +8,7 @@ var how_to_play_scene = preload("res://scenes/how_to_play/how_to_play.tscn")
 
 func _ready() -> void:
 	start_game_button.grab_focus()
-	MusicMan.music(  preload("res://sfx/hjr_undersea_scramble.ogg"), DataStore.current.music_volume)
+	MusicMan.music(preload("res://sfx/hjr_aquatic_menu.ogg"), DataStore.current.music_volume)
 
 
 func _on_start_game_button_pressed() -> void:
