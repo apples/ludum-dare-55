@@ -21,5 +21,5 @@ enemy_resource = SubResource("Resource_ohuy3")
 
 [resource]
 script = ExtResource("4_xkq3q")
-stage_name = "Oak Hill II"
+stage_name = "B2"
 phases = Array[ExtResource("2_gyf2g")]([SubResource("Resource_snwnm")])
