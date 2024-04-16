@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://objects/enemy/enemy_resource.gd" id="1_xs58b"]
 [ext_resource type="Resource" uid="uid://bfnsc7tyejvyb" path="res://objects/bullet/resources/fire_basic.tres" id="1_xtx2f"]
-[ext_resource type="SpriteFrames" uid="uid://q57xbnqji32a" path="res://objects/enemy/resources/fesh.tres" id="3_cj3gg"]
+[ext_resource type="SpriteFrames" uid="uid://c2stxcc0byybc" path="res://objects/enemy/resources/fesh.tres" id="3_cj3gg"]
 
 [resource]
 script = ExtResource("1_xs58b")
