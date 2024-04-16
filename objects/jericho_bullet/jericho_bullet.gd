@@ -19,5 +19,11 @@ func explode() -> void:
 		secondary_bullet.secondary,
 		self,
 		Vector2.ZERO,
-		0
+		0,
+		secondary_bullet.speed,
+		secondary_bullet.speen,
+		secondary_bullet.size,
+		secondary_bullet.sprite,
+		secondary_bullet.sprite_size,
+		secondary_bullet.z_index
 	)

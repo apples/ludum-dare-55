@@ -19,5 +19,14 @@ func explode() -> void:
 		secondary_bullet.secondary,
 		self,
 		Vector2.ZERO,
-		0
+		0,
+		secondary_bullet.speed,
+		secondary_bullet.speen,
+		secondary_bullet.size,
+		secondary_bullet.sprite,
+		secondary_bullet.sprite_size,
+		secondary_bullet.z_index
 	)
+	#var secondary_bullet_resource = BulletResource.new()
+	#secondary_bullet_resource.pattern = BulletSpawner.Pattern.CIRCLE
+	#secondary_bullet.type = 
