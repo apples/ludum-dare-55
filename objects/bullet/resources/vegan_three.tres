@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="BulletResource" load_steps=3 format=3 uid="uid://bomig5f4oua1p"]
+[gd_resource type="Resource" script_class="BulletResource" load_steps=3 format=3 uid="uid://cg8xrf3p8fr7o"]
 
 [ext_resource type="Script" path="res://objects/bullet/bullet_resource.gd" id="1_0nlxi"]
 [ext_resource type="PackedScene" uid="uid://c16bxsiokr13i" path="res://objects/bullet/bullet.tscn" id="2_5ckfc"]
@@ -8,3 +8,8 @@ script = ExtResource("1_0nlxi")
 pattern = 3
 type = ExtResource("2_5ckfc")
 element = 3
+speed = 26.0
+speen = 5.0
+size = 1.0
+sprite_size = 1.0
+z_index = 80
