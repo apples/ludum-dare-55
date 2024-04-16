@@ -22,6 +22,8 @@ func _ready() -> void:
 	if sprite_frames:
 		sprite_2d.sprite_frames = sprite_frames
 	sprite_2d.scale = Vector2(sprite_size, sprite_size)
+	if allegiance != Team.PLAYER:
+		speed = speed / 2
 
 func _process(delta: float) -> void:
 	sprite_2d.rotation += speen * delta
