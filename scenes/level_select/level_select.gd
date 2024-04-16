@@ -7,9 +7,9 @@ func _ready() -> void:
 	if Save.current.levels_beaten.has("0"):
 		$"A1".disabled = false
 		$"B1".disabled = false
-	if Save.current.levels_beaten.has("A1"):
+	if Save.current.levels_beaten.has("Stage 1A"):
 		$"A2".disabled = false
-	if Save.current.levels_beaten.has("B1"):
+	if Save.current.levels_beaten.has("Stage 1B"):
 		$"B2".disabled = false
 
 
@@ -28,7 +28,7 @@ func _on_a_1_pressed() -> void:
 	SceneGirl.change_scene("res://scenes/main_gameplay/main_gameplay.tscn")
 
 func _on_b_2_pressed() -> void:
-	Globals.main_gameplay_stage = preload("res://scenes/main_gameplay/stages/stage_0/stage_0.tres")
+	Globals.main_gameplay_stage = preload("res://scenes/main_gameplay/stages/stage_b2/stage_b2.tres")
 	SceneGirl.change_scene("res://scenes/main_gameplay/main_gameplay.tscn")
 
 func _on_a_2_pressed() -> void:
