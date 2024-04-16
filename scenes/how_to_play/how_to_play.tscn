@@ -47,7 +47,8 @@ theme_override_font_sizes/normal_font_size = 48
 bbcode_enabled = true
 text = "[color=green]WASD / Arrow Keys[/color] to move
 [color=green]SPACE[/color] to shoot
-[color=green]SHIFT / Z[/color] to start summoning"
+[color=green]SHIFT / Z[/color] to start summoning
+[color=green]Esc / P[/color] to pause"
 
 [node name="TitleLabel" type="Label" parent="."]
 auto_translate_mode = 1
