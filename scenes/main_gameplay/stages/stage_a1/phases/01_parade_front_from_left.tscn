@@ -5,7 +5,7 @@ script/source = "extends StagePhase
 
 const SCENE = preload(\"res://scenes/main_gameplay/stage_phases/simple_patterns/move_to_spot_and_stay.tscn\")
 
-@export var count: int = 9
+@export var count: int = 6
 @export var yvalue: float = 270.0
 # Called when the node enters the scene tree for the first time.
 
