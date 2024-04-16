@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dm8vni40rm7ug"]
+[gd_scene load_steps=11 format=3 uid="uid://dm8vni40rm7ug"]
 
 [ext_resource type="Script" path="res://scenes/how_to_play/how_to_play.gd" id="1_5rmvt"]
 [ext_resource type="Shader" path="res://materials/tiling_shader.gdshader" id="2_ki2kl"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cxlxciuwmsf7r" path="res://textures/water_icon.png" id="6_fusqe"]
 [ext_resource type="Texture2D" uid="uid://c0wt5vuyky6n7" path="res://textures/fire_icon.png" id="7_jwadg"]
 [ext_resource type="Texture2D" uid="uid://c6msqgrnqo7ap" path="res://textures/vegan_icon.png" id="8_ftsp6"]
+[ext_resource type="Texture2D" uid="uid://c6cod4xw0kslo" path="res://textures/more_arrows.png" id="9_yfagm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tia2o"]
 shader = ExtResource("2_ki2kl")
@@ -46,7 +47,8 @@ theme_override_font_sizes/normal_font_size = 48
 bbcode_enabled = true
 text = "[color=green]WASD / Arrow Keys[/color] to move
 [color=green]SPACE[/color] to shoot
-[color=green]SHIFT / Z[/color] to start summoning"
+[color=green]SHIFT / Z[/color] to start summoning
+[color=green]Esc / P[/color] to pause"
 
 [node name="TitleLabel" type="Label" parent="."]
 auto_translate_mode = 1
@@ -119,41 +121,6 @@ offset_right = 350.0
 offset_bottom = 657.0
 texture = ExtResource("6_fusqe")
 
-[node name="Arrow1" type="Label" parent="RPSGraphic"]
-auto_translate_mode = 1
-layout_mode = 0
-offset_left = 364.0
-offset_top = 628.0
-offset_right = 444.0
-offset_bottom = 736.0
-rotation = 0.743878
-theme_override_colors/font_color = Color(0, 1, 0, 1)
-theme_override_font_sizes/font_size = 80
-text = "→"
-
-[node name="Arrow2" type="Label" parent="RPSGraphic"]
-auto_translate_mode = 1
-layout_mode = 0
-offset_left = 333.0
-offset_top = 838.0
-offset_right = 413.0
-offset_bottom = 946.0
-rotation = 3.14537
-theme_override_font_sizes/font_size = 80
-text = "→"
-
-[node name="Arrow3" type="Label" parent="RPSGraphic"]
-auto_translate_mode = 1
-layout_mode = 0
-offset_left = 157.0
-offset_top = 681.0
-offset_right = 237.0
-offset_bottom = 789.0
-rotation = 5.47858
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_font_sizes/font_size = 80
-text = "→"
-
 [node name="FireIcon2" type="TextureRect" parent="RPSGraphic"]
 auto_translate_mode = 1
 layout_mode = 0
@@ -187,6 +154,10 @@ offset_top = 665.0
 offset_right = 184.0
 offset_bottom = 694.0
 text = "X.5 Damage!"
+
+[node name="MoreArrows" type="Sprite2D" parent="."]
+position = Vector2(284, 718)
+texture = ExtResource("9_yfagm")
 
 [connection signal="hidden" from="." to="." method="_on_hidden"]
 [connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]
