@@ -45,10 +45,12 @@ func _physics_process(delta: float) -> void:
 		 
 	if Globals.player_invuln > 0:
 		Globals.player_invuln -= 1
+		
+		outline.visible = int(Globals.player_invuln / 5) % 2 == 0
 	
 	if Input.is_action_pressed("Menu"):
 		_pause()
-		
+	
 	if Input.is_action_pressed("Shoot"):
 		shoot_bullet()
 	if Globals.haxor ==1 and Input.is_action_pressed("sigil_1") and  Globals.cheat_timeout ==0:

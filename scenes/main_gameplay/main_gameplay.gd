@@ -59,11 +59,11 @@ func stage_complete():
 	if stage.stage_name == "Stage 0" && !Save.current.levels_beaten.has("0"):
 		Save.current.levels_beaten.append("0")
 		Save.save()
-	elif stage.stage_name == "A1" && !Save.current.levels_beaten.has("A1"):
-		Save.current.levels_beaten.append("A1")
+	elif stage.stage_name == "Stage 1A" && !Save.current.levels_beaten.has("Stage 1A"):
+		Save.current.levels_beaten.append("Stage 1A")
 		Save.save()
-	elif stage.stage_name == "B1" && !Save.current.levels_beaten.has("B1"):
-		Save.current.levels_beaten.append("B1")
+	elif stage.stage_name == "Stage 1B" && !Save.current.levels_beaten.has("Stage 1B"):
+		Save.current.levels_beaten.append("Stage 1B")
 		Save.save()
 	elif stage.stage_name == "A2" && !Save.current.levels_beaten.has("A2"):
 		Save.current.levels_beaten.append("A2")
