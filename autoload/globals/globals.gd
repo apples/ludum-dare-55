@@ -13,7 +13,7 @@ signal changed
 ## Emitted when the player's health changes
 signal player_health_changed
 
-var haxor: int = 1:
+var haxor: int = 0:
 	set(v): haxor = v; 
 var cheat_timeout: int = 0:
 	set(v): cheat_timeout = v; 
