@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dhd0odooejul8" path="res://scenes/main_gameplay/stages/stage_0/dialogue/before_vegan_scouts.tscn" id="8_rugf1"]
 [ext_resource type="Resource" uid="uid://cptkun18ywjqe" path="res://scenes/main_gameplay/stages/stage_0/enemies/water_shooter.tres" id="11_df7ca"]
 [ext_resource type="PackedScene" uid="uid://d0n1aw41b7m25" path="res://scenes/main_gameplay/stage_phases/simple_patterns/right_to_left_conga_loop.tscn" id="12_2pota"]
-[ext_resource type="Resource" path="res://scenes/main_gameplay/stages/stage_0/enemies/vegan_shooter.tres" id="15_vuu0b"]
+[ext_resource type="Resource" uid="uid://crbic817jqyij" path="res://scenes/main_gameplay/stages/stage_0/enemies/vegan_shooter.tres" id="15_vuu0b"]
 
 [sub_resource type="Resource" id="Resource_a78g8"]
 script = ExtResource("1_264om")
