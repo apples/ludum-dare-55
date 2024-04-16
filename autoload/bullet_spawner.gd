@@ -182,10 +182,7 @@ static func fire_five_arc(
 		transform = transform.translated_local(offset)
 		transform = transform.rotated_local(angle)
 		
-		var bullet = bullet_type.instantiate()
-		bullet.global_transform = transform
-		bullet_created.call(bullet)
-		scene.add_child(bullet)
+		var bullet = create_bullet(caller, bullet_type, transform, bullet_created)
 		
 		await caller.get_tree().create_timer(0.02).timeout
 
