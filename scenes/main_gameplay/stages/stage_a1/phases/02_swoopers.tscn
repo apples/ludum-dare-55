@@ -26,7 +26,6 @@ func _ready() -> void:
 			child_phase.enemy_resource = enemy_resource
 		else:
 			child_phase.enemy_resource = preload(\"res://scenes/main_gameplay/stages/stage_a1/enemies/water_scout.tres\")
-			child_phase.enemy_resource.bullet_resource = null
 		add_child(child_phase)
 
 
