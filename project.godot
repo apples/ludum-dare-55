@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Ludum Dare 55"
+config/name="LD55 - Veiled Ocean"
 config/tags=PackedStringArray("jam", "ludum_dare")
 run/main_scene="res://scenes/main_menu/main_menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
