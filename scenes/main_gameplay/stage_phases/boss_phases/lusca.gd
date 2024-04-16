@@ -68,6 +68,8 @@ func _state_1_physics_process(delta: float) -> void:
 		var b = BulletResource.new()
 		b.pattern = BulletSpawner.Pattern.SPIRAL
 		b.type = preload("res://objects/bullet/bullet.tscn")
+		b.sprite = preload("res://particles/bullet_grey.tres")
+		b.sprite_size = 1.5
 		b.speed = 7
 		b.speen = 0
 		b.size = 1
