@@ -7,6 +7,7 @@
 script = ExtResource("2_8t1hs")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+z_index = 1044
 texture = ExtResource("1_6q0bw")
 emission_shape = 1
 emission_sphere_radius = 22.34
