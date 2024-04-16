@@ -3,6 +3,7 @@ extends Node2D
 @onready var first_level_button: TextureButton = $"0"
 
 func _ready() -> void:
+	MusicMan.music(preload("res://sfx/hjr_aquatic_menu.ogg"), DataStore.current.music_volume)
 	first_level_button.grab_focus()
 	if Save.current.levels_beaten.has("0"):
 		$"A1".disabled = false
