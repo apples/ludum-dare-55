@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://bgifm1l7er16l" path="res://scenes/main_gameplay/stages/stage_a1/phases/01_parade_front_from_left.tscn" id="3_l31ss"]
 [ext_resource type="Resource" uid="uid://cyfvet7t0dmfx" path="res://scenes/main_gameplay/stages/stage_a1/enemies/water_fush.tres" id="4_f5ulo"]
 [ext_resource type="PackedScene" uid="uid://dt2a01rxefpd" path="res://scenes/main_gameplay/stages/stage_a1/phases/02_swoopers.tscn" id="5_amcmf"]
-[ext_resource type="PackedScene" uid="uid://duovg11smc3s7" path="res://scenes/main_gameplay/stages/stage_a1/phases/03_lingerers.tscn" id="6_ta87j"]
-[ext_resource type="PackedScene" uid="uid://yt4f63vdu4lb" path="res://scenes/main_gameplay/stages/stage_a1/phases/04_parade_front_and_leave.tscn" id="7_k3yqg"]
+[ext_resource type="PackedScene" path="res://scenes/main_gameplay/stages/stage_a1/phases/03_lingerers.tscn" id="6_ta87j"]
+[ext_resource type="PackedScene" path="res://scenes/main_gameplay/stages/stage_a1/phases/04_parade_front_and_leave.tscn" id="7_k3yqg"]
 [ext_resource type="Script" path="res://resource_types/stage_sequence.gd" id="10_okrj0"]
 
 [sub_resource type="Resource" id="Resource_po4wj"]
